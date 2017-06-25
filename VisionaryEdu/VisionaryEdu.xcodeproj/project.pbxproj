@@ -1,0 +1,533 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7696B3A8227BC24F2972070E /* Pods_VisionaryEdu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F25F87153DEB044FCAC93DE /* Pods_VisionaryEdu.framework */; };
+		89CFBCC01EFE15BD00439496 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCBF1EFE15BD00439496 /* main.m */; };
+		89CFBCC31EFE15BD00439496 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCC21EFE15BD00439496 /* AppDelegate.m */; };
+		89CFBCC91EFE15BD00439496 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89CFBCC71EFE15BD00439496 /* Main.storyboard */; };
+		89CFBCCB1EFE15BD00439496 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89CFBCCA1EFE15BD00439496 /* Assets.xcassets */; };
+		89CFBCCE1EFE15BD00439496 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89CFBCCC1EFE15BD00439496 /* LaunchScreen.storyboard */; };
+		89CFBCD81EFE15EE00439496 /* LoginViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCD71EFE15EE00439496 /* LoginViewCtrl.m */; };
+		89CFBCE01EFE160E00439496 /* LoginInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCDB1EFE160E00439496 /* LoginInfoModel.m */; };
+		89CFBCE11EFE160E00439496 /* StudentBaseInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCDD1EFE160E00439496 /* StudentBaseInfoManager.m */; };
+		89CFBCE21EFE160E00439496 /* StudentScoreInDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCDF1EFE160E00439496 /* StudentScoreInDetailsModel.m */; };
+		89CFBCE91EFE163C00439496 /* SYHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCE61EFE163C00439496 /* SYHttpTool.m */; };
+		89CFBCEA1EFE163C00439496 /* SysTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCE81EFE163C00439496 /* SysTool.m */; };
+		89CFBCF11EFE164100439496 /* StaffHomePageViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCEF1EFE164100439496 /* StaffHomePageViewCtrl.m */; };
+		89CFBD001EFE164600439496 /* ScoreChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCF41EFE164600439496 /* ScoreChartView.m */; };
+		89CFBD011EFE164600439496 /* ScoreChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CFBCF51EFE164600439496 /* ScoreChartView.xib */; };
+		89CFBD021EFE164600439496 /* scoreInDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCF71EFE164600439496 /* scoreInDetailTableViewCell.m */; };
+		89CFBD031EFE164600439496 /* StudentInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCF91EFE164600439496 /* StudentInfoTableViewCell.m */; };
+		89CFBD041EFE164600439496 /* StudentInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCFB1EFE164600439496 /* StudentInfoViewCtrl.m */; };
+		89CFBD051EFE164600439496 /* StudentScoreViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */; };
+		89CFBD061EFE164600439496 /* YQNumberSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */; };
+		89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBD091EFE164C00439496 /* UIColor+expanded.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		30DEF1E016840C712AF95BB8 /* Pods-VisionaryEdu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionaryEdu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VisionaryEdu/Pods-VisionaryEdu.debug.xcconfig"; sourceTree = "<group>"; };
+		8993032F1EFE17A000B066AD /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		89CFBCBB1EFE15BD00439496 /* VisionaryEdu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionaryEdu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89CFBCBF1EFE15BD00439496 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		89CFBCC11EFE15BD00439496 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		89CFBCC21EFE15BD00439496 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		89CFBCC81EFE15BD00439496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		89CFBCCA1EFE15BD00439496 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		89CFBCCD1EFE15BD00439496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89CFBCCF1EFE15BD00439496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89CFBCD61EFE15EE00439496 /* LoginViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewCtrl.h; sourceTree = "<group>"; };
+		89CFBCD71EFE15EE00439496 /* LoginViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewCtrl.m; sourceTree = "<group>"; };
+		89CFBCDA1EFE160E00439496 /* LoginInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfoModel.h; sourceTree = "<group>"; };
+		89CFBCDB1EFE160E00439496 /* LoginInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInfoModel.m; sourceTree = "<group>"; };
+		89CFBCDC1EFE160E00439496 /* StudentBaseInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentBaseInfoManager.h; sourceTree = "<group>"; };
+		89CFBCDD1EFE160E00439496 /* StudentBaseInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentBaseInfoManager.m; sourceTree = "<group>"; };
+		89CFBCDE1EFE160E00439496 /* StudentScoreInDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentScoreInDetailsModel.h; sourceTree = "<group>"; };
+		89CFBCDF1EFE160E00439496 /* StudentScoreInDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentScoreInDetailsModel.m; sourceTree = "<group>"; };
+		89CFBCE41EFE163C00439496 /* MWHTTPMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWHTTPMacro.h; sourceTree = "<group>"; };
+		89CFBCE51EFE163C00439496 /* SYHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHttpTool.h; sourceTree = "<group>"; };
+		89CFBCE61EFE163C00439496 /* SYHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHttpTool.m; sourceTree = "<group>"; };
+		89CFBCE71EFE163C00439496 /* SysTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysTool.h; sourceTree = "<group>"; };
+		89CFBCE81EFE163C00439496 /* SysTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysTool.m; sourceTree = "<group>"; };
+		89CFBCEE1EFE164100439496 /* StaffHomePageViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffHomePageViewCtrl.h; sourceTree = "<group>"; };
+		89CFBCEF1EFE164100439496 /* StaffHomePageViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffHomePageViewCtrl.m; sourceTree = "<group>"; };
+		89CFBCF31EFE164600439496 /* ScoreChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreChartView.h; sourceTree = "<group>"; };
+		89CFBCF41EFE164600439496 /* ScoreChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreChartView.m; sourceTree = "<group>"; };
+		89CFBCF51EFE164600439496 /* ScoreChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreChartView.xib; sourceTree = "<group>"; };
+		89CFBCF61EFE164600439496 /* scoreInDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scoreInDetailTableViewCell.h; sourceTree = "<group>"; };
+		89CFBCF71EFE164600439496 /* scoreInDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scoreInDetailTableViewCell.m; sourceTree = "<group>"; };
+		89CFBCF81EFE164600439496 /* StudentInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudentInfoTableViewCell.h; path = ../Student_Parent/StudentInfoTableViewCell.h; sourceTree = "<group>"; };
+		89CFBCF91EFE164600439496 /* StudentInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudentInfoTableViewCell.m; path = ../Student_Parent/StudentInfoTableViewCell.m; sourceTree = "<group>"; };
+		89CFBCFA1EFE164600439496 /* StudentInfoViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentInfoViewCtrl.h; sourceTree = "<group>"; };
+		89CFBCFB1EFE164600439496 /* StudentInfoViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentInfoViewCtrl.m; sourceTree = "<group>"; };
+		89CFBCFC1EFE164600439496 /* StudentScoreViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentScoreViewCtrl.h; sourceTree = "<group>"; };
+		89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentScoreViewCtrl.m; sourceTree = "<group>"; };
+		89CFBCFE1EFE164600439496 /* YQNumberSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQNumberSlideView.h; sourceTree = "<group>"; };
+		89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQNumberSlideView.m; sourceTree = "<group>"; };
+		89CFBD081EFE164C00439496 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
+		89CFBD091EFE164C00439496 /* UIColor+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+expanded.m"; sourceTree = "<group>"; };
+		9F25F87153DEB044FCAC93DE /* Pods_VisionaryEdu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionaryEdu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE8B271994E04811578481FD /* Pods-VisionaryEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionaryEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-VisionaryEdu/Pods-VisionaryEdu.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		89CFBCB81EFE15BD00439496 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7696B3A8227BC24F2972070E /* Pods_VisionaryEdu.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A9132F6756D182465B81236 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				30DEF1E016840C712AF95BB8 /* Pods-VisionaryEdu.debug.xcconfig */,
+				AE8B271994E04811578481FD /* Pods-VisionaryEdu.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		89CFBCB21EFE15BD00439496 = {
+			isa = PBXGroup;
+			children = (
+				89CFBCBD1EFE15BD00439496 /* VisionaryEdu */,
+				89CFBCBC1EFE15BD00439496 /* Products */,
+				1A9132F6756D182465B81236 /* Pods */,
+				9337095D7AC6BB62CAC2D8B5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		89CFBCBC1EFE15BD00439496 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCBB1EFE15BD00439496 /* VisionaryEdu.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89CFBCBD1EFE15BD00439496 /* VisionaryEdu */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCC11EFE15BD00439496 /* AppDelegate.h */,
+				89CFBCC21EFE15BD00439496 /* AppDelegate.m */,
+				8993032F1EFE17A000B066AD /* config.h */,
+				89CFBCE31EFE163C00439496 /* network */,
+				89CFBD071EFE164C00439496 /* Tools */,
+				89CFBCF21EFE164600439496 /* Student_Parent */,
+				89CFBCEB1EFE164100439496 /* Staff */,
+				89CFBCD91EFE160E00439496 /* Model */,
+				89CFBCD51EFE15EE00439496 /* Login */,
+				89CFBCC71EFE15BD00439496 /* Main.storyboard */,
+				89CFBCCA1EFE15BD00439496 /* Assets.xcassets */,
+				89CFBCCC1EFE15BD00439496 /* LaunchScreen.storyboard */,
+				89CFBCCF1EFE15BD00439496 /* Info.plist */,
+				89CFBCBE1EFE15BD00439496 /* Supporting Files */,
+			);
+			path = VisionaryEdu;
+			sourceTree = "<group>";
+		};
+		89CFBCBE1EFE15BD00439496 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCBF1EFE15BD00439496 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		89CFBCD51EFE15EE00439496 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCD61EFE15EE00439496 /* LoginViewCtrl.h */,
+				89CFBCD71EFE15EE00439496 /* LoginViewCtrl.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		89CFBCD91EFE160E00439496 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCDA1EFE160E00439496 /* LoginInfoModel.h */,
+				89CFBCDB1EFE160E00439496 /* LoginInfoModel.m */,
+				89CFBCDC1EFE160E00439496 /* StudentBaseInfoManager.h */,
+				89CFBCDD1EFE160E00439496 /* StudentBaseInfoManager.m */,
+				89CFBCDE1EFE160E00439496 /* StudentScoreInDetailsModel.h */,
+				89CFBCDF1EFE160E00439496 /* StudentScoreInDetailsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		89CFBCE31EFE163C00439496 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCE41EFE163C00439496 /* MWHTTPMacro.h */,
+				89CFBCE51EFE163C00439496 /* SYHttpTool.h */,
+				89CFBCE61EFE163C00439496 /* SYHttpTool.m */,
+				89CFBCE71EFE163C00439496 /* SysTool.h */,
+				89CFBCE81EFE163C00439496 /* SysTool.m */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		89CFBCEB1EFE164100439496 /* Staff */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCEE1EFE164100439496 /* StaffHomePageViewCtrl.h */,
+				89CFBCEF1EFE164100439496 /* StaffHomePageViewCtrl.m */,
+				89CFBCF81EFE164600439496 /* StudentInfoTableViewCell.h */,
+				89CFBCF91EFE164600439496 /* StudentInfoTableViewCell.m */,
+			);
+			path = Staff;
+			sourceTree = "<group>";
+		};
+		89CFBCF21EFE164600439496 /* Student_Parent */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCF31EFE164600439496 /* ScoreChartView.h */,
+				89CFBCF41EFE164600439496 /* ScoreChartView.m */,
+				89CFBCF51EFE164600439496 /* ScoreChartView.xib */,
+				89CFBCF61EFE164600439496 /* scoreInDetailTableViewCell.h */,
+				89CFBCF71EFE164600439496 /* scoreInDetailTableViewCell.m */,
+				89CFBCFA1EFE164600439496 /* StudentInfoViewCtrl.h */,
+				89CFBCFB1EFE164600439496 /* StudentInfoViewCtrl.m */,
+				89CFBCFC1EFE164600439496 /* StudentScoreViewCtrl.h */,
+				89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */,
+				89CFBCFE1EFE164600439496 /* YQNumberSlideView.h */,
+				89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */,
+			);
+			path = Student_Parent;
+			sourceTree = "<group>";
+		};
+		89CFBD071EFE164C00439496 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBD081EFE164C00439496 /* UIColor+expanded.h */,
+				89CFBD091EFE164C00439496 /* UIColor+expanded.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		9337095D7AC6BB62CAC2D8B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F25F87153DEB044FCAC93DE /* Pods_VisionaryEdu.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		89CFBCBA1EFE15BD00439496 /* VisionaryEdu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89CFBCD21EFE15BD00439496 /* Build configuration list for PBXNativeTarget "VisionaryEdu" */;
+			buildPhases = (
+				10CF6FCADEBAFBD1B6006016 /* [CP] Check Pods Manifest.lock */,
+				89CFBCB71EFE15BD00439496 /* Sources */,
+				89CFBCB81EFE15BD00439496 /* Frameworks */,
+				89CFBCB91EFE15BD00439496 /* Resources */,
+				FA4C37D2AA616CA1D2A48766 /* [CP] Embed Pods Frameworks */,
+				FD15A76D30E6E690F33C1E5F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VisionaryEdu;
+			productName = VisionaryEdu;
+			productReference = 89CFBCBB1EFE15BD00439496 /* VisionaryEdu.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		89CFBCB31EFE15BD00439496 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Chen Defore";
+				TargetAttributes = {
+					89CFBCBA1EFE15BD00439496 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = C76TLF45XF;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 89CFBCB61EFE15BD00439496 /* Build configuration list for PBXProject "VisionaryEdu" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 89CFBCB21EFE15BD00439496;
+			productRefGroup = 89CFBCBC1EFE15BD00439496 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				89CFBCBA1EFE15BD00439496 /* VisionaryEdu */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		89CFBCB91EFE15BD00439496 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89CFBD011EFE164600439496 /* ScoreChartView.xib in Resources */,
+				89CFBCCE1EFE15BD00439496 /* LaunchScreen.storyboard in Resources */,
+				89CFBCCB1EFE15BD00439496 /* Assets.xcassets in Resources */,
+				89CFBCC91EFE15BD00439496 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10CF6FCADEBAFBD1B6006016 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA4C37D2AA616CA1D2A48766 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VisionaryEdu/Pods-VisionaryEdu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD15A76D30E6E690F33C1E5F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VisionaryEdu/Pods-VisionaryEdu-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		89CFBCB71EFE15BD00439496 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89CFBD001EFE164600439496 /* ScoreChartView.m in Sources */,
+				89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */,
+				89CFBCE91EFE163C00439496 /* SYHttpTool.m in Sources */,
+				89CFBCE21EFE160E00439496 /* StudentScoreInDetailsModel.m in Sources */,
+				89CFBD051EFE164600439496 /* StudentScoreViewCtrl.m in Sources */,
+				89CFBCC31EFE15BD00439496 /* AppDelegate.m in Sources */,
+				89CFBCF11EFE164100439496 /* StaffHomePageViewCtrl.m in Sources */,
+				89CFBCE11EFE160E00439496 /* StudentBaseInfoManager.m in Sources */,
+				89CFBD021EFE164600439496 /* scoreInDetailTableViewCell.m in Sources */,
+				89CFBCC01EFE15BD00439496 /* main.m in Sources */,
+				89CFBD031EFE164600439496 /* StudentInfoTableViewCell.m in Sources */,
+				89CFBCD81EFE15EE00439496 /* LoginViewCtrl.m in Sources */,
+				89CFBCE01EFE160E00439496 /* LoginInfoModel.m in Sources */,
+				89CFBD041EFE164600439496 /* StudentInfoViewCtrl.m in Sources */,
+				89CFBD061EFE164600439496 /* YQNumberSlideView.m in Sources */,
+				89CFBCEA1EFE163C00439496 /* SysTool.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		89CFBCC71EFE15BD00439496 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89CFBCC81EFE15BD00439496 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		89CFBCCC1EFE15BD00439496 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89CFBCCD1EFE15BD00439496 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		89CFBCD01EFE15BD00439496 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		89CFBCD11EFE15BD00439496 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		89CFBCD31EFE15BD00439496 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30DEF1E016840C712AF95BB8 /* Pods-VisionaryEdu.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = C76TLF45XF;
+				INFOPLIST_FILE = VisionaryEdu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Visionary-Education.VisionaryEdu";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		89CFBCD41EFE15BD00439496 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE8B271994E04811578481FD /* Pods-VisionaryEdu.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = C76TLF45XF;
+				INFOPLIST_FILE = VisionaryEdu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Visionary-Education.VisionaryEdu";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89CFBCB61EFE15BD00439496 /* Build configuration list for PBXProject "VisionaryEdu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89CFBCD01EFE15BD00439496 /* Debug */,
+				89CFBCD11EFE15BD00439496 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89CFBCD21EFE15BD00439496 /* Build configuration list for PBXNativeTarget "VisionaryEdu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89CFBCD31EFE15BD00439496 /* Debug */,
+				89CFBCD41EFE15BD00439496 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 89CFBCB31EFE15BD00439496 /* Project object */;
+}

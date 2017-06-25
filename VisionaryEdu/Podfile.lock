@@ -1,0 +1,47 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - FSCalendar (2.7.8)
+  - MJExtension (3.0.13)
+  - MJRefresh (3.1.12)
+  - PNChart (0.8.9):
+    - UICountingLabel (~> 1.2.0)
+  - RegExCategories (1.0)
+  - SVProgressHUD (2.1.2)
+  - UICountingLabel (1.2.0)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.1.0)
+  - FSCalendar
+  - MJExtension
+  - MJRefresh
+  - PNChart
+  - RegExCategories
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FSCalendar: 09369a2bf554ba71cd8e8cfb627e2df22a2c2af4
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
+  RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
+
+PODFILE CHECKSUM: 55400923b648c9ba8956d079116808a86f03da51
+
+COCOAPODS: 1.2.0
