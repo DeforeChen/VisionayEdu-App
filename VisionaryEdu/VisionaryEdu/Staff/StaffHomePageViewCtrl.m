@@ -7,19 +7,18 @@
 //
 
 #import "StaffHomePageViewCtrl.h"
-#import "SysTool.h"
-#import "SYHttpTool.h"
 #import <MJExtension/MJExtension.h>
 #import <MJRefresh/MJRefresh.h>
 #import "StudentBaseInfoManager.h"
 #import "LoginViewCtrl.h"
-#import "LoginInfoModel.h"
 #import "StudentInfoTableViewCell.h"
+#import "StudentInstance.h"
 #import "config.h"
 
 @interface StaffHomePageViewCtrl ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *studentListTB;
 @property (weak, nonatomic) IBOutlet UILabel *studentTotalNumLB;
+@property (weak, nonatomic) IBOutlet UILabel *staff_nameLB;
 @property (assign,nonatomic) BOOL isFirstRefresh;
 @property (copy,nonatomic) NSArray<NSArray<StudentInfoModel*>*> *studentInfoArray;
 @property (copy,nonatomic) NSArray<NSString*> *gradeIndexArray;
@@ -32,6 +31,7 @@
     self.studentListTB.sectionIndexBackgroundColor = [UIColor clearColor];
     self.studentListTB.sectionIndexTrackingBackgroundColor = [UIColor clearColor];
     self.isFirstRefresh = YES;
+    self.staff_nameLB.text = [NSString stringWithFormat:@"Welcome, %@!",[LoginInfoModel fetchAccountUsername]];
     // Do any additional setup after loading the view.
 }
 
@@ -50,6 +50,11 @@
             [self refresh];
         }
     }
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,7 +79,7 @@
 
 #pragma mark Private Methods
 -(void)refresh {
-    NSDictionary *paramDict = @{@"staff_username":[LoginInfoModel fetchUsername]};
+    NSDictionary *paramDict = @{@"staff_username":[LoginInfoModel fetchAccountUsername]};
     [[SYHttpTool sharedInstance] getReqWithURL:QUERY_STUDENT_BY_YEAR token:[LoginInfoModel fetchTokenFromSandbox] params:paramDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
         [self.studentListTB.mj_header endRefreshing];
         [SysTool dismissHUD];
@@ -110,8 +115,8 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat sectionHeaderHeight = 60;
-    if(scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
+    CGFloat sectionHeaderHeight = 50;
+    if(scrollView.contentOffset.y<=sectionHeaderHeight && scrollView.contentOffset.y>=0) {
         scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
     } else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
         scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
@@ -134,10 +139,21 @@
         type = (info.undergrad)?Both:HighSchoolGuardiance;
     } else
         type = UnderGraduation;
-    
-    XLog(@"student type = %d",(int)type);
+
     StudentInfoTableViewCell *cell = [StudentInfoTableViewCell fetchMyCellWithTableView:tableView studentName:info.full_name serviceType:type className:info.user_class registerTime:info.registration_date];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    StudentInfoModel *info = self.studentInfoArray[indexPath.section][indexPath.row];
+    [StudentInstance shareInstance].student_realname = info.full_name;
+    [StudentInstance shareInstance].student_username = info.username;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *tabbarVC = [storyboard instantiateViewControllerWithIdentifier:@"tabBarID"];
+    tabbarVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//    UINavigationController *nav = tabbarVC.viewControllers[1];
+    [self presentViewController: tabbarVC animated:YES completion:nil];
 }
 
 @end

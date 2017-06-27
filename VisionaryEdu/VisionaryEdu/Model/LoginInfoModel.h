@@ -21,6 +21,12 @@
  */
 -(void)saveLoginInfoIntoSandbox:(NSString*)username;
 
+
+/**
+ 清空登录信息（登出时用）
+ */
++(void)clearLoginInfoInSandbox ;
+
 /**
  从沙盒中获取到 令牌
  @return 令牌
@@ -39,7 +45,7 @@
  从沙盒中获取用户名
  @return 用户名
  */
-+(NSString*)fetchUsername ;
++(NSString*)fetchAccountUsername ;
 /**
  判断当前是否登录
  @return 是否登录

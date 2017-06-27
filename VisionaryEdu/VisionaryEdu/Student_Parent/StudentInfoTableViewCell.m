@@ -22,8 +22,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.photoImgView.layer.cornerRadius = 100.0;
-    self.photoImgView.image = [UIImage imageNamed:@"headPhoto_placeHolder"];
+//    self.photoImgView.layer.cornerRadius = 100.0;
+//    self.photoImgView.image = [UIImage imageNamed:@"headPhoto_placeHolder"];
     self.hs_GuardLB.layer.cornerRadius = 4.f;
     self.hs_GuardLB.clipsToBounds = YES;
     self.underGradLB.layer.cornerRadius = 4.f;

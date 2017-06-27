@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		7696B3A8227BC24F2972070E /* Pods_VisionaryEdu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F25F87153DEB044FCAC93DE /* Pods_VisionaryEdu.framework */; };
+		891BB7C31F00979000F4DD60 /* ScheduleViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 891BB7C21F00979000F4DD60 /* ScheduleViewCtrl.m */; };
+		891BB7CC1F014C5500F4DD60 /* PwdModifyViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 891BB7CB1F014C5500F4DD60 /* PwdModifyViewCtrl.m */; };
+		893AC6991F02508F00990A48 /* CustomTabbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893AC6981F02508F00990A48 /* CustomTabbarView.xib */; };
+		893AC69C1F0254D000990A48 /* CustomTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 893AC69B1F0254D000990A48 /* CustomTabbarView.m */; };
+		893AC69F1F0260CF00990A48 /* MeViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 893AC69E1F0260CF00990A48 /* MeViewCtrl.m */; };
+		899303321EFFB40500B066AD /* SettingsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 899303311EFFB40500B066AD /* SettingsViewCtrl.m */; };
+		899303361EFFB78F00B066AD /* StudentInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 899303351EFFB78F00B066AD /* StudentInstance.m */; };
+		8993033E1EFFF76300B066AD /* TabBarManagerViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8993033D1EFFF76300B066AD /* TabBarManagerViewCtrl.m */; };
 		89CFBCC01EFE15BD00439496 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCBF1EFE15BD00439496 /* main.m */; };
 		89CFBCC31EFE15BD00439496 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCC21EFE15BD00439496 /* AppDelegate.m */; };
 		89CFBCC91EFE15BD00439496 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89CFBCC71EFE15BD00439496 /* Main.storyboard */; };
@@ -24,15 +32,31 @@
 		89CFBD011EFE164600439496 /* ScoreChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CFBCF51EFE164600439496 /* ScoreChartView.xib */; };
 		89CFBD021EFE164600439496 /* scoreInDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCF71EFE164600439496 /* scoreInDetailTableViewCell.m */; };
 		89CFBD031EFE164600439496 /* StudentInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCF91EFE164600439496 /* StudentInfoTableViewCell.m */; };
-		89CFBD041EFE164600439496 /* StudentInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCFB1EFE164600439496 /* StudentInfoViewCtrl.m */; };
 		89CFBD051EFE164600439496 /* StudentScoreViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */; };
 		89CFBD061EFE164600439496 /* YQNumberSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */; };
 		89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBD091EFE164C00439496 /* UIColor+expanded.m */; };
+		89E15C571F01F2BB00452B08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89E15C561F01F2BB00452B08 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		30DEF1E016840C712AF95BB8 /* Pods-VisionaryEdu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionaryEdu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VisionaryEdu/Pods-VisionaryEdu.debug.xcconfig"; sourceTree = "<group>"; };
+		891BB7C11F00979000F4DD60 /* ScheduleViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewCtrl.h; sourceTree = "<group>"; };
+		891BB7C21F00979000F4DD60 /* ScheduleViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewCtrl.m; sourceTree = "<group>"; };
+		891BB7C51F009EB300F4DD60 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		891BB7CA1F014C5500F4DD60 /* PwdModifyViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PwdModifyViewCtrl.h; sourceTree = "<group>"; };
+		891BB7CB1F014C5500F4DD60 /* PwdModifyViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PwdModifyViewCtrl.m; sourceTree = "<group>"; };
+		893AC6981F02508F00990A48 /* CustomTabbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTabbarView.xib; sourceTree = "<group>"; };
+		893AC69A1F0254D000990A48 /* CustomTabbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabbarView.h; sourceTree = "<group>"; };
+		893AC69B1F0254D000990A48 /* CustomTabbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabbarView.m; sourceTree = "<group>"; };
+		893AC69D1F0260CF00990A48 /* MeViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeViewCtrl.h; path = Student_Parent/MeViewCtrl.h; sourceTree = "<group>"; };
+		893AC69E1F0260CF00990A48 /* MeViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeViewCtrl.m; path = Student_Parent/MeViewCtrl.m; sourceTree = "<group>"; };
 		8993032F1EFE17A000B066AD /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		899303301EFFB40500B066AD /* SettingsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewCtrl.h; path = ../Student_Parent/SettingsViewCtrl.h; sourceTree = "<group>"; };
+		899303311EFFB40500B066AD /* SettingsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewCtrl.m; path = ../Student_Parent/SettingsViewCtrl.m; sourceTree = "<group>"; };
+		899303341EFFB78F00B066AD /* StudentInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudentInstance.h; path = VisionaryEdu/Model/StudentInstance.h; sourceTree = SOURCE_ROOT; };
+		899303351EFFB78F00B066AD /* StudentInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudentInstance.m; path = VisionaryEdu/Model/StudentInstance.m; sourceTree = SOURCE_ROOT; };
+		8993033C1EFFF76300B066AD /* TabBarManagerViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarManagerViewCtrl.h; sourceTree = "<group>"; };
+		8993033D1EFFF76300B066AD /* TabBarManagerViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarManagerViewCtrl.m; sourceTree = "<group>"; };
 		89CFBCBB1EFE15BD00439496 /* VisionaryEdu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionaryEdu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89CFBCBF1EFE15BD00439496 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		89CFBCC11EFE15BD00439496 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,14 +87,13 @@
 		89CFBCF71EFE164600439496 /* scoreInDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scoreInDetailTableViewCell.m; sourceTree = "<group>"; };
 		89CFBCF81EFE164600439496 /* StudentInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudentInfoTableViewCell.h; path = ../Student_Parent/StudentInfoTableViewCell.h; sourceTree = "<group>"; };
 		89CFBCF91EFE164600439496 /* StudentInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudentInfoTableViewCell.m; path = ../Student_Parent/StudentInfoTableViewCell.m; sourceTree = "<group>"; };
-		89CFBCFA1EFE164600439496 /* StudentInfoViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentInfoViewCtrl.h; sourceTree = "<group>"; };
-		89CFBCFB1EFE164600439496 /* StudentInfoViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentInfoViewCtrl.m; sourceTree = "<group>"; };
 		89CFBCFC1EFE164600439496 /* StudentScoreViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentScoreViewCtrl.h; sourceTree = "<group>"; };
 		89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentScoreViewCtrl.m; sourceTree = "<group>"; };
 		89CFBCFE1EFE164600439496 /* YQNumberSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQNumberSlideView.h; sourceTree = "<group>"; };
 		89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQNumberSlideView.m; sourceTree = "<group>"; };
 		89CFBD081EFE164C00439496 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
 		89CFBD091EFE164C00439496 /* UIColor+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+expanded.m"; sourceTree = "<group>"; };
+		89E15C561F01F2BB00452B08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9F25F87153DEB044FCAC93DE /* Pods_VisionaryEdu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionaryEdu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8B271994E04811578481FD /* Pods-VisionaryEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionaryEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-VisionaryEdu/Pods-VisionaryEdu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +117,86 @@
 				AE8B271994E04811578481FD /* Pods-VisionaryEdu.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		891BB7C41F00979E00F4DD60 /* 日程 */ = {
+			isa = PBXGroup;
+			children = (
+				891BB7C11F00979000F4DD60 /* ScheduleViewCtrl.h */,
+				891BB7C21F00979000F4DD60 /* ScheduleViewCtrl.m */,
+			);
+			name = "日程";
+			sourceTree = "<group>";
+		};
+		893AC6A01F0260D400990A48 /* 我的 */ = {
+			isa = PBXGroup;
+			children = (
+				893AC69D1F0260CF00990A48 /* MeViewCtrl.h */,
+				893AC69E1F0260CF00990A48 /* MeViewCtrl.m */,
+			);
+			name = "我的";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		899303371EFFC27F00B066AD /* 主页 */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCEE1EFE164100439496 /* StaffHomePageViewCtrl.h */,
+				89CFBCEF1EFE164100439496 /* StaffHomePageViewCtrl.m */,
+				89CFBCF81EFE164600439496 /* StudentInfoTableViewCell.h */,
+				89CFBCF91EFE164600439496 /* StudentInfoTableViewCell.m */,
+			);
+			name = "主页";
+			sourceTree = "<group>";
+		};
+		899303381EFFC4B200B066AD /* 登录model */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCDA1EFE160E00439496 /* LoginInfoModel.h */,
+				89CFBCDB1EFE160E00439496 /* LoginInfoModel.m */,
+			);
+			name = "登录model";
+			sourceTree = "<group>";
+		};
+		899303391EFFC4E400B066AD /* 主页学生列表model */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCDC1EFE160E00439496 /* StudentBaseInfoManager.h */,
+				89CFBCDD1EFE160E00439496 /* StudentBaseInfoManager.m */,
+			);
+			name = "主页学生列表model";
+			sourceTree = "<group>";
+		};
+		8993033A1EFFC4EF00B066AD /* 成绩model */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCDE1EFE160E00439496 /* StudentScoreInDetailsModel.h */,
+				89CFBCDF1EFE160E00439496 /* StudentScoreInDetailsModel.m */,
+			);
+			name = "成绩model";
+			sourceTree = "<group>";
+		};
+		8993033B1EFFC58800B066AD /* 成绩 */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCFE1EFE164600439496 /* YQNumberSlideView.h */,
+				89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */,
+				89CFBCFC1EFE164600439496 /* StudentScoreViewCtrl.h */,
+				89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */,
+			);
+			name = "成绩";
+			sourceTree = "<group>";
+		};
+		8993033F1EFFF76E00B066AD /* tabBar标签管理 */ = {
+			isa = PBXGroup;
+			children = (
+				893AC6981F02508F00990A48 /* CustomTabbarView.xib */,
+				893AC69A1F0254D000990A48 /* CustomTabbarView.h */,
+				893AC69B1F0254D000990A48 /* CustomTabbarView.m */,
+				8993033C1EFFF76300B066AD /* TabBarManagerViewCtrl.h */,
+				8993033D1EFFF76300B066AD /* TabBarManagerViewCtrl.m */,
+			);
+			name = "tabBar标签管理";
 			sourceTree = "<group>";
 		};
 		89CFBCB21EFE15BD00439496 = {
@@ -121,15 +224,16 @@
 				89CFBCC21EFE15BD00439496 /* AppDelegate.m */,
 				8993032F1EFE17A000B066AD /* config.h */,
 				89CFBCE31EFE163C00439496 /* network */,
-				89CFBD071EFE164C00439496 /* Tools */,
-				89CFBCF21EFE164600439496 /* Student_Parent */,
-				89CFBCEB1EFE164100439496 /* Staff */,
 				89CFBCD91EFE160E00439496 /* Model */,
-				89CFBCD51EFE15EE00439496 /* Login */,
-				89CFBCC71EFE15BD00439496 /* Main.storyboard */,
+				89CFBD071EFE164C00439496 /* Tools */,
+				89CFBCF21EFE164600439496 /* 学生/家长端 */,
+				89CFBCEB1EFE164100439496 /* 员工端 */,
+				89CFBCD51EFE15EE00439496 /* 登录/设置 */,
 				89CFBCCA1EFE15BD00439496 /* Assets.xcassets */,
+				89CFBCC71EFE15BD00439496 /* Main.storyboard */,
 				89CFBCCC1EFE15BD00439496 /* LaunchScreen.storyboard */,
 				89CFBCCF1EFE15BD00439496 /* Info.plist */,
+				89E15C561F01F2BB00452B08 /* Images.xcassets */,
 				89CFBCBE1EFE15BD00439496 /* Supporting Files */,
 			);
 			path = VisionaryEdu;
@@ -143,24 +247,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		89CFBCD51EFE15EE00439496 /* Login */ = {
+		89CFBCD51EFE15EE00439496 /* 登录/设置 */ = {
 			isa = PBXGroup;
 			children = (
 				89CFBCD61EFE15EE00439496 /* LoginViewCtrl.h */,
 				89CFBCD71EFE15EE00439496 /* LoginViewCtrl.m */,
+				899303301EFFB40500B066AD /* SettingsViewCtrl.h */,
+				899303311EFFB40500B066AD /* SettingsViewCtrl.m */,
+				891BB7CA1F014C5500F4DD60 /* PwdModifyViewCtrl.h */,
+				891BB7CB1F014C5500F4DD60 /* PwdModifyViewCtrl.m */,
 			);
+			name = "登录/设置";
 			path = Login;
 			sourceTree = "<group>";
 		};
 		89CFBCD91EFE160E00439496 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				89CFBCDA1EFE160E00439496 /* LoginInfoModel.h */,
-				89CFBCDB1EFE160E00439496 /* LoginInfoModel.m */,
-				89CFBCDC1EFE160E00439496 /* StudentBaseInfoManager.h */,
-				89CFBCDD1EFE160E00439496 /* StudentBaseInfoManager.m */,
-				89CFBCDE1EFE160E00439496 /* StudentScoreInDetailsModel.h */,
-				89CFBCDF1EFE160E00439496 /* StudentScoreInDetailsModel.m */,
+				899303341EFFB78F00B066AD /* StudentInstance.h */,
+				899303351EFFB78F00B066AD /* StudentInstance.m */,
+				899303381EFFC4B200B066AD /* 登录model */,
+				899303391EFFC4E400B066AD /* 主页学生列表model */,
+				8993033A1EFFC4EF00B066AD /* 成绩model */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,18 +285,16 @@
 			path = network;
 			sourceTree = "<group>";
 		};
-		89CFBCEB1EFE164100439496 /* Staff */ = {
+		89CFBCEB1EFE164100439496 /* 员工端 */ = {
 			isa = PBXGroup;
 			children = (
-				89CFBCEE1EFE164100439496 /* StaffHomePageViewCtrl.h */,
-				89CFBCEF1EFE164100439496 /* StaffHomePageViewCtrl.m */,
-				89CFBCF81EFE164600439496 /* StudentInfoTableViewCell.h */,
-				89CFBCF91EFE164600439496 /* StudentInfoTableViewCell.m */,
+				899303371EFFC27F00B066AD /* 主页 */,
 			);
+			name = "员工端";
 			path = Staff;
 			sourceTree = "<group>";
 		};
-		89CFBCF21EFE164600439496 /* Student_Parent */ = {
+		89CFBCF21EFE164600439496 /* 学生/家长端 */ = {
 			isa = PBXGroup;
 			children = (
 				89CFBCF31EFE164600439496 /* ScoreChartView.h */,
@@ -196,13 +302,12 @@
 				89CFBCF51EFE164600439496 /* ScoreChartView.xib */,
 				89CFBCF61EFE164600439496 /* scoreInDetailTableViewCell.h */,
 				89CFBCF71EFE164600439496 /* scoreInDetailTableViewCell.m */,
-				89CFBCFA1EFE164600439496 /* StudentInfoViewCtrl.h */,
-				89CFBCFB1EFE164600439496 /* StudentInfoViewCtrl.m */,
-				89CFBCFC1EFE164600439496 /* StudentScoreViewCtrl.h */,
-				89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */,
-				89CFBCFE1EFE164600439496 /* YQNumberSlideView.h */,
-				89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */,
+				8993033F1EFFF76E00B066AD /* tabBar标签管理 */,
+				893AC6A01F0260D400990A48 /* 我的 */,
+				891BB7C41F00979E00F4DD60 /* 日程 */,
+				8993033B1EFFC58800B066AD /* 成绩 */,
 			);
+			name = "学生/家长端";
 			path = Student_Parent;
 			sourceTree = "<group>";
 		};
@@ -218,6 +323,7 @@
 		9337095D7AC6BB62CAC2D8B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				891BB7C51F009EB300F4DD60 /* Reveal.framework */,
 				9F25F87153DEB044FCAC93DE /* Pods_VisionaryEdu.framework */,
 			);
 			name = Frameworks;
@@ -286,7 +392,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				89CFBD011EFE164600439496 /* ScoreChartView.xib in Resources */,
+				89E15C571F01F2BB00452B08 /* Images.xcassets in Resources */,
 				89CFBCCE1EFE15BD00439496 /* LaunchScreen.storyboard in Resources */,
+				893AC6991F02508F00990A48 /* CustomTabbarView.xib in Resources */,
 				89CFBCCB1EFE15BD00439496 /* Assets.xcassets in Resources */,
 				89CFBCC91EFE15BD00439496 /* Main.storyboard in Resources */,
 			);
@@ -354,15 +462,21 @@
 				89CFBD051EFE164600439496 /* StudentScoreViewCtrl.m in Sources */,
 				89CFBCC31EFE15BD00439496 /* AppDelegate.m in Sources */,
 				89CFBCF11EFE164100439496 /* StaffHomePageViewCtrl.m in Sources */,
+				899303321EFFB40500B066AD /* SettingsViewCtrl.m in Sources */,
 				89CFBCE11EFE160E00439496 /* StudentBaseInfoManager.m in Sources */,
+				891BB7CC1F014C5500F4DD60 /* PwdModifyViewCtrl.m in Sources */,
 				89CFBD021EFE164600439496 /* scoreInDetailTableViewCell.m in Sources */,
 				89CFBCC01EFE15BD00439496 /* main.m in Sources */,
 				89CFBD031EFE164600439496 /* StudentInfoTableViewCell.m in Sources */,
 				89CFBCD81EFE15EE00439496 /* LoginViewCtrl.m in Sources */,
+				893AC69C1F0254D000990A48 /* CustomTabbarView.m in Sources */,
 				89CFBCE01EFE160E00439496 /* LoginInfoModel.m in Sources */,
-				89CFBD041EFE164600439496 /* StudentInfoViewCtrl.m in Sources */,
+				899303361EFFB78F00B066AD /* StudentInstance.m in Sources */,
+				893AC69F1F0260CF00990A48 /* MeViewCtrl.m in Sources */,
+				891BB7C31F00979000F4DD60 /* ScheduleViewCtrl.m in Sources */,
 				89CFBD061EFE164600439496 /* YQNumberSlideView.m in Sources */,
 				89CFBCEA1EFE163C00439496 /* SysTool.m in Sources */,
+				8993033E1EFFF76300B066AD /* TabBarManagerViewCtrl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,9 +598,36 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C76TLF45XF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = VisionaryEdu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"FSCalendar\"",
+					"-framework",
+					"\"MJExtension\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"PNChart\"",
+					"-framework",
+					"\"RegExCategories\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"UICountingLabel\"",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Visionary-Education.VisionaryEdu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -498,9 +639,36 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C76TLF45XF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = VisionaryEdu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"FSCalendar\"",
+					"-framework",
+					"\"MJExtension\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"PNChart\"",
+					"-framework",
+					"\"RegExCategories\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"UICountingLabel\"",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Visionary-Education.VisionaryEdu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -27,11 +27,12 @@
 
 //#define VISIONARY_HOST @"http://192.168.31.128:5000"
 #define VISIONARY_HOST @"http://www.visionaryedu.net/vision-api"
-//
+
 #define STUDENT_LIST @"/StudentType/"
-#define STUDENT_SCORE @"/studentScore/"
+#define STUDENT_SCORE @"/Grades/"
 #define QUERY_STUDENT_BY_YEAR @"/StudentByYear/"
-#define LOGIN @"/login/"
+#define LOGIN  @"/login/"
+#define LOGOUT @"/auth/logout/"
 
 
 

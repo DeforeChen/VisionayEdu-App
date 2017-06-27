@@ -9,6 +9,10 @@
 #ifndef config_h
 #define config_h
 
+#import "SYHttpTool.h"
+#import "SysTool.h"
+#import "LoginInfoModel.h"
+
 // 日志开关
 #define IsLogShow 1
 

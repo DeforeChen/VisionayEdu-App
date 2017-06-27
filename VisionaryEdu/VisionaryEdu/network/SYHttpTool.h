@@ -40,6 +40,17 @@ typedef void(^HTTPCompletion)(BOOL success,NSString *msg,id responseObject);
 
 
 /**
+ 登出操作(POST请求)
+
+ @param url 登出URL
+ @param token 令牌
+ @param completionBlock 回调函数
+ */
+-(void)logoutRequest:(NSString*)url
+               token:(NSString*)token
+   completionHandler:(HTTPCompletion)completionBlock;
+
+/**
  获取登录令牌
 
  @param name 用户名

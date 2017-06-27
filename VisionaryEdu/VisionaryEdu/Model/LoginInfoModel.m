@@ -31,6 +31,16 @@
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"loginInfo"];
     [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    NSLog(@"save token = %@",[LoginInfoModel fetchTokenFromSandbox]);
+}
+
++(void)clearLoginInfoInSandbox {
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"loginInfo"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    NSLog(@"clear token = %@",[LoginInfoModel fetchTokenFromSandbox]);
 }
 
 +(NSString *)fetchTokenFromSandbox {
@@ -43,7 +53,7 @@
     return nil;
 }
 
-+(NSString*)fetchUsername {
++(NSString*)fetchAccountUsername {
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *data = [user objectForKey:@"username"];
     if (data)

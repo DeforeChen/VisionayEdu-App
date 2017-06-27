@@ -51,6 +51,17 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
 }
 
 #pragma mark 方法
+-(void)logoutRequest:(NSString*)url
+               token:(NSString*)token
+   completionHandler:(HTTPCompletion)completionBlock {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@",VISIONARY_HOST,url];
+    [self loadWithURL:requestURL
+               method:POST
+               params:nil
+    completionHandler:completionBlock
+                token:token];
+}
+
 -(void)getReqWithURL:(NSString *)url
                token:(NSString *)token
               params:(NSDictionary *)paramDict
@@ -81,7 +92,6 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
   completionHandler:(HTTPCompletion)completionBlock
               token:(NSString*)token {
     NSLog(@"上送的URL = %@",url);
-    NSLog(@"上送的参数 = %@",params);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     if (token != nil) {
@@ -89,6 +99,7 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
         [manager.requestSerializer setValue:MyToken
                          forHTTPHeaderField:@"Authorization"];
     }
+    NSLog(@"上送的参数 = %@, token = %@",params,token);
     [manager.requestSerializer setTimeoutInterval:TimeOut];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [manager.requestSerializer setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];

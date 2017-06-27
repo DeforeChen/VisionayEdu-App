@@ -7,14 +7,13 @@
 //
 
 #import "StudentScoreViewCtrl.h"
-#import "SYHttpTool.h"
-#import "SysTool.h"
 #import "StudentScoreInDetailsModel.h"
 #import "scoreInDetailTableViewCell.h"
 #import "ScoreChartView.h"
-
 #import <MJExtension/MJExtension.h>
 #import "YQNumberSlideView.h"
+#import "StudentInstance.h"
+#import "config.h"
 
 @interface StudentScoreViewCtrl ()<YQNumberSlideViewDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (copy,nonatomic) NSDictionary *scoreInfoDict;
@@ -34,25 +33,25 @@
     [super viewDidLoad];
 
     [SysTool showLoadingHUDWithMsg:@"加载成绩中..." duration:0];
-    NSString *scoreURL = [NSString stringWithFormat:@"%@%@",VISIONARY_HOST,STUDENT_SCORE];
-//    [[SYHttpTool sharedInstance] getReqWithURL:scoreURL completionHandler:^(BOOL success, NSString *msg, id responseObject) {
-//        [SysTool dismissHUD];
-//        if (success) {
-//            StudentScoreInDetailsModel *model = [StudentScoreInDetailsModel mj_objectWithKeyValues:responseObject];
-//            self.scoreInfoDict  = [model fetchCorrespondingScoreDict];
-//            self.testNameArray  = [self.scoreInfoDict allKeys];
-//            self.scoreInfoArray = [[self scoreInfoDict] allValues];
-//            // 获取模型成功后，去更新选项条
-//            [self initScoreOptionView];
-//            [self initChartView];
-//            [self.scoreInfoListTB reloadData];
-//            NSLog(@"score keys = %@",self.testNameArray);
-//        } else {
-//            [SysTool showAlertWithMsg:@"网络请求失败，请检查网络" handler:^(UIAlertAction *action) {
-//                [SysTool popCurrentNavViewCtrlWithStyle:UIViewAnimationOptionTransitionCrossDissolve NavViewCtrl:self.navigationController duration:0.5];
-//            } viewCtrl:self];
-//        }
-//    }];
+    NSDictionary *paramsDict = @{@"username":@"student_1"};//[StudentInstance shareInstance].student_username
+    [[SYHttpTool sharedInstance] getReqWithURL:STUDENT_SCORE token:[LoginInfoModel fetchTokenFromSandbox] params:paramsDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
+        [SysTool dismissHUD];
+        if (success) {
+            StudentScoreInDetailsModel *model = [StudentScoreInDetailsModel mj_objectWithKeyValues:responseObject];
+            self.scoreInfoDict  = [model fetchCorrespondingScoreDict];
+            self.testNameArray  = [self.scoreInfoDict allKeys];
+            self.scoreInfoArray = [[self scoreInfoDict] allValues];
+            // 获取模型成功后，去更新选项条
+            [self initScoreOptionView];
+            [self initChartView];
+            [self.scoreInfoListTB reloadData];
+            NSLog(@"score keys = %@",self.testNameArray);
+        } else {
+            [SysTool showAlertWithMsg:@"网络请求失败，请检查网络" handler:^(UIAlertAction *action) {
+                [self.navigationController popViewControllerAnimated:YES];
+                            } viewCtrl:self];
+        }
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
