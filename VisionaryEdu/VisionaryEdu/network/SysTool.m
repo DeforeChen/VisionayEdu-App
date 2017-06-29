@@ -103,9 +103,11 @@
     }
 }
 
-+(NSString *)fetchCurrentDateTime {
++(NSString *)fetchCurrentDateTimeWithFormat:(NSString*)dateFormat {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyyMMdd HHmmss"];
+//    [formatter setDateFormat:@"yyyy-MM-dd HHmmss"];
+    [formatter setDateFormat:dateFormat]; //非法的格式如何判断
+
     NSString *dateTime = [formatter stringFromDate:[NSDate date]];
     NSLog(@"当前时间  =%@",dateTime);
     return dateTime;

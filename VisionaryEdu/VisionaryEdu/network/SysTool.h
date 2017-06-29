@@ -72,10 +72,10 @@ typedef enum : NSUInteger {
 
 /**
  获取当前日期时间
- 
- @return 返回 yyyyMMDD HHmmss格式的时间
+ @param  dateFormat 时间格式
+ @return 返回 dateFormat 时间格式对应的时间
  */
-+ (NSString*)fetchCurrentDateTime;
++(NSString *)fetchCurrentDateTimeWithFormat:(NSString*)dateFormat;
 
 
 #pragma mark 正则表达

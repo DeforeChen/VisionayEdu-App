@@ -31,6 +31,7 @@
 #define STUDENT_LIST @"/StudentType/"
 #define STUDENT_SCORE @"/Grades/"
 #define QUERY_STUDENT_BY_YEAR @"/StudentByYear/"
+#define QUERY_STUDENT_SCHEDULE @"/StudentSchedule/"
 #define LOGIN  @"/login/"
 #define LOGOUT @"/auth/logout/"
 

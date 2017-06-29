@@ -13,6 +13,9 @@
 		893AC6991F02508F00990A48 /* CustomTabbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893AC6981F02508F00990A48 /* CustomTabbarView.xib */; };
 		893AC69C1F0254D000990A48 /* CustomTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 893AC69B1F0254D000990A48 /* CustomTabbarView.m */; };
 		893AC69F1F0260CF00990A48 /* MeViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 893AC69E1F0260CF00990A48 /* MeViewCtrl.m */; };
+		893AC6A31F03499F00990A48 /* StudentScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 893AC6A21F03499F00990A48 /* StudentScheduleModel.m */; };
+		89652E5D1F03E9A200CDDECB /* StudentScheduleCellManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89652E5C1F03E9A200CDDECB /* StudentScheduleCellManager.m */; };
+		89652E601F04D6C200CDDECB /* ScheduleRangeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89652E5F1F04D6C200CDDECB /* ScheduleRangeManager.m */; };
 		899303321EFFB40500B066AD /* SettingsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 899303311EFFB40500B066AD /* SettingsViewCtrl.m */; };
 		899303361EFFB78F00B066AD /* StudentInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 899303351EFFB78F00B066AD /* StudentInstance.m */; };
 		8993033E1EFFF76300B066AD /* TabBarManagerViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8993033D1EFFF76300B066AD /* TabBarManagerViewCtrl.m */; };
@@ -50,6 +53,12 @@
 		893AC69B1F0254D000990A48 /* CustomTabbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabbarView.m; sourceTree = "<group>"; };
 		893AC69D1F0260CF00990A48 /* MeViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeViewCtrl.h; path = Student_Parent/MeViewCtrl.h; sourceTree = "<group>"; };
 		893AC69E1F0260CF00990A48 /* MeViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeViewCtrl.m; path = Student_Parent/MeViewCtrl.m; sourceTree = "<group>"; };
+		893AC6A11F03499F00990A48 /* StudentScheduleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentScheduleModel.h; sourceTree = "<group>"; };
+		893AC6A21F03499F00990A48 /* StudentScheduleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentScheduleModel.m; sourceTree = "<group>"; };
+		89652E5B1F03E9A200CDDECB /* StudentScheduleCellManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentScheduleCellManager.h; sourceTree = "<group>"; };
+		89652E5C1F03E9A200CDDECB /* StudentScheduleCellManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentScheduleCellManager.m; sourceTree = "<group>"; };
+		89652E5E1F04D6C200CDDECB /* ScheduleRangeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleRangeManager.h; sourceTree = "<group>"; };
+		89652E5F1F04D6C200CDDECB /* ScheduleRangeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleRangeManager.m; sourceTree = "<group>"; };
 		8993032F1EFE17A000B066AD /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		899303301EFFB40500B066AD /* SettingsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewCtrl.h; path = ../Student_Parent/SettingsViewCtrl.h; sourceTree = "<group>"; };
 		899303311EFFB40500B066AD /* SettingsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewCtrl.m; path = ../Student_Parent/SettingsViewCtrl.m; sourceTree = "<group>"; };
@@ -76,8 +85,8 @@
 		89CFBCE41EFE163C00439496 /* MWHTTPMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWHTTPMacro.h; sourceTree = "<group>"; };
 		89CFBCE51EFE163C00439496 /* SYHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHttpTool.h; sourceTree = "<group>"; };
 		89CFBCE61EFE163C00439496 /* SYHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHttpTool.m; sourceTree = "<group>"; };
-		89CFBCE71EFE163C00439496 /* SysTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysTool.h; sourceTree = "<group>"; };
-		89CFBCE81EFE163C00439496 /* SysTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysTool.m; sourceTree = "<group>"; };
+		89CFBCE71EFE163C00439496 /* SysTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SysTool.h; path = ../network/SysTool.h; sourceTree = "<group>"; };
+		89CFBCE81EFE163C00439496 /* SysTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SysTool.m; path = ../network/SysTool.m; sourceTree = "<group>"; };
 		89CFBCEE1EFE164100439496 /* StaffHomePageViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffHomePageViewCtrl.h; sourceTree = "<group>"; };
 		89CFBCEF1EFE164100439496 /* StaffHomePageViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffHomePageViewCtrl.m; sourceTree = "<group>"; };
 		89CFBCF31EFE164600439496 /* ScoreChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreChartView.h; sourceTree = "<group>"; };
@@ -124,6 +133,10 @@
 			children = (
 				891BB7C11F00979000F4DD60 /* ScheduleViewCtrl.h */,
 				891BB7C21F00979000F4DD60 /* ScheduleViewCtrl.m */,
+				89652E5E1F04D6C200CDDECB /* ScheduleRangeManager.h */,
+				89652E5F1F04D6C200CDDECB /* ScheduleRangeManager.m */,
+				89652E5B1F03E9A200CDDECB /* StudentScheduleCellManager.h */,
+				89652E5C1F03E9A200CDDECB /* StudentScheduleCellManager.m */,
 			);
 			name = "日程";
 			sourceTree = "<group>";
@@ -136,6 +149,15 @@
 			);
 			name = "我的";
 			path = ..;
+			sourceTree = "<group>";
+		};
+		893AC6A41F0349A700990A48 /* 学生日程model */ = {
+			isa = PBXGroup;
+			children = (
+				893AC6A11F03499F00990A48 /* StudentScheduleModel.h */,
+				893AC6A21F03499F00990A48 /* StudentScheduleModel.m */,
+			);
+			name = "学生日程model";
 			sourceTree = "<group>";
 		};
 		899303371EFFC27F00B066AD /* 主页 */ = {
@@ -266,6 +288,7 @@
 			children = (
 				899303341EFFB78F00B066AD /* StudentInstance.h */,
 				899303351EFFB78F00B066AD /* StudentInstance.m */,
+				893AC6A41F0349A700990A48 /* 学生日程model */,
 				899303381EFFC4B200B066AD /* 登录model */,
 				899303391EFFC4E400B066AD /* 主页学生列表model */,
 				8993033A1EFFC4EF00B066AD /* 成绩model */,
@@ -279,8 +302,6 @@
 				89CFBCE41EFE163C00439496 /* MWHTTPMacro.h */,
 				89CFBCE51EFE163C00439496 /* SYHttpTool.h */,
 				89CFBCE61EFE163C00439496 /* SYHttpTool.m */,
-				89CFBCE71EFE163C00439496 /* SysTool.h */,
-				89CFBCE81EFE163C00439496 /* SysTool.m */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -314,6 +335,8 @@
 		89CFBD071EFE164C00439496 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				89CFBCE71EFE163C00439496 /* SysTool.h */,
+				89CFBCE81EFE163C00439496 /* SysTool.m */,
 				89CFBD081EFE164C00439496 /* UIColor+expanded.h */,
 				89CFBD091EFE164C00439496 /* UIColor+expanded.m */,
 			);
@@ -459,6 +482,7 @@
 				89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */,
 				89CFBCE91EFE163C00439496 /* SYHttpTool.m in Sources */,
 				89CFBCE21EFE160E00439496 /* StudentScoreInDetailsModel.m in Sources */,
+				89652E601F04D6C200CDDECB /* ScheduleRangeManager.m in Sources */,
 				89CFBD051EFE164600439496 /* StudentScoreViewCtrl.m in Sources */,
 				89CFBCC31EFE15BD00439496 /* AppDelegate.m in Sources */,
 				89CFBCF11EFE164100439496 /* StaffHomePageViewCtrl.m in Sources */,
@@ -469,10 +493,12 @@
 				89CFBCC01EFE15BD00439496 /* main.m in Sources */,
 				89CFBD031EFE164600439496 /* StudentInfoTableViewCell.m in Sources */,
 				89CFBCD81EFE15EE00439496 /* LoginViewCtrl.m in Sources */,
+				89652E5D1F03E9A200CDDECB /* StudentScheduleCellManager.m in Sources */,
 				893AC69C1F0254D000990A48 /* CustomTabbarView.m in Sources */,
 				89CFBCE01EFE160E00439496 /* LoginInfoModel.m in Sources */,
 				899303361EFFB78F00B066AD /* StudentInstance.m in Sources */,
 				893AC69F1F0260CF00990A48 /* MeViewCtrl.m in Sources */,
+				893AC6A31F03499F00990A48 /* StudentScheduleModel.m in Sources */,
 				891BB7C31F00979000F4DD60 /* ScheduleViewCtrl.m in Sources */,
 				89CFBD061EFE164600439496 /* YQNumberSlideView.m in Sources */,
 				89CFBCEA1EFE163C00439496 /* SysTool.m in Sources */,
