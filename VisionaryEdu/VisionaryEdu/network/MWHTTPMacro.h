@@ -32,6 +32,7 @@
 #define STUDENT_SCORE @"/Grades/"
 #define QUERY_STUDENT_BY_YEAR @"/StudentByYear/"
 #define QUERY_STUDENT_SCHEDULE @"/StudentSchedule/"
+#define QUERY_STAFF_SCHEDULE @"/StaffSchedule/"
 #define LOGIN  @"/login/"
 #define LOGOUT @"/auth/logout/"
 

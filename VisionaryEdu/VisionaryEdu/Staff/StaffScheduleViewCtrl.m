@@ -1,46 +1,45 @@
 //
-//  ScheduleViewCtrl.m
+//  StaffScheduleViewCtrl.m
 //  VisionaryEdu
 //
-//  Created by Chen Defore on 2017/6/26.
+//  Created by Chen Defore on 2017/6/29.
 //  Copyright © 2017年 Chen Defore. All rights reserved.
 //
 
-#import "ScheduleViewCtrl.h"
-#import "StudentScheduleModel.h"
+#import "StaffScheduleViewCtrl.h"
 #import "config.h"
 #import <FSCalendar/FSCalendar.h>
 #import <MJExtension/MJExtension.h>
 #import "UIColor+expanded.h"
 #import "ScheduleRangeManager.h"
-#import "StudentScheduleCellManager.h"
+#import "StaffScheduleModel.h"
+#import "StaffScheduleCellManager.h"
 
-#define TestColor           [UIColor colorWithHexString:@"#E67291"]
+#define MeetingColor [UIColor colorWithHexString:@"#FFB679"]
 #define CheckInRecordsColor [UIColor colorWithHexString:@"#4ED6BB"]
-#define TaskColor           [UIColor colorWithHexString:@"#1ABFDF"]
 
-@interface ScheduleViewCtrl ()<FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance,UITableViewDataSource,UITableViewDelegate>
-@property (weak,  nonatomic) IBOutlet FSCalendar *calendar;
-@property (weak, nonatomic) IBOutlet UITableView *schedulelistTB;
+@interface StaffScheduleViewCtrl ()<FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance,UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet FSCalendar *calendar;
+@property (weak, nonatomic) IBOutlet UITableView *scheduleListTB;
 
 @property (strong, nonatomic) NSCalendar *systemCalendar;
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) ScheduleRangeManager *manager;
 @property (copy, nonatomic) NSString *selectDate;
+
 @property (weak, nonatomic) IBOutlet UILabel *selectDateLB;
 @property (weak, nonatomic) IBOutlet UILabel *totalEventsLB;
 
-@property (copy,nonatomic) NSArray *dayTasksArray;       // 某天的task 日程数组
-@property (copy,nonatomic) NSArray *dayFutureTestArray;  // 某天的test 日程数组
 @property (copy,nonatomic) NSArray *dayCheckInRecordsArray;// 某天的 record 日程数组
+@property (copy,nonatomic) NSArray *dayMeetingArray;// 某天的 meeting 日程数组
 @property (strong,nonatomic) NSMutableDictionary *scheduleLUT ;// 查询日历，从model的 fetchScheduleLUT获取
 @end
 
-@implementation ScheduleViewCtrl
+@implementation StaffScheduleViewCtrl
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.calendar.locale = [NSLocale localeWithLocaleIdentifier:@"zh-CN"];
+    // Do any additional setup after loading the view.
     self.systemCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateFormat = @"yyyy-MM-dd";
@@ -65,16 +64,10 @@
 }
 
 #pragma mark Getter
--(NSArray *)dayTasksArray {
-    if (_dayTasksArray == nil)
-        _dayTasksArray = [NSArray new];
-    return _dayTasksArray;
-}
-
--(NSArray *)dayFutureTestArray {
-    if (_dayFutureTestArray == nil)
-        _dayFutureTestArray = [NSArray new];
-    return _dayFutureTestArray;
+-(NSArray *)dayMeetingArray {
+    if (_dayMeetingArray == nil)
+        _dayMeetingArray = [NSArray new];
+    return _dayMeetingArray;
 }
 
 -(NSArray *)dayCheckInRecordsArray {
@@ -95,7 +88,7 @@
     NSDate *date = [self.dateFormatter dateFromString:_selectDate];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM月dd日";
-
+    
     self.selectDateLB.text = [formatter stringFromDate:date];
     [self updateDayScheduleWhenSelectionChange];
 }
@@ -108,16 +101,16 @@
 -(void)requestStudentScheduleInfo:(NSDate*)date {
     [self.manager judgeDateBeyondRange:date callback:^(BOOL isBeyondRange, NSArray *newRange) {
         if (isBeyondRange == YES) {
-            [SysTool showLoadingHUDWithMsg:@"学生日程加载中..." duration:0];
-            NSDictionary *reqDict = [StudentScheduleReq initStudentScheduleReqWithStartDate:newRange[START_DATE]
+            [SysTool showLoadingHUDWithMsg:@"员工日程加载中..." duration:0];
+            NSDictionary *reqDict = [StaffScheduleRequest initStaffScheduleReqWithStartDate:newRange[START_DATE]
                                                                                     endDate:newRange[END_DATE]
-                                                                            studentUsername:@"student_1"].mj_keyValues;//[StudentInstance shareInstance].student_username
-
-            [[SYHttpTool sharedInstance] getReqWithURL:QUERY_STUDENT_SCHEDULE token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
+                                                                             staff_username:[LoginInfoModel fetchAccountUsername]].mj_keyValues;
+            
+            [[SYHttpTool sharedInstance] getReqWithURL:QUERY_STAFF_SCHEDULE token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
                 [SysTool dismissHUD];
                 if (success) {
-                    StudentScheduleResponse *model = [StudentScheduleResponse mj_objectWithKeyValues:responseObject];
-                    [self.scheduleLUT addEntriesFromDictionary:[model fetchScheduleLUT]];
+                    StaffScheduleResponse *model = [StaffScheduleResponse mj_objectWithKeyValues:responseObject];
+                    [self.scheduleLUT addEntriesFromDictionary:[model fetchStaffScheduleLUT]];
                     // 添加model返回的内容到各自的信息数组中
                     [self.calendar reloadData];
                     [self updateDayScheduleWhenSelectionChange];
@@ -130,11 +123,9 @@
 
 -(NSInteger)calcTotalEventTypeWithDate:(NSString*)date {
     NSInteger typeNum = 0;
-    if ([self.scheduleLUT[date][TaskType] count] > 0)
+    if ([self.scheduleLUT[date][MeetingType] count] > 0)
         typeNum++;
-    if ([self.scheduleLUT[date][CheckInRecordsType] count] > 0)
-        typeNum++;
-    if ([self.scheduleLUT[date][FutureTestType] count] > 0)
+    if ([self.scheduleLUT[date][StaffCheckInRecordsType] count] > 0)
         typeNum++;
     return typeNum;
 }
@@ -148,33 +139,28 @@
 -(void)updateDayScheduleWhenSelectionChange {
     // 根据选中天数，取出对应的事件，若LUT中不包含这一天，则不赋值。array为空
     NSString *date = self.selectDate;
-    if (self.scheduleLUT[date][TaskType] != nil)
-        self.dayTasksArray = self.scheduleLUT[date][TaskType];
-    if (self.scheduleLUT[date][CheckInRecordsType] != nil)
-        self.dayCheckInRecordsArray = self.scheduleLUT[date][CheckInRecordsType];
-    if (self.scheduleLUT[date][FutureTestType] != nil)
-        self.dayFutureTestArray = self.scheduleLUT[date][FutureTestType];
+    if (self.scheduleLUT[date][MeetingType] != nil)
+        self.dayMeetingArray = self.scheduleLUT[date][MeetingType];
+    if (self.scheduleLUT[date][StaffCheckInRecordsType] != nil)
+        self.dayCheckInRecordsArray = self.scheduleLUT[date][StaffCheckInRecordsType];
     
     // 显示总的事件
-    NSInteger total = self.dayTasksArray.count + self.dayCheckInRecordsArray.count + self.dayFutureTestArray.count;
+    NSInteger total = self.dayMeetingArray.count + self.dayCheckInRecordsArray.count;
     self.totalEventsLB.text = [NSString stringWithFormat:@"共%d事件",(int)total];
     
     // 根据选中天数的事件是否为空，判断底部的tableview是否显示
     if ([self calcTotalEventTypeWithDate:date] != 0) {
-        self.schedulelistTB.hidden = NO;
-        [self.schedulelistTB reloadData];
+        self.scheduleListTB.hidden = NO;
+        [self.scheduleListTB reloadData];
     } else {
-        self.schedulelistTB.hidden = YES;
+        self.scheduleListTB.hidden = YES;
     }
 }
 
-#pragma mark User Interaction
-- (IBAction)studentRecentObjectives:(UIButton *)sender {
 
-}
-
-- (IBAction)appendNewEvent:(UIButton *)sender {
-
+#pragma mark UserInteraction
+- (IBAction)backtoStaffHomepage:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)gotoToday:(UIButton *)sender {
@@ -182,6 +168,9 @@
     [self.calendar setCurrentPage:date animated:YES];
     [self.calendar selectDate:date];
     [self calendar:self.calendar didSelectDate:date atMonthPosition:FSCalendarMonthPositionCurrent];
+}
+
+- (IBAction)addNewEvent:(UIButton *)sender {
 }
 
 - (IBAction)previousMonth:(UIButton *)sender {
@@ -192,21 +181,17 @@
     [self changePreviousPage:NO];
 }
 
-
 #pragma mark <Tableview delegate>
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
-        case TaskType:
-            return self.dayTasksArray.count;
+        case MeetingType:
+            return self.dayMeetingArray.count;
             break;
-        case FutureTestType:
-            return self.dayFutureTestArray.count;
-            break;
-        case CheckInRecordsType:
+        case StaffCheckInRecordsType:
             return self.dayCheckInRecordsArray.count;
     }
     return 0;
@@ -220,14 +205,11 @@
     NSInteger section = indexPath.section;
     NSInteger row     = indexPath.row;
     switch (section) {
-        case TaskType:
-            return [TasksCell initMyCellWithTableview:tableView taskModel:self.dayTasksArray[row]];
+        case MeetingType:
+            return [StaffMeetingCell initMyCellWithMeetingModel:self.dayMeetingArray[row] tableview:tableView];
             break;
-        case FutureTestType:
-            return [FutureTestCell initMyCellWithTableview:tableView testModel:self.dayFutureTestArray[row]];
-            break;
-        case CheckInRecordsType:
-            return [CheckInRecordsCell initMyCellWithTableview:tableView recordModel:self.dayCheckInRecordsArray[row]];
+        case StaffCheckInRecordsType:
+            return [StaffCheckInRecordsCell initMyCellWithStaffRecordModel:self.dayCheckInRecordsArray[row] tableview:tableView];
             break;
     }
     return nil;
@@ -257,14 +239,12 @@
 - (NSArray *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance eventDefaultColorsForDate:(NSDate *)date {
     NSString *dateString = [self.dateFormatter stringFromDate:date];
     NSMutableArray *eventColors = [NSMutableArray new];
-
-    if ([self.scheduleLUT[dateString][TaskType] count] > 0)
-        [eventColors addObject:TaskColor];
-    if ([self.scheduleLUT[dateString][CheckInRecordsType] count] > 0)
+    
+    if ([self.scheduleLUT[dateString][MeetingType] count] > 0)
+        [eventColors addObject:MeetingColor];
+    if ([self.scheduleLUT[dateString][StaffCheckInRecordsType] count] > 0)
         [eventColors addObject:CheckInRecordsColor];
-    if ([self.scheduleLUT[dateString][FutureTestType] count] > 0)
-        [eventColors addObject:TestColor];
-
+    
     XLog(@"事件颜色总数 %d",(int)eventColors.count);
     return eventColors;
 }
@@ -273,12 +253,10 @@
     // 选中事件，颜色不改变
     NSString *dateString = [self.dateFormatter stringFromDate:date];
     NSMutableArray *eventColors = [NSMutableArray new];
-    if ([self.scheduleLUT[dateString][TaskType] count] > 0)
-        [eventColors addObject:TaskColor];
-    if ([self.scheduleLUT[dateString][CheckInRecordsType] count] > 0)
+    if ([self.scheduleLUT[dateString][MeetingType] count] > 0)
+        [eventColors addObject:MeetingColor];
+    if ([self.scheduleLUT[dateString][StaffCheckInRecordsType] count] > 0)
         [eventColors addObject:CheckInRecordsColor];
-    if ([self.scheduleLUT[dateString][FutureTestType] count] > 0)
-        [eventColors addObject:TestColor];
     return eventColors;
 }
 

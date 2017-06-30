@@ -24,3 +24,5 @@
 @interface TasksCell:UITableViewCell
 +(TasksCell *)initMyCellWithTableview:(UITableView *)tableview taskModel:(Tasks*)task ;
 @end
+
+

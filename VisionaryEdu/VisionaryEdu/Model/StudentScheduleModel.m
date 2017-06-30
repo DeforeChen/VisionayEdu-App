@@ -36,9 +36,7 @@
 @end
 
 @interface StudentScheduleResponse()
-//@property (strong,nonatomic) NSMutableArray *taskDateArray;
-//@property (strong,nonatomic) NSMutableArray *futureTestDateArray;
-//@property (strong,nonatomic) NSMutableArray *checkInRecordsDateArray;
+
 @end
 
 @implementation StudentScheduleResponse
@@ -54,8 +52,8 @@
  让model根据日期重组一个查询的字典，键值对为 日期 - 二维数组
  例如：
  @"2017-12-18":@[ @[task1,task2,task3],
- @[test1,test2,test3],
- @[record1,record2,record3]
+                  @[test1,test2,test3],
+                  @[record1,record2,record3]
  ]
  @return LUT
  */
