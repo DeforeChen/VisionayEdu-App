@@ -70,7 +70,7 @@
             }
         }];
     } else {
-        [SysTool showErrorWithMsg:@"用户名仅包含数字或英文" duration:1];
+        [SysTool showErrorWithMsg:@"用户名仅包含数字、英文、下划线" duration:1];
     }
 }
 

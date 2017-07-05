@@ -71,6 +71,16 @@
     return nil;
 }
 
++(NSString*)fetchRealNameFromSandbox {
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSData *data = [user objectForKey:@"loginInfo"];
+    if (data) {
+        LoginInfoModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        return model.full_name;
+    }
+    return nil;
+}
+
 +(BOOL)isLogin {
     // 6ea7b2af221fa9811de189b02d699577e0076445
     if ([LoginInfoModel fetchTokenFromSandbox] == nil) {

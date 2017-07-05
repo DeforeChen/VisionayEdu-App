@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#define Staff_UserType @"staff"
+#define Student_UserType @"student"
+#define Parent_UserType @"parent"
 
 @interface LoginInfoModel : NSObject<NSCoding>
 @property (nonatomic , copy) NSString              * usertype;
@@ -40,12 +43,19 @@
  */
 +(NSString*)fetchUserTypeFromSandbox;
 
-
 /**
  从沙盒中获取用户名
  @return 用户名
  */
 +(NSString*)fetchAccountUsername ;
+
+
+/**
+ 从沙盒中获取用户的真实姓名
+ @return 真实姓名
+ */
++(NSString*)fetchRealNameFromSandbox;
+
 /**
  判断当前是否登录
  @return 是否登录

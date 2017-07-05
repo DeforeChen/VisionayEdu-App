@@ -7,7 +7,6 @@
 //
 
 #import "TabBarManagerViewCtrl.h"
-#import "CustomTabbarView.h"
 
 @interface TabBarManagerViewCtrl ()
 
@@ -18,9 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBar.hidden = YES;
-    CustomTabbarView *view = [CustomTabbarView initMyViewWithTabBarCtrl:self];
-    [view setInitialPage:2];
-    [self.view addSubview:view];
+    self.customTabbar = [CustomTabbarView initMyViewWithTabBarCtrl:self];
+    [self.customTabbar setInitialPage:2];
+    [self.view addSubview:self.customTabbar];
     // Do any additional setup after loading the view.
 }
 

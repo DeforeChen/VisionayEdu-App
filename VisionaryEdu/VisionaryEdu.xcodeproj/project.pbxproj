@@ -19,6 +19,12 @@
 		89652E631F053F4900CDDECB /* StaffScheduleViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89652E621F053F4900CDDECB /* StaffScheduleViewCtrl.m */; };
 		89652E671F05D69E00CDDECB /* StaffScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89652E661F05D69E00CDDECB /* StaffScheduleModel.m */; };
 		89652E6B1F05DF5300CDDECB /* StaffScheduleCellManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89652E6A1F05DF5300CDDECB /* StaffScheduleCellManager.m */; };
+		89652E6E1F092D3C00CDDECB /* StudentGradeViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89652E6D1F092D3C00CDDECB /* StudentGradeViewCtrl.m */; };
+		89652E701F0A3DF100CDDECB /* SingleGradeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89652E6F1F0A3DF100CDDECB /* SingleGradeView.xib */; };
+		89652E741F0A41D800CDDECB /* SingleGradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89652E731F0A41D800CDDECB /* SingleGradeView.m */; };
+		89652E781F0B691B00CDDECB /* GradeTendingViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89652E771F0B691B00CDDECB /* GradeTendingViewCtrl.m */; };
+		897A0A7A1F0C8C5100EE8846 /* CommentViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 897A0A791F0C8C5100EE8846 /* CommentViewCtrl.m */; };
+		897A0A851F0CCE2100EE8846 /* TestInfoFormViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 897A0A841F0CCE2100EE8846 /* TestInfoFormViewCtrl.m */; };
 		899303321EFFB40500B066AD /* SettingsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 899303311EFFB40500B066AD /* SettingsViewCtrl.m */; };
 		899303361EFFB78F00B066AD /* StudentInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 899303351EFFB78F00B066AD /* StudentInstance.m */; };
 		8993033E1EFFF76300B066AD /* TabBarManagerViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8993033D1EFFF76300B066AD /* TabBarManagerViewCtrl.m */; };
@@ -68,6 +74,17 @@
 		89652E661F05D69E00CDDECB /* StaffScheduleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StaffScheduleModel.m; path = VisionaryEdu/Model/StaffScheduleModel.m; sourceTree = SOURCE_ROOT; };
 		89652E691F05DF5300CDDECB /* StaffScheduleCellManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaffScheduleCellManager.h; path = VisionaryEdu/Staff/StaffScheduleCellManager.h; sourceTree = SOURCE_ROOT; };
 		89652E6A1F05DF5300CDDECB /* StaffScheduleCellManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StaffScheduleCellManager.m; path = VisionaryEdu/Staff/StaffScheduleCellManager.m; sourceTree = SOURCE_ROOT; };
+		89652E6C1F092D3C00CDDECB /* StudentGradeViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentGradeViewCtrl.h; sourceTree = "<group>"; };
+		89652E6D1F092D3C00CDDECB /* StudentGradeViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentGradeViewCtrl.m; sourceTree = "<group>"; };
+		89652E6F1F0A3DF100CDDECB /* SingleGradeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleGradeView.xib; sourceTree = "<group>"; };
+		89652E721F0A41D800CDDECB /* SingleGradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleGradeView.h; sourceTree = "<group>"; };
+		89652E731F0A41D800CDDECB /* SingleGradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleGradeView.m; sourceTree = "<group>"; };
+		89652E761F0B691B00CDDECB /* GradeTendingViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeTendingViewCtrl.h; sourceTree = "<group>"; };
+		89652E771F0B691B00CDDECB /* GradeTendingViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeTendingViewCtrl.m; sourceTree = "<group>"; };
+		897A0A781F0C8C5100EE8846 /* CommentViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewCtrl.h; sourceTree = "<group>"; };
+		897A0A791F0C8C5100EE8846 /* CommentViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewCtrl.m; sourceTree = "<group>"; };
+		897A0A831F0CCE2100EE8846 /* TestInfoFormViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestInfoFormViewCtrl.h; path = Student_Parent/DocumentsViewCtrl/TestInfoFormViewCtrl.h; sourceTree = "<group>"; };
+		897A0A841F0CCE2100EE8846 /* TestInfoFormViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestInfoFormViewCtrl.m; path = Student_Parent/DocumentsViewCtrl/TestInfoFormViewCtrl.m; sourceTree = "<group>"; };
 		8993032F1EFE17A000B066AD /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		899303301EFFB40500B066AD /* SettingsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewCtrl.h; path = ../Student_Parent/SettingsViewCtrl.h; sourceTree = "<group>"; };
 		899303311EFFB40500B066AD /* SettingsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewCtrl.m; path = ../Student_Parent/SettingsViewCtrl.m; sourceTree = "<group>"; };
@@ -153,6 +170,7 @@
 		893AC6A01F0260D400990A48 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				897A0A7F1F0CCAFC00EE8846 /* 各个档案 */,
 				893AC69D1F0260CF00990A48 /* MeViewCtrl.h */,
 				893AC69E1F0260CF00990A48 /* MeViewCtrl.m */,
 			);
@@ -187,6 +205,52 @@
 				89652E661F05D69E00CDDECB /* StaffScheduleModel.m */,
 			);
 			name = "员工日程model";
+			sourceTree = "<group>";
+		};
+		89652E711F0A3DFE00CDDECB /* OptionView */ = {
+			isa = PBXGroup;
+			children = (
+				89CFBCFE1EFE164600439496 /* YQNumberSlideView.h */,
+				89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */,
+			);
+			name = OptionView;
+			sourceTree = "<group>";
+		};
+		89652E751F0B334100CDDECB /* 单次成绩五维图 */ = {
+			isa = PBXGroup;
+			children = (
+				89652E6F1F0A3DF100CDDECB /* SingleGradeView.xib */,
+				89652E721F0A41D800CDDECB /* SingleGradeView.h */,
+				89652E731F0A41D800CDDECB /* SingleGradeView.m */,
+			);
+			name = "单次成绩五维图";
+			sourceTree = "<group>";
+		};
+		89652E791F0B692700CDDECB /* 成绩走势 */ = {
+			isa = PBXGroup;
+			children = (
+				89652E761F0B691B00CDDECB /* GradeTendingViewCtrl.h */,
+				89652E771F0B691B00CDDECB /* GradeTendingViewCtrl.m */,
+			);
+			name = "成绩走势";
+			sourceTree = "<group>";
+		};
+		897A0A7B1F0C8C5A00EE8846 /* 评价详情 */ = {
+			isa = PBXGroup;
+			children = (
+				897A0A781F0C8C5100EE8846 /* CommentViewCtrl.h */,
+				897A0A791F0C8C5100EE8846 /* CommentViewCtrl.m */,
+			);
+			name = "评价详情";
+			sourceTree = "<group>";
+		};
+		897A0A7F1F0CCAFC00EE8846 /* 各个档案 */ = {
+			isa = PBXGroup;
+			children = (
+				897A0A831F0CCE2100EE8846 /* TestInfoFormViewCtrl.h */,
+				897A0A841F0CCE2100EE8846 /* TestInfoFormViewCtrl.m */,
+			);
+			name = "各个档案";
 			sourceTree = "<group>";
 		};
 		899303371EFFC27F00B066AD /* 主页 */ = {
@@ -230,10 +294,12 @@
 		8993033B1EFFC58800B066AD /* 成绩 */ = {
 			isa = PBXGroup;
 			children = (
-				89CFBCFE1EFE164600439496 /* YQNumberSlideView.h */,
-				89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */,
-				89CFBCFC1EFE164600439496 /* StudentScoreViewCtrl.h */,
-				89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */,
+				897A0A7B1F0C8C5A00EE8846 /* 评价详情 */,
+				89652E791F0B692700CDDECB /* 成绩走势 */,
+				89652E711F0A3DFE00CDDECB /* OptionView */,
+				89652E751F0B334100CDDECB /* 单次成绩五维图 */,
+				89652E6C1F092D3C00CDDECB /* StudentGradeViewCtrl.h */,
+				89652E6D1F092D3C00CDDECB /* StudentGradeViewCtrl.m */,
 			);
 			name = "成绩";
 			sourceTree = "<group>";
@@ -352,6 +418,8 @@
 				89CFBCF31EFE164600439496 /* ScoreChartView.h */,
 				89CFBCF41EFE164600439496 /* ScoreChartView.m */,
 				89CFBCF51EFE164600439496 /* ScoreChartView.xib */,
+				89CFBCFC1EFE164600439496 /* StudentScoreViewCtrl.h */,
+				89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */,
 				89CFBCF61EFE164600439496 /* scoreInDetailTableViewCell.h */,
 				89CFBCF71EFE164600439496 /* scoreInDetailTableViewCell.m */,
 				8993033F1EFFF76E00B066AD /* tabBar标签管理 */,
@@ -446,6 +514,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89CFBD011EFE164600439496 /* ScoreChartView.xib in Resources */,
+				89652E701F0A3DF100CDDECB /* SingleGradeView.xib in Resources */,
 				89E15C571F01F2BB00452B08 /* Images.xcassets in Resources */,
 				89CFBCCE1EFE15BD00439496 /* LaunchScreen.storyboard in Resources */,
 				893AC6991F02508F00990A48 /* CustomTabbarView.xib in Resources */,
@@ -513,6 +582,7 @@
 				89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */,
 				89CFBCE91EFE163C00439496 /* SYHttpTool.m in Sources */,
 				89CFBCE21EFE160E00439496 /* StudentScoreInDetailsModel.m in Sources */,
+				89652E741F0A41D800CDDECB /* SingleGradeView.m in Sources */,
 				89652E601F04D6C200CDDECB /* ScheduleRangeManager.m in Sources */,
 				89CFBD051EFE164600439496 /* StudentScoreViewCtrl.m in Sources */,
 				89CFBCC31EFE15BD00439496 /* AppDelegate.m in Sources */,
@@ -523,13 +593,17 @@
 				89652E631F053F4900CDDECB /* StaffScheduleViewCtrl.m in Sources */,
 				89CFBD021EFE164600439496 /* scoreInDetailTableViewCell.m in Sources */,
 				89CFBCC01EFE15BD00439496 /* main.m in Sources */,
+				897A0A7A1F0C8C5100EE8846 /* CommentViewCtrl.m in Sources */,
 				89CFBD031EFE164600439496 /* StudentInfoTableViewCell.m in Sources */,
 				89CFBCD81EFE15EE00439496 /* LoginViewCtrl.m in Sources */,
+				89652E781F0B691B00CDDECB /* GradeTendingViewCtrl.m in Sources */,
 				89652E5D1F03E9A200CDDECB /* StudentScheduleCellManager.m in Sources */,
+				897A0A851F0CCE2100EE8846 /* TestInfoFormViewCtrl.m in Sources */,
 				89652E6B1F05DF5300CDDECB /* StaffScheduleCellManager.m in Sources */,
 				893AC69C1F0254D000990A48 /* CustomTabbarView.m in Sources */,
 				89CFBCE01EFE160E00439496 /* LoginInfoModel.m in Sources */,
 				899303361EFFB78F00B066AD /* StudentInstance.m in Sources */,
+				89652E6E1F092D3C00CDDECB /* StudentGradeViewCtrl.m in Sources */,
 				893AC69F1F0260CF00990A48 /* MeViewCtrl.m in Sources */,
 				893AC6A31F03499F00990A48 /* StudentScheduleModel.m in Sources */,
 				891BB7C31F00979000F4DD60 /* ScheduleViewCtrl.m in Sources */,
@@ -657,6 +731,7 @@
 			baseConfigurationReference = 30DEF1E016840C712AF95BB8 /* Pods-VisionaryEdu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C76TLF45XF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -690,6 +765,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Visionary-Education.VisionaryEdu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -698,6 +774,7 @@
 			baseConfigurationReference = AE8B271994E04811578481FD /* Pods-VisionaryEdu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C76TLF45XF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -731,6 +808,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Visionary-Education.VisionaryEdu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

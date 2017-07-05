@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomTabbarView.h"
 
 @interface TabBarManagerViewCtrl : UITabBarController
-
+@property (nonatomic,strong) CustomTabbarView *customTabbar;
 @end

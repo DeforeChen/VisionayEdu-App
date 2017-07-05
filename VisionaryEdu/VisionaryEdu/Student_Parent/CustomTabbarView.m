@@ -17,7 +17,7 @@
 @implementation CustomTabbarView
 +(instancetype)initMyViewWithTabBarCtrl:(UITabBarController*)tabbarCtrl {
     CustomTabbarView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil].lastObject;
-    CGRect frame = CGRectMake(0, tabbarCtrl.view.frame.size.height-48, tabbarCtrl.view.frame.size.width, 48);
+    CGRect frame = CGRectMake(0, tabbarCtrl.view.frame.size.height-50, tabbarCtrl.view.frame.size.width, 50);
     view.frame = frame;
     view.tabbarCtrl = tabbarCtrl;
     tabbarCtrl.delegate = view;

@@ -14,7 +14,6 @@
 #define kViewMaxY(v)             (v.frame.origin.y + v.frame.size.height)
 
 #import "YQNumberSlideView.h"
-#import "UIColor+expanded.h"
 
 @interface YQNumberSlideView ()<UIScrollViewDelegate>
 
@@ -54,6 +53,7 @@
     self.SCRV = [[UIScrollView alloc]initWithFrame:CGRectZero];
     self.SCRV.showsHorizontalScrollIndicator = NO;
     self.SCRV.delegate = self;
+    self.SCRV.bounces = NO;
     [self addSubview:self.SCRV];
     
     self.clipsToBounds = YES;
@@ -115,9 +115,6 @@
             
             lab.textAlignment = NSTextAlignmentCenter;
             lab.textColor     = self.LabColor;
-            
-            [UIColor setShadowEffectWithUIView:lab];
-            
             if(self.colorMode && i==0){
                 lab.textColor = [UIColor colorWithRed:self.colorModeR
                                                 green:self.colorModeG

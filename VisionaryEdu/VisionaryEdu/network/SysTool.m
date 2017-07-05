@@ -135,7 +135,7 @@
             return [SysTool checkCardNo:str];
             break;
         case Judge_EnglishOrNum:
-            return [str isMatch:RX(@"^[A-Za-z0-9]+$")];
+            return [str isMatch:RX(@"^[a-zA-Z][a-zA-Z0-9_ ]+$")];//RX(@"^[A-Za-z0-9]+$")];
             break;
     }
 }

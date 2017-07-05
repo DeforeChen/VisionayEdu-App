@@ -22,12 +22,14 @@
 
 #pragma mark Response
 @interface Meetings :NSObject
-@property (nonatomic , copy) NSString              * place;
-@property (nonatomic , copy) NSString              * details;
-@property (nonatomic , copy) NSString              * topic;
-@property (nonatomic , strong) NSArray<NSString *>              * staff_all;
+@property (nonatomic , strong) NSArray<NSString *>  * staff_all;
+@property (nonatomic , strong) NSArray<NSString *>  * staff_real_name;
 @property (nonatomic , copy) NSString              * time;
+@property (nonatomic , copy) NSString              * details;
 @property (nonatomic , copy) NSString              * date;
+@property (nonatomic , copy) NSString              * topic;
+@property (nonatomic , copy) NSString              * place;
+@property (nonatomic , assign) NSInteger              pk;
 
 @end
 

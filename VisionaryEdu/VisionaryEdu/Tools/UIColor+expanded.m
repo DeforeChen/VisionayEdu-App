@@ -443,14 +443,14 @@ static NSMutableDictionary *colorNameCache = nil;
 
 +(void)setShadowEffectWithUIView:(UIView *)view {
     //    阴影的颜色
-    view.layer.shadowColor = [UIColor blackColor].CGColor;//shadowColor阴影颜色
+    view.layer.shadowColor = [UIColor colorWithHexString:@"#E0E1E2"].CGColor;//shadowColor阴影颜色
     //    阴影的透明度
-    view.layer.shadowOpacity = 0.5f;
+    view.layer.shadowOpacity = 1.0f;
     //    阴影的圆角
     view.layer.shadowRadius = 3.5f;
     //    阴影的偏移量
 //    view.layer.shadowOffset = CGSizeMake(4,4);
-    view.layer.shadowOffset = CGSizeMake(0,0);
+    view.layer.shadowOffset = CGSizeMake(2,2);
 }
 
 #pragma mark UIColor_Expanded initialization

@@ -20,7 +20,8 @@
 #define TaskColor           [UIColor colorWithHexString:@"#1ABFDF"]
 
 @interface ScheduleViewCtrl ()<FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance,UITableViewDataSource,UITableViewDelegate>
-@property (weak,  nonatomic) IBOutlet FSCalendar *calendar;
+@property (copy, nonatomic) NSString *userType;
+@property (weak, nonatomic) IBOutlet FSCalendar *calendar;
 @property (weak, nonatomic) IBOutlet UITableView *schedulelistTB;
 
 @property (strong, nonatomic) NSCalendar *systemCalendar;
@@ -29,6 +30,8 @@
 @property (copy, nonatomic) NSString *selectDate;
 @property (weak, nonatomic) IBOutlet UILabel *selectDateLB;
 @property (weak, nonatomic) IBOutlet UILabel *totalEventsLB;
+@property (weak, nonatomic) IBOutlet UIButton *addEventBtn;
+@property (weak, nonatomic) IBOutlet UILabel *scheduleTipLB;
 
 @property (copy,nonatomic) NSArray *dayTasksArray;       // 某天的task 日程数组
 @property (copy,nonatomic) NSArray *dayFutureTestArray;  // 某天的test 日程数组
@@ -40,11 +43,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.userType = [LoginInfoModel fetchUserTypeFromSandbox];
 //    self.calendar.locale = [NSLocale localeWithLocaleIdentifier:@"zh-CN"];
     self.systemCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateFormat = @"yyyy-MM-dd";
     self.manager = [ScheduleRangeManager initWithDateFormatter:self.dateFormatter];
+    [self configScheduleListHolderUI];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -101,6 +106,16 @@
 }
 
 #pragma mark Private Methods
+-(void)configScheduleListHolderUI {
+    if ([self.userType isEqualToString:Student_UserType]) {
+        self.addEventBtn.hidden = NO;
+        self.scheduleTipLB.text = @"您还没有制定今天的行程，快去添加吧！";
+    } else {
+        self.addEventBtn.hidden = YES;
+        self.scheduleTipLB.text = @"该学生今日没有日程";
+    }
+}
+
 /**
  根据传入的时间，判断这个时间是否在已显示的范围内，若超过，则开始申请数据
  @param date 日期

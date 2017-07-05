@@ -32,23 +32,26 @@
 @end
 
 @interface FutureTests :NSObject
-@property (nonatomic , copy) NSString              * details;
+@property (nonatomic , copy) NSString              * student_comment;
 @property (nonatomic , copy) NSString              * time;
 @property (nonatomic , copy) NSString              * staff_comment;
-@property (nonatomic , copy) NSString              * student_comment;
+@property (nonatomic , copy) NSString              * details;
 @property (nonatomic , copy) NSString              * date;
-@property (nonatomic , assign) NSInteger             test_type;
+@property (nonatomic , assign) NSInteger              test_type;
 @property (nonatomic , assign) BOOL              whether_record_score;
 @property (nonatomic , copy) NSString              * place;
+@property (nonatomic , assign) NSInteger              pk;
 
 @end
 
 @interface CheckInRecords :NSObject
-@property (nonatomic , copy) NSString              * staff_comment;
-@property (nonatomic , copy) NSString              * staff_username;
-@property (nonatomic , copy) NSString              * topic;
+@property (nonatomic , copy) NSString              * staff_real_name;
 @property (nonatomic , copy) NSString              * time;
+@property (nonatomic , copy) NSString              * staff_comment;
 @property (nonatomic , copy) NSString              * date;
+@property (nonatomic , copy) NSString              * topic;
+@property (nonatomic , copy) NSString              * staff_username;
+@property (nonatomic , assign) NSInteger              pk;
 
 @end
 

@@ -31,13 +31,13 @@
     self.studentListTB.sectionIndexBackgroundColor = [UIColor clearColor];
     self.studentListTB.sectionIndexTrackingBackgroundColor = [UIColor clearColor];
     self.isFirstRefresh = YES;
-    self.staff_nameLB.text = [NSString stringWithFormat:@"Welcome, %@!",[LoginInfoModel fetchAccountUsername]];
     // Do any additional setup after loading the view.
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    self.staff_nameLB.text = [NSString stringWithFormat:@"Welcome, %@!",[LoginInfoModel fetchRealNameFromSandbox]];
     if ([LoginInfoModel isLogin] == NO) {
         LoginViewCtrl *vc = [LoginViewCtrl initMyView];
         [self.navigationController pushViewController:vc animated:NO];

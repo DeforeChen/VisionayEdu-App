@@ -35,7 +35,7 @@
 @implementation StaffMeetingCell
 +(instancetype)initMyCellWithMeetingModel:(Meetings*)meeting tableview:(UITableView*)tableview {
     StaffMeetingCell *cell = (StaffMeetingCell*)[tableview dequeueReusableCellWithIdentifier:@"meeting"];
-    cell.inventedGuysLB.text = [[meeting.staff_all mutableCopy] componentsJoinedByString:@","];
+    cell.inventedGuysLB.text = [[meeting.staff_real_name mutableCopy] componentsJoinedByString:@","];
     cell.meetingTimeLB.text = meeting.time;
     cell.meetingPlaceLB.text = meeting.place;
     cell.meetingTopicLB.text = [NSString stringWithFormat:@"会议-%@",meeting.topic];

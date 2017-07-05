@@ -10,5 +10,7 @@ use_frameworks!
   pod 'RegExCategories'
   pod 'FSCalendar'
   pod 'PNChart'
+  pod 'JYRadarChart'
+  pod 'FSLineChart'
   pod 'IQKeyboardManager'
 end
