@@ -13,5 +13,8 @@
 @end
 
 @interface TestAccountCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *accountLB;
+@property (weak, nonatomic) IBOutlet UILabel *pwdLB;
+@property (weak, nonatomic) IBOutlet UILabel *testNameLB;
 
 @end

@@ -95,7 +95,7 @@
     self.lineChart.valueLabelPosition = ValueLabelRight;
     
     self.lineChart.labelForIndex = ^(NSUInteger item) {
-        XLog(@"x轴 x = %lu",item);
+        XLog(@"x轴 x = %lu",(unsigned long)item);
         return [XDateLabel[item] substringFromIndex:5];
     };
 

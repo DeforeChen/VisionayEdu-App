@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7696B3A8227BC24F2972070E /* Pods_VisionaryEdu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F25F87153DEB044FCAC93DE /* Pods_VisionaryEdu.framework */; };
+		8916B2591F0CD59000808BC8 /* TestAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8916B2581F0CD59000808BC8 /* TestAccountModel.m */; };
+		8916B25D1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8916B25C1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.m */; };
+		8916B2601F0CF71400808BC8 /* PersonalInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8916B25F1F0CF71400808BC8 /* PersonalInfoModel.m */; };
+		8916B2631F0CF84A00808BC8 /* Username.m in Sources */ = {isa = PBXBuildFile; fileRef = 8916B2621F0CF84A00808BC8 /* Username.m */; };
 		891BB7C31F00979000F4DD60 /* ScheduleViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 891BB7C21F00979000F4DD60 /* ScheduleViewCtrl.m */; };
 		891BB7CC1F014C5500F4DD60 /* PwdModifyViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 891BB7CB1F014C5500F4DD60 /* PwdModifyViewCtrl.m */; };
 		893AC6991F02508F00990A48 /* CustomTabbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893AC6981F02508F00990A48 /* CustomTabbarView.xib */; };
@@ -48,10 +52,20 @@
 		89CFBD061EFE164600439496 /* YQNumberSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */; };
 		89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBD091EFE164C00439496 /* UIColor+expanded.m */; };
 		89E15C571F01F2BB00452B08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89E15C561F01F2BB00452B08 /* Images.xcassets */; };
+		89FDE5861F0DD13C001158F1 /* EducationInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5851F0DD13C001158F1 /* EducationInfoViewCtrl.m */; };
+		89FDE5891F0DD598001158F1 /* EduInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5881F0DD598001158F1 /* EduInfoModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		30DEF1E016840C712AF95BB8 /* Pods-VisionaryEdu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionaryEdu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VisionaryEdu/Pods-VisionaryEdu.debug.xcconfig"; sourceTree = "<group>"; };
+		8916B2571F0CD59000808BC8 /* TestAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestAccountModel.h; path = documents/TestAccountModel.h; sourceTree = "<group>"; };
+		8916B2581F0CD59000808BC8 /* TestAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestAccountModel.m; path = documents/TestAccountModel.m; sourceTree = "<group>"; };
+		8916B25B1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalInfoTableViewCtrl.h; path = Student_Parent/DocumentsViewCtrl/PersonalInfoTableViewCtrl.h; sourceTree = "<group>"; };
+		8916B25C1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalInfoTableViewCtrl.m; path = Student_Parent/DocumentsViewCtrl/PersonalInfoTableViewCtrl.m; sourceTree = "<group>"; };
+		8916B25E1F0CF71400808BC8 /* PersonalInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalInfoModel.h; path = documents/PersonalInfoModel.h; sourceTree = "<group>"; };
+		8916B25F1F0CF71400808BC8 /* PersonalInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalInfoModel.m; path = documents/PersonalInfoModel.m; sourceTree = "<group>"; };
+		8916B2611F0CF84A00808BC8 /* Username.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Username.h; path = documents/Username.h; sourceTree = "<group>"; };
+		8916B2621F0CF84A00808BC8 /* Username.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Username.m; path = documents/Username.m; sourceTree = "<group>"; };
 		891BB7C11F00979000F4DD60 /* ScheduleViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewCtrl.h; sourceTree = "<group>"; };
 		891BB7C21F00979000F4DD60 /* ScheduleViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewCtrl.m; sourceTree = "<group>"; };
 		891BB7C51F009EB300F4DD60 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
@@ -129,6 +143,10 @@
 		89CFBD081EFE164C00439496 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
 		89CFBD091EFE164C00439496 /* UIColor+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+expanded.m"; sourceTree = "<group>"; };
 		89E15C561F01F2BB00452B08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		89FDE5841F0DD13C001158F1 /* EducationInfoViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EducationInfoViewCtrl.h; path = Student_Parent/DocumentsViewCtrl/EducationInfoViewCtrl.h; sourceTree = "<group>"; };
+		89FDE5851F0DD13C001158F1 /* EducationInfoViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EducationInfoViewCtrl.m; path = Student_Parent/DocumentsViewCtrl/EducationInfoViewCtrl.m; sourceTree = "<group>"; };
+		89FDE5871F0DD598001158F1 /* EduInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EduInfoModel.h; path = documents/EduInfoModel.h; sourceTree = "<group>"; };
+		89FDE5881F0DD598001158F1 /* EduInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EduInfoModel.m; path = documents/EduInfoModel.m; sourceTree = "<group>"; };
 		9F25F87153DEB044FCAC93DE /* Pods_VisionaryEdu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionaryEdu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8B271994E04811578481FD /* Pods-VisionaryEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionaryEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-VisionaryEdu/Pods-VisionaryEdu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +170,21 @@
 				AE8B271994E04811578481FD /* Pods-VisionaryEdu.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8916B25A1F0CD8A900808BC8 /* 各个档案 */ = {
+			isa = PBXGroup;
+			children = (
+				89FDE5871F0DD598001158F1 /* EduInfoModel.h */,
+				89FDE5881F0DD598001158F1 /* EduInfoModel.m */,
+				8916B25E1F0CF71400808BC8 /* PersonalInfoModel.h */,
+				8916B25F1F0CF71400808BC8 /* PersonalInfoModel.m */,
+				8916B2571F0CD59000808BC8 /* TestAccountModel.h */,
+				8916B2581F0CD59000808BC8 /* TestAccountModel.m */,
+				8916B2611F0CF84A00808BC8 /* Username.h */,
+				8916B2621F0CF84A00808BC8 /* Username.m */,
+			);
+			name = "各个档案";
 			sourceTree = "<group>";
 		};
 		891BB7C41F00979E00F4DD60 /* 学生日程 */ = {
@@ -247,8 +280,12 @@
 		897A0A7F1F0CCAFC00EE8846 /* 各个档案 */ = {
 			isa = PBXGroup;
 			children = (
+				89FDE5841F0DD13C001158F1 /* EducationInfoViewCtrl.h */,
+				89FDE5851F0DD13C001158F1 /* EducationInfoViewCtrl.m */,
 				897A0A831F0CCE2100EE8846 /* TestInfoFormViewCtrl.h */,
 				897A0A841F0CCE2100EE8846 /* TestInfoFormViewCtrl.m */,
+				8916B25B1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.h */,
+				8916B25C1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.m */,
 			);
 			name = "各个档案";
 			sourceTree = "<group>";
@@ -383,6 +420,7 @@
 			children = (
 				899303341EFFB78F00B066AD /* StudentInstance.h */,
 				899303351EFFB78F00B066AD /* StudentInstance.m */,
+				8916B25A1F0CD8A900808BC8 /* 各个档案 */,
 				89652E681F05D6A700CDDECB /* 员工日程model */,
 				893AC6A41F0349A700990A48 /* 学生日程model */,
 				899303381EFFC4B200B066AD /* 登录model */,
@@ -578,6 +616,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89FDE5891F0DD598001158F1 /* EduInfoModel.m in Sources */,
 				89CFBD001EFE164600439496 /* ScoreChartView.m in Sources */,
 				89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */,
 				89CFBCE91EFE163C00439496 /* SYHttpTool.m in Sources */,
@@ -592,6 +631,7 @@
 				891BB7CC1F014C5500F4DD60 /* PwdModifyViewCtrl.m in Sources */,
 				89652E631F053F4900CDDECB /* StaffScheduleViewCtrl.m in Sources */,
 				89CFBD021EFE164600439496 /* scoreInDetailTableViewCell.m in Sources */,
+				89FDE5861F0DD13C001158F1 /* EducationInfoViewCtrl.m in Sources */,
 				89CFBCC01EFE15BD00439496 /* main.m in Sources */,
 				897A0A7A1F0C8C5100EE8846 /* CommentViewCtrl.m in Sources */,
 				89CFBD031EFE164600439496 /* StudentInfoTableViewCell.m in Sources */,
@@ -605,8 +645,12 @@
 				899303361EFFB78F00B066AD /* StudentInstance.m in Sources */,
 				89652E6E1F092D3C00CDDECB /* StudentGradeViewCtrl.m in Sources */,
 				893AC69F1F0260CF00990A48 /* MeViewCtrl.m in Sources */,
+				8916B25D1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.m in Sources */,
 				893AC6A31F03499F00990A48 /* StudentScheduleModel.m in Sources */,
 				891BB7C31F00979000F4DD60 /* ScheduleViewCtrl.m in Sources */,
+				8916B2591F0CD59000808BC8 /* TestAccountModel.m in Sources */,
+				8916B2601F0CF71400808BC8 /* PersonalInfoModel.m in Sources */,
+				8916B2631F0CF84A00808BC8 /* Username.m in Sources */,
 				89652E671F05D69E00CDDECB /* StaffScheduleModel.m in Sources */,
 				89CFBD061EFE164600439496 /* YQNumberSlideView.m in Sources */,
 				89CFBCEA1EFE163C00439496 /* SysTool.m in Sources */,

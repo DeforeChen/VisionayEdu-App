@@ -36,6 +36,7 @@
 #define LOGIN  @"/login/"
 #define LOGOUT @"/auth/logout/"
 
-
-
+#define QUERY_TESTACCOUNT @"/---TestInfoForm/"
+#define QUERY_PERSONINFO @"/---PersonalInfoForm/"
+#define QUERY_EDUINFO @"/---EducationInfoForm/"
 #endif

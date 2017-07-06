@@ -7,21 +7,51 @@
 //
 
 #import "TestInfoFormViewCtrl.h"
+#import "config.h"
+#import <MJExtension/MJExtension.h>
+#import "TestAccountModel.h"
+#import "TabBarManagerViewCtrl.h"
 
+typedef enum : NSUInteger {
+    toeflTest,
+    satTest,
+    actTest,
+    apTest,
+    a_levelTest,
+    ieltsTest,
+    ibTest
+} TestType;
 @interface TestInfoFormViewCtrl ()
-
+@property (nonatomic,strong) TestAccountModel *model;
 @end
 
 @implementation TestInfoFormViewCtrl
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    TabBarManagerViewCtrl *vc = (TabBarManagerViewCtrl*)self.tabBarController;
+    vc.customTabbar.hidden = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    TabBarManagerViewCtrl *vc = (TabBarManagerViewCtrl*)self.tabBarController;
+    vc.customTabbar.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [SysTool showLoadingHUDWithMsg:@"获取账号信息中..." duration:0];
+    NSDictionary *reqDict = @{@"username":[StudentInstance shareInstance].student_username};
+    [[SYHttpTool sharedInstance] getReqWithURL:QUERY_TESTACCOUNT token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
+        [SysTool dismissHUD];
+        if (success) {
+            self.model = [TestAccountModel mj_objectWithKeyValues:responseObject];
+            [self.tableView reloadData];
+        } else {
+            [SysTool showErrorWithMsg:msg duration:1];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,63 +65,57 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return 7;
 }
 
-/*
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    TestAccountCell *cell = (TestAccountCell*)[tableView dequeueReusableCellWithIdentifier:@"accountInfo"];
+    TestType type = indexPath.row;
+    Results *accountInfo = self.model.results[0];
+    switch (type) {
+        case toeflTest:
+            cell.testNameLB.text = @"托福";
+            cell.accountLB.text = accountInfo.toefl_id;
+            cell.pwdLB.text = accountInfo.toefl_password;
+            break;
+        case satTest:
+            cell.testNameLB.text = @"SAT";
+            cell.accountLB.text = accountInfo.sat_id;
+            cell.pwdLB.text = accountInfo.sat_password;
+            break;
+        case actTest:
+            cell.testNameLB.text = @"ACT";
+            cell.accountLB.text = accountInfo.act_id;
+            cell.pwdLB.text = accountInfo.act_password;
+            break;
+        case apTest:
+            cell.testNameLB.text = @"AP";
+            cell.accountLB.text = accountInfo.ap_id;
+            cell.pwdLB.text = accountInfo.ap_password;
+            break;
+        case a_levelTest:
+            cell.testNameLB.text = @"A_Level";
+            cell.accountLB.text = accountInfo.a_level_id;
+            cell.pwdLB.text = accountInfo.a_level_password;
+            break;
+        case ieltsTest:
+            cell.testNameLB.text = @"雅思";
+            cell.accountLB.text = accountInfo.ielts_id;
+            cell.pwdLB.text = accountInfo.ielts_password;
+            break;
+        case ibTest:
+            cell.testNameLB.text = @"IB";
+            cell.accountLB.text = accountInfo.ib_id;
+            cell.pwdLB.text = accountInfo.ib_password;
+            break;
+    }
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
 

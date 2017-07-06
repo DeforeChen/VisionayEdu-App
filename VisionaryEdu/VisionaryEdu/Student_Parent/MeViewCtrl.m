@@ -7,8 +7,13 @@
 //
 
 #import "MeViewCtrl.h"
+#import "config.h"
+#import "StudentInstance.h"
 
 @interface MeViewCtrl ()
+@property (weak, nonatomic) IBOutlet UILabel *studentRealNameLB;
+@property (weak, nonatomic) IBOutlet UIView *backToStudentListView;
+@property (weak, nonatomic) IBOutlet UIView *SettingsView;
 
 @end
 
@@ -16,7 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    if ([[LoginInfoModel fetchUserTypeFromSandbox] isEqualToString:Staff_UserType]) {
+        self.SettingsView.hidden = YES;
+    } else// 家长/学生端
+        self.backToStudentListView.hidden = YES;
+
+    self.studentRealNameLB.text = [StudentInstance shareInstance].student_realname;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
