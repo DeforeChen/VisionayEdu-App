@@ -95,13 +95,11 @@
         ElectiveCoureCell *cell = (ElectiveCoureCell*)[tableView dequeueReusableCellWithIdentifier:@"electiveCell"];
         if (self.electiveCourseArray.count == 0) {
             cell.courseLB.text = @"";
-        } else
-            cell.courseLB.text = self.electiveCourseArray[indexPath.row].elective_course;
-        
-        if (self.HS_CourseArray.count == 0) {
             cell.courseDescriptionLB.text = @"";
-        } else
+        } else {
+            cell.courseLB.text = self.electiveCourseArray[indexPath.row].elective_course;
             cell.courseDescriptionLB.text = self.electiveCourseArray[indexPath.row].elective_course_description;
+        }
         return cell;
     } else {
         HS_CourseCell *cell = (HS_CourseCell*)[tableView dequeueReusableCellWithIdentifier:@"hsCourseCell"];

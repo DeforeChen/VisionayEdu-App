@@ -9,7 +9,7 @@ use_frameworks!
   pod 'MJRefresh'
   pod 'RegExCategories'
   pod 'FSCalendar'
-  pod 'PNChart'
+#   pod 'PNChart'
   pod 'JYRadarChart'
   pod 'FSLineChart'
   pod 'IQKeyboardManager'

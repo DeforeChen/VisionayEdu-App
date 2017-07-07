@@ -41,4 +41,6 @@
 #define QUERY_EDUINFO @"/---EducationInfoForm/"
 #define QUERY_PROFILE @"/---ProfileDocuments/"
 #define QUERY_COURSE @"/---CourseInfoForm/"
+#define QUERY_ACTIVITY @"/---HonorInfoForm/"
+
 #endif

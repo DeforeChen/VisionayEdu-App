@@ -58,19 +58,5 @@
     } else {
         block([NSArray new],HS_CourseArray);
     }
-    
-    
-//    for (int i = 0; i < electiveCourseNum; i++) {
-//        NSString *index = [NSString stringWithFormat:@"%d",i];
-//        for (NSString *name in ElectiveCourseTempArray) {
-//            ElectiveCoure *course = [ElectiveCoure new];
-//            if ([name containsString:[NSString stringWithFormat:@"_%@_description",name]]) {
-//                course.elective_course_description = infoDict[name];
-//            } else
-//                course.elective_course = infoDict[name];
-//            
-//        }
-//    }
-    
 }
 @end
