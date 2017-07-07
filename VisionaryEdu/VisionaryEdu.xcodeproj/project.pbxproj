@@ -44,16 +44,23 @@
 		89CFBCE91EFE163C00439496 /* SYHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCE61EFE163C00439496 /* SYHttpTool.m */; };
 		89CFBCEA1EFE163C00439496 /* SysTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCE81EFE163C00439496 /* SysTool.m */; };
 		89CFBCF11EFE164100439496 /* StaffHomePageViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCEF1EFE164100439496 /* StaffHomePageViewCtrl.m */; };
-		89CFBD001EFE164600439496 /* ScoreChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCF41EFE164600439496 /* ScoreChartView.m */; };
-		89CFBD011EFE164600439496 /* ScoreChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CFBCF51EFE164600439496 /* ScoreChartView.xib */; };
 		89CFBD021EFE164600439496 /* scoreInDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCF71EFE164600439496 /* scoreInDetailTableViewCell.m */; };
 		89CFBD031EFE164600439496 /* StudentInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCF91EFE164600439496 /* StudentInfoTableViewCell.m */; };
-		89CFBD051EFE164600439496 /* StudentScoreViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */; };
 		89CFBD061EFE164600439496 /* YQNumberSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */; };
 		89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBD091EFE164C00439496 /* UIColor+expanded.m */; };
 		89E15C571F01F2BB00452B08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89E15C561F01F2BB00452B08 /* Images.xcassets */; };
+		89F58FBE1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F58FBD1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m */; };
+		89F58FC21F0F765A00AC6B1B /* FamilyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F58FC11F0F765A00AC6B1B /* FamilyInfoModel.m */; };
 		89FDE5861F0DD13C001158F1 /* EducationInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5851F0DD13C001158F1 /* EducationInfoViewCtrl.m */; };
 		89FDE5891F0DD598001158F1 /* EduInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5881F0DD598001158F1 /* EduInfoModel.m */; };
+		89FDE58C1F0DE0DF001158F1 /* DocumentViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE58B1F0DE0DF001158F1 /* DocumentViewCtrl.m */; };
+		89FDE58F1F0E0607001158F1 /* ProfileDocumentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE58E1F0E0607001158F1 /* ProfileDocumentModel.m */; };
+		89FDE5911F0E101F001158F1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89FDE5901F0E101F001158F1 /* WebKit.framework */; };
+		89FDE5941F0E2409001158F1 /* PassportInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5931F0E2409001158F1 /* PassportInfoViewCtrl.m */; };
+		89FDE5971F0E72A3001158F1 /* CourseInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5961F0E72A3001158F1 /* CourseInfoViewCtrl.m */; };
+		89FDE59A1F0E7487001158F1 /* CourseInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5991F0E7487001158F1 /* CourseInfoModel.m */; };
+		89FDE5A31F0F30E5001158F1 /* HonorActivityViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5A21F0F30E5001158F1 /* HonorActivityViewCtrl.m */; };
+		89FDE5A71F0F324A001158F1 /* HonorActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5A61F0F324A001158F1 /* HonorActivityModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,24 +136,38 @@
 		89CFBCE81EFE163C00439496 /* SysTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SysTool.m; path = ../network/SysTool.m; sourceTree = "<group>"; };
 		89CFBCEE1EFE164100439496 /* StaffHomePageViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffHomePageViewCtrl.h; sourceTree = "<group>"; };
 		89CFBCEF1EFE164100439496 /* StaffHomePageViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffHomePageViewCtrl.m; sourceTree = "<group>"; };
-		89CFBCF31EFE164600439496 /* ScoreChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreChartView.h; sourceTree = "<group>"; };
-		89CFBCF41EFE164600439496 /* ScoreChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreChartView.m; sourceTree = "<group>"; };
-		89CFBCF51EFE164600439496 /* ScoreChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreChartView.xib; sourceTree = "<group>"; };
 		89CFBCF61EFE164600439496 /* scoreInDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scoreInDetailTableViewCell.h; sourceTree = "<group>"; };
 		89CFBCF71EFE164600439496 /* scoreInDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scoreInDetailTableViewCell.m; sourceTree = "<group>"; };
 		89CFBCF81EFE164600439496 /* StudentInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StudentInfoTableViewCell.h; path = ../Student_Parent/StudentInfoTableViewCell.h; sourceTree = "<group>"; };
 		89CFBCF91EFE164600439496 /* StudentInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StudentInfoTableViewCell.m; path = ../Student_Parent/StudentInfoTableViewCell.m; sourceTree = "<group>"; };
-		89CFBCFC1EFE164600439496 /* StudentScoreViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentScoreViewCtrl.h; sourceTree = "<group>"; };
-		89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentScoreViewCtrl.m; sourceTree = "<group>"; };
 		89CFBCFE1EFE164600439496 /* YQNumberSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQNumberSlideView.h; sourceTree = "<group>"; };
 		89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQNumberSlideView.m; sourceTree = "<group>"; };
 		89CFBD081EFE164C00439496 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
 		89CFBD091EFE164C00439496 /* UIColor+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+expanded.m"; sourceTree = "<group>"; };
 		89E15C561F01F2BB00452B08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		89F58FBC1F0F703A00AC6B1B /* FamilyInfoViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FamilyInfoViewCtrl.h; path = VisionaryEdu/Student_Parent/DocumentsViewCtrl/FamilyInfoViewCtrl.h; sourceTree = SOURCE_ROOT; };
+		89F58FBD1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FamilyInfoViewCtrl.m; path = VisionaryEdu/Student_Parent/DocumentsViewCtrl/FamilyInfoViewCtrl.m; sourceTree = SOURCE_ROOT; };
+		89F58FC01F0F765A00AC6B1B /* FamilyInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FamilyInfoModel.h; path = documents/FamilyInfoModel.h; sourceTree = "<group>"; };
+		89F58FC11F0F765A00AC6B1B /* FamilyInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FamilyInfoModel.m; path = documents/FamilyInfoModel.m; sourceTree = "<group>"; };
 		89FDE5841F0DD13C001158F1 /* EducationInfoViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EducationInfoViewCtrl.h; path = Student_Parent/DocumentsViewCtrl/EducationInfoViewCtrl.h; sourceTree = "<group>"; };
 		89FDE5851F0DD13C001158F1 /* EducationInfoViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EducationInfoViewCtrl.m; path = Student_Parent/DocumentsViewCtrl/EducationInfoViewCtrl.m; sourceTree = "<group>"; };
 		89FDE5871F0DD598001158F1 /* EduInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EduInfoModel.h; path = documents/EduInfoModel.h; sourceTree = "<group>"; };
 		89FDE5881F0DD598001158F1 /* EduInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EduInfoModel.m; path = documents/EduInfoModel.m; sourceTree = "<group>"; };
+		89FDE58A1F0DE0DF001158F1 /* DocumentViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentViewCtrl.h; sourceTree = "<group>"; };
+		89FDE58B1F0DE0DF001158F1 /* DocumentViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentViewCtrl.m; sourceTree = "<group>"; };
+		89FDE58D1F0E0607001158F1 /* ProfileDocumentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileDocumentModel.h; path = documents/ProfileDocumentModel.h; sourceTree = "<group>"; };
+		89FDE58E1F0E0607001158F1 /* ProfileDocumentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileDocumentModel.m; path = documents/ProfileDocumentModel.m; sourceTree = "<group>"; };
+		89FDE5901F0E101F001158F1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		89FDE5921F0E2409001158F1 /* PassportInfoViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PassportInfoViewCtrl.h; path = Student_Parent/DocumentsViewCtrl/PassportInfoViewCtrl.h; sourceTree = "<group>"; };
+		89FDE5931F0E2409001158F1 /* PassportInfoViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PassportInfoViewCtrl.m; path = Student_Parent/DocumentsViewCtrl/PassportInfoViewCtrl.m; sourceTree = "<group>"; };
+		89FDE5951F0E72A3001158F1 /* CourseInfoViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseInfoViewCtrl.h; path = Student_Parent/DocumentsViewCtrl/CourseInfoViewCtrl.h; sourceTree = "<group>"; };
+		89FDE5961F0E72A3001158F1 /* CourseInfoViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseInfoViewCtrl.m; path = Student_Parent/DocumentsViewCtrl/CourseInfoViewCtrl.m; sourceTree = "<group>"; };
+		89FDE5981F0E7487001158F1 /* CourseInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseInfoModel.h; path = documents/CourseInfoModel.h; sourceTree = "<group>"; };
+		89FDE5991F0E7487001158F1 /* CourseInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseInfoModel.m; path = documents/CourseInfoModel.m; sourceTree = "<group>"; };
+		89FDE5A11F0F30E5001158F1 /* HonorActivityViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HonorActivityViewCtrl.h; path = Student_Parent/DocumentsViewCtrl/HonorActivityViewCtrl.h; sourceTree = "<group>"; };
+		89FDE5A21F0F30E5001158F1 /* HonorActivityViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HonorActivityViewCtrl.m; path = Student_Parent/DocumentsViewCtrl/HonorActivityViewCtrl.m; sourceTree = "<group>"; };
+		89FDE5A51F0F324A001158F1 /* HonorActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HonorActivityModel.h; path = documents/HonorActivityModel.h; sourceTree = "<group>"; };
+		89FDE5A61F0F324A001158F1 /* HonorActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HonorActivityModel.m; path = documents/HonorActivityModel.m; sourceTree = "<group>"; };
 		9F25F87153DEB044FCAC93DE /* Pods_VisionaryEdu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionaryEdu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8B271994E04811578481FD /* Pods-VisionaryEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionaryEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-VisionaryEdu/Pods-VisionaryEdu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89FDE5911F0E101F001158F1 /* WebKit.framework in Frameworks */,
 				7696B3A8227BC24F2972070E /* Pods_VisionaryEdu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +197,14 @@
 		8916B25A1F0CD8A900808BC8 /* 各个档案 */ = {
 			isa = PBXGroup;
 			children = (
+				89F58FC01F0F765A00AC6B1B /* FamilyInfoModel.h */,
+				89F58FC11F0F765A00AC6B1B /* FamilyInfoModel.m */,
+				89FDE5A51F0F324A001158F1 /* HonorActivityModel.h */,
+				89FDE5A61F0F324A001158F1 /* HonorActivityModel.m */,
+				89FDE5981F0E7487001158F1 /* CourseInfoModel.h */,
+				89FDE5991F0E7487001158F1 /* CourseInfoModel.m */,
+				89FDE58D1F0E0607001158F1 /* ProfileDocumentModel.h */,
+				89FDE58E1F0E0607001158F1 /* ProfileDocumentModel.m */,
 				89FDE5871F0DD598001158F1 /* EduInfoModel.h */,
 				89FDE5881F0DD598001158F1 /* EduInfoModel.m */,
 				8916B25E1F0CF71400808BC8 /* PersonalInfoModel.h */,
@@ -280,12 +310,14 @@
 		897A0A7F1F0CCAFC00EE8846 /* 各个档案 */ = {
 			isa = PBXGroup;
 			children = (
-				89FDE5841F0DD13C001158F1 /* EducationInfoViewCtrl.h */,
-				89FDE5851F0DD13C001158F1 /* EducationInfoViewCtrl.m */,
-				897A0A831F0CCE2100EE8846 /* TestInfoFormViewCtrl.h */,
-				897A0A841F0CCE2100EE8846 /* TestInfoFormViewCtrl.m */,
-				8916B25B1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.h */,
-				8916B25C1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.m */,
+				89F58FBF1F0F704800AC6B1B /* 家庭信息 */,
+				89FDE5A41F0F30EF001158F1 /* 荣誉活动 */,
+				89FDE5A01F0F24F7001158F1 /* 课程信息 */,
+				89FDE59F1F0F24F2001158F1 /* 护照信息 */,
+				89FDE59E1F0F24DB001158F1 /* 档案信息 */,
+				89FDE59D1F0F24D5001158F1 /* 教育信息 */,
+				89FDE59C1F0F24CF001158F1 /* 账户信息 */,
+				89FDE59B1F0F24C8001158F1 /* 个人信息 */,
 			);
 			name = "各个档案";
 			sourceTree = "<group>";
@@ -453,11 +485,6 @@
 		89CFBCF21EFE164600439496 /* 学生/家长端 */ = {
 			isa = PBXGroup;
 			children = (
-				89CFBCF31EFE164600439496 /* ScoreChartView.h */,
-				89CFBCF41EFE164600439496 /* ScoreChartView.m */,
-				89CFBCF51EFE164600439496 /* ScoreChartView.xib */,
-				89CFBCFC1EFE164600439496 /* StudentScoreViewCtrl.h */,
-				89CFBCFD1EFE164600439496 /* StudentScoreViewCtrl.m */,
 				89CFBCF61EFE164600439496 /* scoreInDetailTableViewCell.h */,
 				89CFBCF71EFE164600439496 /* scoreInDetailTableViewCell.m */,
 				8993033F1EFFF76E00B066AD /* tabBar标签管理 */,
@@ -480,9 +507,82 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		89F58FBF1F0F704800AC6B1B /* 家庭信息 */ = {
+			isa = PBXGroup;
+			children = (
+				89F58FBC1F0F703A00AC6B1B /* FamilyInfoViewCtrl.h */,
+				89F58FBD1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m */,
+			);
+			name = "家庭信息";
+			sourceTree = "<group>";
+		};
+		89FDE59B1F0F24C8001158F1 /* 个人信息 */ = {
+			isa = PBXGroup;
+			children = (
+				8916B25B1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.h */,
+				8916B25C1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.m */,
+			);
+			name = "个人信息";
+			sourceTree = "<group>";
+		};
+		89FDE59C1F0F24CF001158F1 /* 账户信息 */ = {
+			isa = PBXGroup;
+			children = (
+				897A0A831F0CCE2100EE8846 /* TestInfoFormViewCtrl.h */,
+				897A0A841F0CCE2100EE8846 /* TestInfoFormViewCtrl.m */,
+			);
+			name = "账户信息";
+			sourceTree = "<group>";
+		};
+		89FDE59D1F0F24D5001158F1 /* 教育信息 */ = {
+			isa = PBXGroup;
+			children = (
+				89FDE5841F0DD13C001158F1 /* EducationInfoViewCtrl.h */,
+				89FDE5851F0DD13C001158F1 /* EducationInfoViewCtrl.m */,
+			);
+			name = "教育信息";
+			sourceTree = "<group>";
+		};
+		89FDE59E1F0F24DB001158F1 /* 档案信息 */ = {
+			isa = PBXGroup;
+			children = (
+				89FDE58A1F0DE0DF001158F1 /* DocumentViewCtrl.h */,
+				89FDE58B1F0DE0DF001158F1 /* DocumentViewCtrl.m */,
+			);
+			name = "档案信息";
+			sourceTree = "<group>";
+		};
+		89FDE59F1F0F24F2001158F1 /* 护照信息 */ = {
+			isa = PBXGroup;
+			children = (
+				89FDE5921F0E2409001158F1 /* PassportInfoViewCtrl.h */,
+				89FDE5931F0E2409001158F1 /* PassportInfoViewCtrl.m */,
+			);
+			name = "护照信息";
+			sourceTree = "<group>";
+		};
+		89FDE5A01F0F24F7001158F1 /* 课程信息 */ = {
+			isa = PBXGroup;
+			children = (
+				89FDE5951F0E72A3001158F1 /* CourseInfoViewCtrl.h */,
+				89FDE5961F0E72A3001158F1 /* CourseInfoViewCtrl.m */,
+			);
+			name = "课程信息";
+			sourceTree = "<group>";
+		};
+		89FDE5A41F0F30EF001158F1 /* 荣誉活动 */ = {
+			isa = PBXGroup;
+			children = (
+				89FDE5A11F0F30E5001158F1 /* HonorActivityViewCtrl.h */,
+				89FDE5A21F0F30E5001158F1 /* HonorActivityViewCtrl.m */,
+			);
+			name = "荣誉活动";
+			sourceTree = "<group>";
+		};
 		9337095D7AC6BB62CAC2D8B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89FDE5901F0E101F001158F1 /* WebKit.framework */,
 				891BB7C51F009EB300F4DD60 /* Reveal.framework */,
 				9F25F87153DEB044FCAC93DE /* Pods_VisionaryEdu.framework */,
 			);
@@ -551,7 +651,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89CFBD011EFE164600439496 /* ScoreChartView.xib in Resources */,
 				89652E701F0A3DF100CDDECB /* SingleGradeView.xib in Resources */,
 				89E15C571F01F2BB00452B08 /* Images.xcassets in Resources */,
 				89CFBCCE1EFE15BD00439496 /* LaunchScreen.storyboard in Resources */,
@@ -617,13 +716,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				89FDE5891F0DD598001158F1 /* EduInfoModel.m in Sources */,
-				89CFBD001EFE164600439496 /* ScoreChartView.m in Sources */,
+				89F58FC21F0F765A00AC6B1B /* FamilyInfoModel.m in Sources */,
 				89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */,
 				89CFBCE91EFE163C00439496 /* SYHttpTool.m in Sources */,
 				89CFBCE21EFE160E00439496 /* StudentScoreInDetailsModel.m in Sources */,
+				89FDE58F1F0E0607001158F1 /* ProfileDocumentModel.m in Sources */,
 				89652E741F0A41D800CDDECB /* SingleGradeView.m in Sources */,
 				89652E601F04D6C200CDDECB /* ScheduleRangeManager.m in Sources */,
-				89CFBD051EFE164600439496 /* StudentScoreViewCtrl.m in Sources */,
+				89FDE5A71F0F324A001158F1 /* HonorActivityModel.m in Sources */,
 				89CFBCC31EFE15BD00439496 /* AppDelegate.m in Sources */,
 				89CFBCF11EFE164100439496 /* StaffHomePageViewCtrl.m in Sources */,
 				899303321EFFB40500B066AD /* SettingsViewCtrl.m in Sources */,
@@ -632,6 +732,9 @@
 				89652E631F053F4900CDDECB /* StaffScheduleViewCtrl.m in Sources */,
 				89CFBD021EFE164600439496 /* scoreInDetailTableViewCell.m in Sources */,
 				89FDE5861F0DD13C001158F1 /* EducationInfoViewCtrl.m in Sources */,
+				89FDE5A31F0F30E5001158F1 /* HonorActivityViewCtrl.m in Sources */,
+				89FDE5941F0E2409001158F1 /* PassportInfoViewCtrl.m in Sources */,
+				89FDE5971F0E72A3001158F1 /* CourseInfoViewCtrl.m in Sources */,
 				89CFBCC01EFE15BD00439496 /* main.m in Sources */,
 				897A0A7A1F0C8C5100EE8846 /* CommentViewCtrl.m in Sources */,
 				89CFBD031EFE164600439496 /* StudentInfoTableViewCell.m in Sources */,
@@ -644,12 +747,15 @@
 				89CFBCE01EFE160E00439496 /* LoginInfoModel.m in Sources */,
 				899303361EFFB78F00B066AD /* StudentInstance.m in Sources */,
 				89652E6E1F092D3C00CDDECB /* StudentGradeViewCtrl.m in Sources */,
+				89FDE58C1F0DE0DF001158F1 /* DocumentViewCtrl.m in Sources */,
 				893AC69F1F0260CF00990A48 /* MeViewCtrl.m in Sources */,
 				8916B25D1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.m in Sources */,
 				893AC6A31F03499F00990A48 /* StudentScheduleModel.m in Sources */,
 				891BB7C31F00979000F4DD60 /* ScheduleViewCtrl.m in Sources */,
+				89F58FBE1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m in Sources */,
 				8916B2591F0CD59000808BC8 /* TestAccountModel.m in Sources */,
 				8916B2601F0CF71400808BC8 /* PersonalInfoModel.m in Sources */,
+				89FDE59A1F0E7487001158F1 /* CourseInfoModel.m in Sources */,
 				8916B2631F0CF84A00808BC8 /* Username.m in Sources */,
 				89652E671F05D69E00CDDECB /* StaffScheduleModel.m in Sources */,
 				89CFBD061EFE164600439496 /* YQNumberSlideView.m in Sources */,
@@ -795,13 +901,9 @@
 					"-framework",
 					"\"MJRefresh\"",
 					"-framework",
-					"\"PNChart\"",
-					"-framework",
 					"\"RegExCategories\"",
 					"-framework",
 					"\"SVProgressHUD\"",
-					"-framework",
-					"\"UICountingLabel\"",
 					"-ObjC",
 					"-lz",
 					"-framework",
@@ -838,13 +940,9 @@
 					"-framework",
 					"\"MJRefresh\"",
 					"-framework",
-					"\"PNChart\"",
-					"-framework",
 					"\"RegExCategories\"",
 					"-framework",
 					"\"SVProgressHUD\"",
-					"-framework",
-					"\"UICountingLabel\"",
 					"-ObjC",
 					"-lz",
 					"-framework",

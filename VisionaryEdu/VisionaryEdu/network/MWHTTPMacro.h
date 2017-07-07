@@ -42,5 +42,5 @@
 #define QUERY_PROFILE @"/---ProfileDocuments/"
 #define QUERY_COURSE @"/---CourseInfoForm/"
 #define QUERY_ACTIVITY @"/---HonorInfoForm/"
-
+#define QUERY_FAMILY @"/---FamilyInfoForm/"
 #endif
