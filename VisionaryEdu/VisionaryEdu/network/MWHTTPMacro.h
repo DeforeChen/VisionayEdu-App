@@ -39,4 +39,6 @@
 #define QUERY_TESTACCOUNT @"/---TestInfoForm/"
 #define QUERY_PERSONINFO @"/---PersonalInfoForm/"
 #define QUERY_EDUINFO @"/---EducationInfoForm/"
+#define QUERY_PROFILE @"/---ProfileDocuments/"
+#define QUERY_COURSE @"/---CourseInfoForm/"
 #endif

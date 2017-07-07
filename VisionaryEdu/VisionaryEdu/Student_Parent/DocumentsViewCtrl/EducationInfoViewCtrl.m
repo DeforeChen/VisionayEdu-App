@@ -23,12 +23,6 @@
     vc.customTabbar.hidden = YES;
 }
 
--(void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    TabBarManagerViewCtrl *vc = (TabBarManagerViewCtrl*)self.tabBarController;
-    vc.customTabbar.hidden = NO;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [SysTool showLoadingHUDWithMsg:@"获取账号信息中..." duration:0];
@@ -66,33 +60,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EducationInfoCell *cell = (EducationInfoCell*)[tableView dequeueReusableCellWithIdentifier:@"eduInfo"];
-    Edu_Results *info = self.model.results[0];
-    cell.currentScoolLB.text = info.current_school;
-    cell.currentGradeLB.text = info.current_grade;
-    cell.AttendDateLB.text = info.attended_class_grade;
-    cell.graduateDateLB.text = info.date_of_current_graduate;
-    cell.currentSchoolAdrLB.text = info.current_school_address;
-    cell.currentPostCode.text = info.post_code;
-    cell.schoolSettingLB.text = info.setting_of_current_school;
-    cell.currentGradePopulationLB.text = info.current_class_grade_population;
-    cell.currentSchoolPhone.text = info.current_school_phone;
-    cell.gpaGradeLB.text = info.gpa_grade;
-    cell.gradeRankLB.text = info.current_class_grade_rank;
-    cell.studentID_LB.text = info.student_id;
-    cell.teacherNameLB.text = info.teacher_name;
-    cell.teacherPhoneLB.text = info.teacher_phone;
-    cell.teacherMailLB.text = info.teacher_email;
-    
-    cell.lastSchoolLB.text = info.last_attending_school;
-    cell.lastAttendDateLB.text = info.date_of_last_attending;
-    cell.lastGraduateDateLB.text = info.date_of_last_graduate;
-    cell.lastSchoolAdrLB.text = info.last_school_address;
-    cell.lastPostCodeLB.text = info.last_post_code;
-    cell.lastSchoolSetting.text = info.setting_of_last_school;
-    cell.lastSchoolPhoneLB.text = info.last_school_phone;
-    
-    // Configure the cell...
-    
+    if (self.model.results.count > 0) {
+        Edu_Results *info = self.model.results[0];
+        cell.currentScoolLB.text = info.current_school;
+        cell.currentGradeLB.text = info.current_grade;
+        cell.AttendDateLB.text = info.attended_class_grade;
+        cell.graduateDateLB.text = info.date_of_current_graduate;
+        cell.currentSchoolAdrLB.text = info.current_school_address;
+        cell.currentPostCode.text = info.post_code;
+        cell.schoolSettingLB.text = info.setting_of_current_school;
+        cell.currentGradePopulationLB.text = info.current_class_grade_population;
+        cell.currentSchoolPhone.text = info.current_school_phone;
+        cell.gpaGradeLB.text = info.gpa_grade;
+        cell.gradeRankLB.text = info.current_class_grade_rank;
+        cell.studentID_LB.text = info.student_id;
+        cell.teacherNameLB.text = info.teacher_name;
+        cell.teacherPhoneLB.text = info.teacher_phone;
+        cell.teacherMailLB.text = info.teacher_email;
+        
+        cell.lastSchoolLB.text = info.last_attending_school;
+        cell.lastAttendDateLB.text = info.date_of_last_attending;
+        cell.lastGraduateDateLB.text = info.date_of_last_graduate;
+        cell.lastSchoolAdrLB.text = info.last_school_address;
+        cell.lastPostCodeLB.text = info.last_post_code;
+        cell.lastSchoolSetting.text = info.setting_of_last_school;
+        cell.lastSchoolPhoneLB.text = info.last_school_phone;
+    }
     return cell;
 }
 @end

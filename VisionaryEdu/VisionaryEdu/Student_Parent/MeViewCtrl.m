@@ -9,6 +9,7 @@
 #import "MeViewCtrl.h"
 #import "config.h"
 #import "StudentInstance.h"
+#import "TabBarManagerViewCtrl.h"
 
 @interface MeViewCtrl ()
 @property (weak, nonatomic) IBOutlet UILabel *studentRealNameLB;
@@ -32,6 +33,8 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    TabBarManagerViewCtrl *vc = (TabBarManagerViewCtrl*)self.tabBarController;
+    vc.customTabbar.hidden = NO;
 }
 
 -(void)viewWillDisappear:(BOOL)animated {

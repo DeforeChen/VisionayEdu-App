@@ -32,12 +32,6 @@ typedef enum : NSUInteger {
     vc.customTabbar.hidden = YES;
 }
 
--(void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    TabBarManagerViewCtrl *vc = (TabBarManagerViewCtrl*)self.tabBarController;
-    vc.customTabbar.hidden = NO;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [SysTool showLoadingHUDWithMsg:@"获取账号信息中..." duration:0];
@@ -75,43 +69,47 @@ typedef enum : NSUInteger {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TestAccountCell *cell = (TestAccountCell*)[tableView dequeueReusableCellWithIdentifier:@"accountInfo"];
     TestType type = indexPath.row;
-    Results *accountInfo = self.model.results[0];
-    switch (type) {
-        case toeflTest:
-            cell.testNameLB.text = @"托福";
-            cell.accountLB.text = accountInfo.toefl_id;
-            cell.pwdLB.text = accountInfo.toefl_password;
-            break;
-        case satTest:
-            cell.testNameLB.text = @"SAT";
-            cell.accountLB.text = accountInfo.sat_id;
-            cell.pwdLB.text = accountInfo.sat_password;
-            break;
-        case actTest:
-            cell.testNameLB.text = @"ACT";
-            cell.accountLB.text = accountInfo.act_id;
-            cell.pwdLB.text = accountInfo.act_password;
-            break;
-        case apTest:
-            cell.testNameLB.text = @"AP";
-            cell.accountLB.text = accountInfo.ap_id;
-            cell.pwdLB.text = accountInfo.ap_password;
-            break;
-        case a_levelTest:
-            cell.testNameLB.text = @"A_Level";
-            cell.accountLB.text = accountInfo.a_level_id;
-            cell.pwdLB.text = accountInfo.a_level_password;
-            break;
-        case ieltsTest:
-            cell.testNameLB.text = @"雅思";
-            cell.accountLB.text = accountInfo.ielts_id;
-            cell.pwdLB.text = accountInfo.ielts_password;
-            break;
-        case ibTest:
-            cell.testNameLB.text = @"IB";
-            cell.accountLB.text = accountInfo.ib_id;
-            cell.pwdLB.text = accountInfo.ib_password;
-            break;
+    if (self.model.results.count > 0) {
+        Results *accountInfo = self.model.results[0];
+        switch (type) {
+            case toeflTest:
+                cell.testNameLB.text = @"托福";
+                cell.accountLB.text = accountInfo.toefl_id;
+                cell.pwdLB.text = accountInfo.toefl_password;
+                break;
+            case satTest:
+                cell.testNameLB.text = @"SAT";
+                cell.accountLB.text = accountInfo.sat_id;
+                cell.pwdLB.text = accountInfo.sat_password;
+                break;
+            case actTest:
+                cell.testNameLB.text = @"ACT";
+                cell.accountLB.text = accountInfo.act_id;
+                cell.pwdLB.text = accountInfo.act_password;
+                break;
+            case apTest:
+                cell.testNameLB.text = @"AP";
+                cell.accountLB.text = accountInfo.ap_id;
+                cell.pwdLB.text = accountInfo.ap_password;
+                break;
+            case a_levelTest:
+                cell.testNameLB.text = @"A_Level";
+                cell.accountLB.text = accountInfo.a_level_id;
+                cell.pwdLB.text = accountInfo.a_level_password;
+                break;
+            case ieltsTest:
+                cell.testNameLB.text = @"雅思";
+                cell.accountLB.text = accountInfo.ielts_id;
+                cell.pwdLB.text = accountInfo.ielts_password;
+                break;
+            case ibTest:
+                cell.testNameLB.text = @"IB";
+                cell.accountLB.text = accountInfo.ib_id;
+                cell.pwdLB.text = accountInfo.ib_password;
+                break;
+        }
+    } else {
+    
     }
     return cell;
 }
