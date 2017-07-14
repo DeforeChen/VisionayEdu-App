@@ -11,3 +11,7 @@
 @implementation Username
 
 @end
+
+@implementation Student_username
+
+@end

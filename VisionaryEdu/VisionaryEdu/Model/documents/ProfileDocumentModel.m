@@ -22,10 +22,6 @@
 }
 @end
 
-
-@implementation Student_username
-
-@end
 @implementation Profile_Results
 
 @end

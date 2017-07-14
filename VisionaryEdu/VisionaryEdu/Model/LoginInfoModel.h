@@ -17,13 +17,11 @@
 @property (nonatomic , assign) NSUInteger            retCode;
 @property (nonatomic , copy) NSString              * token;
 
-
 /**
  存储登录信息到沙盒
  @param username 登录成功时保存用户名
  */
 -(void)saveLoginInfoIntoSandbox:(NSString*)username;
-
 
 /**
  清空登录信息（登出时用）

@@ -31,6 +31,15 @@
 
 @end
 
+typedef enum : NSUInteger {
+    Toefl = 0,
+    ielts = 1,
+    SAT,
+    ACT,
+    SAT2,
+    AP,
+    IB
+} testType;
 @interface FutureTests :NSObject
 @property (nonatomic , copy) NSString              * student_comment;
 @property (nonatomic , copy) NSString              * time;
@@ -45,13 +54,13 @@
 @end
 
 @interface CheckInRecords :NSObject
-@property (nonatomic , copy) NSString              * staff_real_name;
 @property (nonatomic , copy) NSString              * time;
 @property (nonatomic , copy) NSString              * staff_comment;
 @property (nonatomic , copy) NSString              * date;
 @property (nonatomic , copy) NSString              * topic;
-@property (nonatomic , copy) NSString              * staff_username;
+@property (nonatomic , copy) NSString              * student_real_name;
 @property (nonatomic , assign) NSInteger              pk;
+@property (nonatomic , copy) NSString              * student_username;
 
 @end
 

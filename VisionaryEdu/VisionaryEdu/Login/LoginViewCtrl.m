@@ -11,6 +11,7 @@
 #import "SYHttpTool.h"
 #import "LoginInfoModel.h"
 #import <MJExtension/MJExtension.h>
+#import <JPush/JPUSHService.h>
 
 @interface LoginViewCtrl ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;
@@ -53,7 +54,8 @@
 - (IBAction)login:(UIButton *)sender {
     if ([self judgeInputLegal]) {
         [SysTool showLoadingHUDWithMsg:@"登录中..." duration:0];
-        [[SYHttpTool sharedInstance] fetchTokenWithUserName:self.usernameTF.text password:self.pwdTF.text completionHandler:^(BOOL success, NSString *msg, id responseObject) {
+        NSString *jpushID = [JPUSHService registrationID];
+        [[SYHttpTool sharedInstance] fetchTokenWithUserName:self.usernameTF.text password:self.pwdTF.text registration_id:jpushID completionHandler:^(BOOL success, NSString *msg, id responseObject) {
             [SysTool dismissHUD];
             if (success) {
                 LoginInfoModel *info = [LoginInfoModel mj_objectWithKeyValues:responseObject];
@@ -69,6 +71,7 @@
                 [SysTool showErrorWithMsg:msg duration:1];
             }
         }];
+        
     } else {
         [SysTool showErrorWithMsg:@"用户名仅包含数字、英文、下划线" duration:1];
     }

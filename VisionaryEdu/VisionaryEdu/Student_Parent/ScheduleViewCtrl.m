@@ -11,9 +11,12 @@
 #import "config.h"
 #import <FSCalendar/FSCalendar.h>
 #import <MJExtension/MJExtension.h>
+#import <MJRefresh/MJRefresh.h>
 #import "UIColor+expanded.h"
 #import "ScheduleRangeManager.h"
 #import "StudentScheduleCellManager.h"
+#import "TabBarManagerViewCtrl.h"
+#import "GradeDetailsViewCtrl.h"
 
 #define TestColor           [UIColor colorWithHexString:@"#E67291"]
 #define CheckInRecordsColor [UIColor colorWithHexString:@"#4ED6BB"]
@@ -30,8 +33,8 @@
 @property (copy, nonatomic) NSString *selectDate;
 @property (weak, nonatomic) IBOutlet UILabel *selectDateLB;
 @property (weak, nonatomic) IBOutlet UILabel *totalEventsLB;
-@property (weak, nonatomic) IBOutlet UIButton *addEventBtn;
 @property (weak, nonatomic) IBOutlet UILabel *scheduleTipLB;
+@property (weak, nonatomic) IBOutlet UIButton *addEventBtn;
 
 @property (copy,nonatomic) NSArray *dayTasksArray;       // 某天的task 日程数组
 @property (copy,nonatomic) NSArray *dayFutureTestArray;  // 某天的test 日程数组
@@ -44,17 +47,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.userType = [LoginInfoModel fetchUserTypeFromSandbox];
-//    self.calendar.locale = [NSLocale localeWithLocaleIdentifier:@"zh-CN"];
+    //    self.calendar.locale = [NSLocale localeWithLocaleIdentifier:@"zh-CN"];
     self.systemCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateFormat = @"yyyy-MM-dd";
     self.manager = [ScheduleRangeManager initWithDateFormatter:self.dateFormatter];
     [self configScheduleListHolderUI];
+    self.schedulelistTB.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshScheduleWhenEmpty:)];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    TabBarManagerViewCtrl *vc = (TabBarManagerViewCtrl*)self.tabBarController;
+    vc.customTabbar.hidden = NO;
     self.selectDate = [self.dateFormatter stringFromDate:[NSDate new]];
     [self requestStudentScheduleInfo:[NSDate new]];
 }
@@ -100,7 +106,7 @@
     NSDate *date = [self.dateFormatter dateFromString:_selectDate];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM月dd日";
-
+    
     self.selectDateLB.text = [formatter stringFromDate:date];
     [self updateDayScheduleWhenSelectionChange];
 }
@@ -108,10 +114,10 @@
 #pragma mark Private Methods
 -(void)configScheduleListHolderUI {
     if ([self.userType isEqualToString:Student_UserType]) {
-        self.addEventBtn.hidden = NO;
+        self.addEventBtn.userInteractionEnabled = YES;
         self.scheduleTipLB.text = @"您还没有制定今天的行程，快去添加吧！";
     } else {
-        self.addEventBtn.hidden = YES;
+        self.addEventBtn.userInteractionEnabled = NO;
         self.scheduleTipLB.text = @"该学生今日没有日程";
     }
 }
@@ -126,8 +132,8 @@
             [SysTool showLoadingHUDWithMsg:@"学生日程加载中..." duration:0];
             NSDictionary *reqDict = [StudentScheduleReq initStudentScheduleReqWithStartDate:newRange[START_DATE]
                                                                                     endDate:newRange[END_DATE]
-                                                                            studentUsername:@"student_1"].mj_keyValues;//[StudentInstance shareInstance].student_username
-
+                                                                            studentUsername:[StudentInstance shareInstance].student_username].mj_keyValues;
+            
             [[SYHttpTool sharedInstance] getReqWithURL:QUERY_STUDENT_SCHEDULE token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
                 [SysTool dismissHUD];
                 if (success) {
@@ -185,11 +191,19 @@
 
 #pragma mark User Interaction
 - (IBAction)studentRecentObjectives:(UIButton *)sender {
-
 }
 
 - (IBAction)appendNewEvent:(UIButton *)sender {
+}
 
+- (IBAction)refreshScheduleWhenEmpty:(UIButton *)sender {
+    [self.scheduleLUT removeAllObjects];
+    self.manager = nil;
+    self.manager = [ScheduleRangeManager initWithDateFormatter:self.dateFormatter];
+    [self requestStudentScheduleInfo:[self.dateFormatter dateFromString:self.selectDate]];
+    if (self.schedulelistTB.hidden == NO) {
+        [self.schedulelistTB.mj_header endRefreshing];
+    }
 }
 
 - (IBAction)gotoToday:(UIButton *)sender {
@@ -248,6 +262,18 @@
     return nil;
 }
 
+#pragma mark - Navigation
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    id destVC = segue.destinationViewController;
+    if ([destVC isKindOfClass:[GradeDetailsViewCtrl class]]) {
+        GradeDetailsViewCtrl *vc = destVC;
+        NSIndexPath *path = [self.schedulelistTB indexPathForCell:sender];
+        XLog(@"点击的行数 = %@",path);
+        vc.gradeModel = self.dayFutureTestArray[path.row];
+    }
+}
+
 #pragma mark FSCalendar delegate
 -(void)calendarCurrentPageDidChange:(FSCalendar *)calendar {
     self.selectDate = [self.dateFormatter stringFromDate:calendar.currentPage];
@@ -258,7 +284,7 @@
 - (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date {
     NSString *dateString = [self.dateFormatter stringFromDate:date];
     NSInteger totalEventNum = [self calcTotalEventTypeWithDate:dateString];
-    XLog(@"%@事件总数 %d",dateString,(int)totalEventNum);
+//    XLog(@"%@事件总数 %d",dateString,(int)totalEventNum);
     return totalEventNum;
 }
 
@@ -272,14 +298,14 @@
 - (NSArray *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance eventDefaultColorsForDate:(NSDate *)date {
     NSString *dateString = [self.dateFormatter stringFromDate:date];
     NSMutableArray *eventColors = [NSMutableArray new];
-
+    
     if ([self.scheduleLUT[dateString][TaskType] count] > 0)
         [eventColors addObject:TaskColor];
     if ([self.scheduleLUT[dateString][CheckInRecordsType] count] > 0)
         [eventColors addObject:CheckInRecordsColor];
     if ([self.scheduleLUT[dateString][FutureTestType] count] > 0)
         [eventColors addObject:TestColor];
-
+    
     XLog(@"事件颜色总数 %d",(int)eventColors.count);
     return eventColors;
 }

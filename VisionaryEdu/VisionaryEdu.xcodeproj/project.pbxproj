@@ -18,6 +18,18 @@
 		893AC69C1F0254D000990A48 /* CustomTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 893AC69B1F0254D000990A48 /* CustomTabbarView.m */; };
 		893AC69F1F0260CF00990A48 /* MeViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 893AC69E1F0260CF00990A48 /* MeViewCtrl.m */; };
 		893AC6A31F03499F00990A48 /* StudentScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 893AC6A21F03499F00990A48 /* StudentScheduleModel.m */; };
+		8946E3951F109BFF002F7B06 /* RecentObjectivesViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946E3941F109BFF002F7B06 /* RecentObjectivesViewCtrl.m */; };
+		8946E3981F109DA2002F7B06 /* RecentObjectivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946E3971F109DA2002F7B06 /* RecentObjectivesModel.m */; };
+		8946E39B1F10AD74002F7B06 /* ObjDetailsUViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946E39A1F10AD74002F7B06 /* ObjDetailsUViewCtrl.m */; };
+		8946E39E1F10C1F6002F7B06 /* GradeDetailsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946E39D1F10C1F6002F7B06 /* GradeDetailsViewCtrl.m */; };
+		8946E3A31F12697E002F7B06 /* GradeResultInputViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946E3A21F12697E002F7B06 /* GradeResultInputViewCtrl.m */; };
+		8946E3A61F131263002F7B06 /* CreateStaffScheduleViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946E3A51F131263002F7B06 /* CreateStaffScheduleViewCtrl.m */; };
+		8946E3A91F13198D002F7B06 /* StaffScheduleInventionsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946E3A81F13198D002F7B06 /* StaffScheduleInventionsViewCtrl.m */; };
+		8946E3AC1F132348002F7B06 /* StaffListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946E3AB1F132348002F7B06 /* StaffListModel.m */; };
+		8946E3AF1F132713002F7B06 /* StudentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946E3AE1F132713002F7B06 /* StudentListModel.m */; };
+		8950F0BC1F1471DF00BFE1E7 /* MeetingDetailsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8950F0BB1F1471DF00BFE1E7 /* MeetingDetailsViewCtrl.m */; };
+		8950F0C01F148A0F00BFE1E7 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8950F0BF1F148A0F00BFE1E7 /* DatePickerViewController.m */; };
+		8950F0C81F14BFBA00BFE1E7 /* CheckInRecordDetailsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8950F0C71F14BFBA00BFE1E7 /* CheckInRecordDetailsViewCtrl.m */; };
 		89652E5D1F03E9A200CDDECB /* StudentScheduleCellManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89652E5C1F03E9A200CDDECB /* StudentScheduleCellManager.m */; };
 		89652E601F04D6C200CDDECB /* ScheduleRangeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89652E5F1F04D6C200CDDECB /* ScheduleRangeManager.m */; };
 		89652E631F053F4900CDDECB /* StaffScheduleViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89652E621F053F4900CDDECB /* StaffScheduleViewCtrl.m */; };
@@ -85,6 +97,31 @@
 		893AC69E1F0260CF00990A48 /* MeViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeViewCtrl.m; path = Student_Parent/MeViewCtrl.m; sourceTree = "<group>"; };
 		893AC6A11F03499F00990A48 /* StudentScheduleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentScheduleModel.h; sourceTree = "<group>"; };
 		893AC6A21F03499F00990A48 /* StudentScheduleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentScheduleModel.m; sourceTree = "<group>"; };
+		8946E3931F109BFF002F7B06 /* RecentObjectivesViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentObjectivesViewCtrl.h; sourceTree = "<group>"; };
+		8946E3941F109BFF002F7B06 /* RecentObjectivesViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentObjectivesViewCtrl.m; sourceTree = "<group>"; };
+		8946E3961F109DA2002F7B06 /* RecentObjectivesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentObjectivesModel.h; sourceTree = "<group>"; };
+		8946E3971F109DA2002F7B06 /* RecentObjectivesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentObjectivesModel.m; sourceTree = "<group>"; };
+		8946E3991F10AD74002F7B06 /* ObjDetailsUViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjDetailsUViewCtrl.h; sourceTree = "<group>"; };
+		8946E39A1F10AD74002F7B06 /* ObjDetailsUViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjDetailsUViewCtrl.m; sourceTree = "<group>"; };
+		8946E39C1F10C1F6002F7B06 /* GradeDetailsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeDetailsViewCtrl.h; sourceTree = "<group>"; };
+		8946E39D1F10C1F6002F7B06 /* GradeDetailsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeDetailsViewCtrl.m; sourceTree = "<group>"; };
+		8946E3A11F12697E002F7B06 /* GradeResultInputViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeResultInputViewCtrl.h; sourceTree = "<group>"; };
+		8946E3A21F12697E002F7B06 /* GradeResultInputViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeResultInputViewCtrl.m; sourceTree = "<group>"; };
+		8946E3A41F131263002F7B06 /* CreateStaffScheduleViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateStaffScheduleViewCtrl.h; sourceTree = "<group>"; };
+		8946E3A51F131263002F7B06 /* CreateStaffScheduleViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStaffScheduleViewCtrl.m; sourceTree = "<group>"; };
+		8946E3A71F13198D002F7B06 /* StaffScheduleInventionsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffScheduleInventionsViewCtrl.h; sourceTree = "<group>"; };
+		8946E3A81F13198D002F7B06 /* StaffScheduleInventionsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffScheduleInventionsViewCtrl.m; sourceTree = "<group>"; };
+		8946E3AA1F132348002F7B06 /* StaffListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaffListModel.h; sourceTree = "<group>"; };
+		8946E3AB1F132348002F7B06 /* StaffListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaffListModel.m; sourceTree = "<group>"; };
+		8946E3AD1F132713002F7B06 /* StudentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentListModel.h; sourceTree = "<group>"; };
+		8946E3AE1F132713002F7B06 /* StudentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentListModel.m; sourceTree = "<group>"; };
+		8950F0BA1F1471DF00BFE1E7 /* MeetingDetailsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingDetailsViewCtrl.h; path = ScheduleDetails/MeetingDetailsViewCtrl.h; sourceTree = "<group>"; };
+		8950F0BB1F1471DF00BFE1E7 /* MeetingDetailsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingDetailsViewCtrl.m; path = ScheduleDetails/MeetingDetailsViewCtrl.m; sourceTree = "<group>"; };
+		8950F0BE1F148A0F00BFE1E7 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerViewController.h; path = ScheduleDetails/DatePickerViewController.h; sourceTree = "<group>"; };
+		8950F0BF1F148A0F00BFE1E7 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerViewController.m; path = ScheduleDetails/DatePickerViewController.m; sourceTree = "<group>"; };
+		8950F0C61F14BFBA00BFE1E7 /* CheckInRecordDetailsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckInRecordDetailsViewCtrl.h; path = ScheduleDetails/CheckInRecordDetailsViewCtrl.h; sourceTree = "<group>"; };
+		8950F0C71F14BFBA00BFE1E7 /* CheckInRecordDetailsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckInRecordDetailsViewCtrl.m; path = ScheduleDetails/CheckInRecordDetailsViewCtrl.m; sourceTree = "<group>"; };
+		8950F0CA1F15C25D00BFE1E7 /* VisionaryEdu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VisionaryEdu.entitlements; sourceTree = "<group>"; };
 		89652E5B1F03E9A200CDDECB /* StudentScheduleCellManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentScheduleCellManager.h; sourceTree = "<group>"; };
 		89652E5C1F03E9A200CDDECB /* StudentScheduleCellManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentScheduleCellManager.m; sourceTree = "<group>"; };
 		89652E5E1F04D6C200CDDECB /* ScheduleRangeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleRangeManager.h; sourceTree = "<group>"; };
@@ -220,6 +257,8 @@
 		891BB7C41F00979E00F4DD60 /* 学生日程 */ = {
 			isa = PBXGroup;
 			children = (
+				8946E3A01F10C20F002F7B06 /* 近期目标 */,
+				8946E39F1F10C206002F7B06 /* 考试日程 */,
 				891BB7C11F00979000F4DD60 /* ScheduleViewCtrl.h */,
 				891BB7C21F00979000F4DD60 /* ScheduleViewCtrl.m */,
 				89652E5E1F04D6C200CDDECB /* ScheduleRangeManager.h */,
@@ -241,33 +280,110 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		893AC6A41F0349A700990A48 /* 学生日程model */ = {
+		893AC6A41F0349A700990A48 /* 学生日程查询model */ = {
 			isa = PBXGroup;
 			children = (
+				8946E3AD1F132713002F7B06 /* StudentListModel.h */,
+				8946E3AE1F132713002F7B06 /* StudentListModel.m */,
 				893AC6A11F03499F00990A48 /* StudentScheduleModel.h */,
 				893AC6A21F03499F00990A48 /* StudentScheduleModel.m */,
+				8946E3961F109DA2002F7B06 /* RecentObjectivesModel.h */,
+				8946E3971F109DA2002F7B06 /* RecentObjectivesModel.m */,
 			);
-			name = "学生日程model";
+			name = "学生日程查询model";
+			sourceTree = "<group>";
+		};
+		8946E39F1F10C206002F7B06 /* 考试日程 */ = {
+			isa = PBXGroup;
+			children = (
+				8946E3A11F12697E002F7B06 /* GradeResultInputViewCtrl.h */,
+				8946E3A21F12697E002F7B06 /* GradeResultInputViewCtrl.m */,
+				8946E39C1F10C1F6002F7B06 /* GradeDetailsViewCtrl.h */,
+				8946E39D1F10C1F6002F7B06 /* GradeDetailsViewCtrl.m */,
+			);
+			name = "考试日程";
+			sourceTree = "<group>";
+		};
+		8946E3A01F10C20F002F7B06 /* 近期目标 */ = {
+			isa = PBXGroup;
+			children = (
+				8946E3931F109BFF002F7B06 /* RecentObjectivesViewCtrl.h */,
+				8946E3941F109BFF002F7B06 /* RecentObjectivesViewCtrl.m */,
+				8946E3991F10AD74002F7B06 /* ObjDetailsUViewCtrl.h */,
+				8946E39A1F10AD74002F7B06 /* ObjDetailsUViewCtrl.m */,
+			);
+			name = "近期目标";
+			sourceTree = "<group>";
+		};
+		8950F0BD1F1471E500BFE1E7 /* 详情页 */ = {
+			isa = PBXGroup;
+			children = (
+				8950F0C11F14AAC300BFE1E7 /* 公用选择页 */,
+				8950F0C91F14BFC300BFE1E7 /* 约谈详情 */,
+				8950F0C51F14BF9400BFE1E7 /* 会议详情 */,
+			);
+			name = "详情页";
+			sourceTree = "<group>";
+		};
+		8950F0C11F14AAC300BFE1E7 /* 公用选择页 */ = {
+			isa = PBXGroup;
+			children = (
+				8946E3A71F13198D002F7B06 /* StaffScheduleInventionsViewCtrl.h */,
+				8946E3A81F13198D002F7B06 /* StaffScheduleInventionsViewCtrl.m */,
+				8950F0BE1F148A0F00BFE1E7 /* DatePickerViewController.h */,
+				8950F0BF1F148A0F00BFE1E7 /* DatePickerViewController.m */,
+			);
+			name = "公用选择页";
+			sourceTree = "<group>";
+		};
+		8950F0C51F14BF9400BFE1E7 /* 会议详情 */ = {
+			isa = PBXGroup;
+			children = (
+				8950F0BA1F1471DF00BFE1E7 /* MeetingDetailsViewCtrl.h */,
+				8950F0BB1F1471DF00BFE1E7 /* MeetingDetailsViewCtrl.m */,
+			);
+			name = "会议详情";
+			sourceTree = "<group>";
+		};
+		8950F0C91F14BFC300BFE1E7 /* 约谈详情 */ = {
+			isa = PBXGroup;
+			children = (
+				8950F0C61F14BFBA00BFE1E7 /* CheckInRecordDetailsViewCtrl.h */,
+				8950F0C71F14BFBA00BFE1E7 /* CheckInRecordDetailsViewCtrl.m */,
+			);
+			name = "约谈详情";
+			sourceTree = "<group>";
+		};
+		896193541F13604B00334A3D /* 上送日程数据 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "上送日程数据";
 			sourceTree = "<group>";
 		};
 		89652E641F053F5400CDDECB /* 员工日程 */ = {
 			isa = PBXGroup;
 			children = (
+				8950F0BD1F1471E500BFE1E7 /* 详情页 */,
 				89652E611F053F4900CDDECB /* StaffScheduleViewCtrl.h */,
 				89652E621F053F4900CDDECB /* StaffScheduleViewCtrl.m */,
 				89652E691F05DF5300CDDECB /* StaffScheduleCellManager.h */,
 				89652E6A1F05DF5300CDDECB /* StaffScheduleCellManager.m */,
+				8946E3A41F131263002F7B06 /* CreateStaffScheduleViewCtrl.h */,
+				8946E3A51F131263002F7B06 /* CreateStaffScheduleViewCtrl.m */,
 			);
 			name = "员工日程";
 			sourceTree = "<group>";
 		};
-		89652E681F05D6A700CDDECB /* 员工日程model */ = {
+		89652E681F05D6A700CDDECB /* 员工日程查询model */ = {
 			isa = PBXGroup;
 			children = (
+				8946E3AA1F132348002F7B06 /* StaffListModel.h */,
+				8946E3AB1F132348002F7B06 /* StaffListModel.m */,
 				89652E651F05D69E00CDDECB /* StaffScheduleModel.h */,
 				89652E661F05D69E00CDDECB /* StaffScheduleModel.m */,
 			);
-			name = "员工日程model";
+			name = "员工日程查询model";
 			sourceTree = "<group>";
 		};
 		89652E711F0A3DFE00CDDECB /* OptionView */ = {
@@ -406,6 +522,7 @@
 		89CFBCBD1EFE15BD00439496 /* VisionaryEdu */ = {
 			isa = PBXGroup;
 			children = (
+				8950F0CA1F15C25D00BFE1E7 /* VisionaryEdu.entitlements */,
 				89CFBCC11EFE15BD00439496 /* AppDelegate.h */,
 				89CFBCC21EFE15BD00439496 /* AppDelegate.m */,
 				8993032F1EFE17A000B066AD /* config.h */,
@@ -452,9 +569,10 @@
 			children = (
 				899303341EFFB78F00B066AD /* StudentInstance.h */,
 				899303351EFFB78F00B066AD /* StudentInstance.m */,
+				896193541F13604B00334A3D /* 上送日程数据 */,
 				8916B25A1F0CD8A900808BC8 /* 各个档案 */,
-				89652E681F05D6A700CDDECB /* 员工日程model */,
-				893AC6A41F0349A700990A48 /* 学生日程model */,
+				89652E681F05D6A700CDDECB /* 员工日程查询model */,
+				893AC6A41F0349A700990A48 /* 学生日程查询model */,
 				899303381EFFC4B200B066AD /* 登录model */,
 				899303391EFFC4E400B066AD /* 主页学生列表model */,
 				8993033A1EFFC4EF00B066AD /* 成绩model */,
@@ -625,6 +743,11 @@
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = C76TLF45XF;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -717,6 +840,8 @@
 			files = (
 				89FDE5891F0DD598001158F1 /* EduInfoModel.m in Sources */,
 				89F58FC21F0F765A00AC6B1B /* FamilyInfoModel.m in Sources */,
+				8946E3981F109DA2002F7B06 /* RecentObjectivesModel.m in Sources */,
+				8950F0C81F14BFBA00BFE1E7 /* CheckInRecordDetailsViewCtrl.m in Sources */,
 				89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */,
 				89CFBCE91EFE163C00439496 /* SYHttpTool.m in Sources */,
 				89CFBCE21EFE160E00439496 /* StudentScoreInDetailsModel.m in Sources */,
@@ -724,18 +849,26 @@
 				89652E741F0A41D800CDDECB /* SingleGradeView.m in Sources */,
 				89652E601F04D6C200CDDECB /* ScheduleRangeManager.m in Sources */,
 				89FDE5A71F0F324A001158F1 /* HonorActivityModel.m in Sources */,
+				8950F0BC1F1471DF00BFE1E7 /* MeetingDetailsViewCtrl.m in Sources */,
 				89CFBCC31EFE15BD00439496 /* AppDelegate.m in Sources */,
 				89CFBCF11EFE164100439496 /* StaffHomePageViewCtrl.m in Sources */,
 				899303321EFFB40500B066AD /* SettingsViewCtrl.m in Sources */,
 				89CFBCE11EFE160E00439496 /* StudentBaseInfoManager.m in Sources */,
 				891BB7CC1F014C5500F4DD60 /* PwdModifyViewCtrl.m in Sources */,
 				89652E631F053F4900CDDECB /* StaffScheduleViewCtrl.m in Sources */,
+				8946E3A31F12697E002F7B06 /* GradeResultInputViewCtrl.m in Sources */,
 				89CFBD021EFE164600439496 /* scoreInDetailTableViewCell.m in Sources */,
+				8946E3AF1F132713002F7B06 /* StudentListModel.m in Sources */,
 				89FDE5861F0DD13C001158F1 /* EducationInfoViewCtrl.m in Sources */,
 				89FDE5A31F0F30E5001158F1 /* HonorActivityViewCtrl.m in Sources */,
 				89FDE5941F0E2409001158F1 /* PassportInfoViewCtrl.m in Sources */,
+				8946E3A61F131263002F7B06 /* CreateStaffScheduleViewCtrl.m in Sources */,
+				8946E3951F109BFF002F7B06 /* RecentObjectivesViewCtrl.m in Sources */,
 				89FDE5971F0E72A3001158F1 /* CourseInfoViewCtrl.m in Sources */,
+				8946E3AC1F132348002F7B06 /* StaffListModel.m in Sources */,
+				8946E39E1F10C1F6002F7B06 /* GradeDetailsViewCtrl.m in Sources */,
 				89CFBCC01EFE15BD00439496 /* main.m in Sources */,
+				8946E39B1F10AD74002F7B06 /* ObjDetailsUViewCtrl.m in Sources */,
 				897A0A7A1F0C8C5100EE8846 /* CommentViewCtrl.m in Sources */,
 				89CFBD031EFE164600439496 /* StudentInfoTableViewCell.m in Sources */,
 				89CFBCD81EFE15EE00439496 /* LoginViewCtrl.m in Sources */,
@@ -752,6 +885,7 @@
 				8916B25D1F0CE7F700808BC8 /* PersonalInfoTableViewCtrl.m in Sources */,
 				893AC6A31F03499F00990A48 /* StudentScheduleModel.m in Sources */,
 				891BB7C31F00979000F4DD60 /* ScheduleViewCtrl.m in Sources */,
+				8946E3A91F13198D002F7B06 /* StaffScheduleInventionsViewCtrl.m in Sources */,
 				89F58FBE1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m in Sources */,
 				8916B2591F0CD59000808BC8 /* TestAccountModel.m in Sources */,
 				8916B2601F0CF71400808BC8 /* PersonalInfoModel.m in Sources */,
@@ -760,6 +894,7 @@
 				89652E671F05D69E00CDDECB /* StaffScheduleModel.m in Sources */,
 				89CFBD061EFE164600439496 /* YQNumberSlideView.m in Sources */,
 				89CFBCEA1EFE163C00439496 /* SysTool.m in Sources */,
+				8950F0C01F148A0F00BFE1E7 /* DatePickerViewController.m in Sources */,
 				8993033E1EFFF76300B066AD /* TabBarManagerViewCtrl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -881,6 +1016,7 @@
 			baseConfigurationReference = 30DEF1E016840C712AF95BB8 /* Pods-VisionaryEdu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VisionaryEdu/VisionaryEdu.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C76TLF45XF;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -920,6 +1056,7 @@
 			baseConfigurationReference = AE8B271994E04811578481FD /* Pods-VisionaryEdu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VisionaryEdu/VisionaryEdu.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C76TLF45XF;
 				FRAMEWORK_SEARCH_PATHS = (

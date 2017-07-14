@@ -7,17 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface Student_username :NSObject
-@property (nonatomic , copy) NSString              * avatar;
-@property (nonatomic , assign) BOOL              undergrad;
-@property (nonatomic , copy) NSString              * gender;
-@property (nonatomic , copy) NSString              * registration_date;
-@property (nonatomic , copy) NSString              * username;
-@property (nonatomic , assign) BOOL              hs_guard;
-@property (nonatomic , copy) NSString              * full_name;
-@property (nonatomic , assign) NSInteger              user_class;
-@end
+#import "Username.h"
 
 @interface Profile_Results :NSObject
 @property (nonatomic , copy) NSString              * student_comment;

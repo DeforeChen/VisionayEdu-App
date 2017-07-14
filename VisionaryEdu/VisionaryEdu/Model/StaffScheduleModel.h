@@ -23,7 +23,6 @@
 #pragma mark Response
 @interface Meetings :NSObject
 @property (nonatomic , strong) NSArray<NSString *>  * staff_all;
-@property (nonatomic , strong) NSArray<NSString *>  * staff_real_name;
 @property (nonatomic , copy) NSString              * time;
 @property (nonatomic , copy) NSString              * details;
 @property (nonatomic , copy) NSString              * date;
@@ -36,6 +35,7 @@
 typedef enum : NSUInteger {
     MeetingType = 0,
     StaffCheckInRecordsType,
+    NoneType = 99
 } StaffScheduleType;
 @interface StaffScheduleResponse :NSObject
 @property (nonatomic , strong) NSArray<Meetings *>              * Meetings;

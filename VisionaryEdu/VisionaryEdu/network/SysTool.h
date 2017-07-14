@@ -30,6 +30,14 @@ typedef enum : NSUInteger {
 
 
 /**
+ msg box 添加取消的弹框提示
+
+ @param msg 消息
+ @param blk 点击OK后的操作
+ @param vc 在哪个vc上添加通知
+ */
++ (void)showTipWithMsg:(NSString *)msg handler:(void (^)(UIAlertAction *action))blk viewCtrl:(UIViewController *)vc;
+/**
  添加HUD提示框
  
  @param msg 提示信息

@@ -13,14 +13,16 @@
 @interface StaffCheckInRecordsCell()
 @property (weak, nonatomic) IBOutlet UILabel *topicLB;
 @property (weak, nonatomic) IBOutlet UILabel *recordTimeLB;
+@property (weak, nonatomic) IBOutlet UILabel *studentRealNameLB;
 
 @end
 
 @implementation StaffCheckInRecordsCell
 +(instancetype)initMyCellWithStaffRecordModel:(CheckInRecords*)records tableview:(UITableView*)tableview {
     StaffCheckInRecordsCell *cell = (StaffCheckInRecordsCell*)[tableview dequeueReusableCellWithIdentifier:@"StaffCheckinRecord"];
-    cell.topicLB.text = records.topic;
+    cell.topicLB.text = [NSString stringWithFormat:@"约谈 - %@",records.topic];
     cell.recordTimeLB.text = records.time;
+    cell.studentRealNameLB.text = records.student_real_name;
     return cell;
 }
 @end
@@ -35,7 +37,7 @@
 @implementation StaffMeetingCell
 +(instancetype)initMyCellWithMeetingModel:(Meetings*)meeting tableview:(UITableView*)tableview {
     StaffMeetingCell *cell = (StaffMeetingCell*)[tableview dequeueReusableCellWithIdentifier:@"meeting"];
-    cell.inventedGuysLB.text = [[meeting.staff_real_name mutableCopy] componentsJoinedByString:@","];
+    cell.inventedGuysLB.text = [[meeting.staff_all mutableCopy] componentsJoinedByString:@","];
     cell.meetingTimeLB.text = meeting.time;
     cell.meetingPlaceLB.text = meeting.place;
     cell.meetingTopicLB.text = [NSString stringWithFormat:@"会议-%@",meeting.topic];

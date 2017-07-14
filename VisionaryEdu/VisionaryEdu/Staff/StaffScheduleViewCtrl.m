@@ -10,10 +10,14 @@
 #import "config.h"
 #import <FSCalendar/FSCalendar.h>
 #import <MJExtension/MJExtension.h>
+#import <MJRefresh/MJRefresh.h>
 #import "UIColor+expanded.h"
 #import "ScheduleRangeManager.h"
 #import "StaffScheduleModel.h"
 #import "StaffScheduleCellManager.h"
+
+#import "MeetingDetailsViewCtrl.h"
+#import "CheckInRecordDetailsViewCtrl.h"
 
 #define MeetingColor [UIColor colorWithHexString:@"#FFB679"]
 #define CheckInRecordsColor [UIColor colorWithHexString:@"#4ED6BB"]
@@ -27,6 +31,7 @@
 @property (strong, nonatomic) ScheduleRangeManager *manager;
 @property (copy, nonatomic) NSString *selectDate;
 
+@property (weak, nonatomic) IBOutlet UIButton *refreshBtn;
 @property (weak, nonatomic) IBOutlet UILabel *selectDateLB;
 @property (weak, nonatomic) IBOutlet UILabel *totalEventsLB;
 
@@ -39,18 +44,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.refreshBtn.layer.cornerRadius = 10.0f;
+    self.refreshBtn.layer.borderColor  = [UIColor colorWithHexString:@"#3E3D4E"].CGColor;
+    self.refreshBtn.layer.borderWidth = 1.0f;
+    self.refreshBtn.clipsToBounds = YES;
     // Do any additional setup after loading the view.
     self.systemCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateFormat = @"yyyy-MM-dd";
-    self.manager = [ScheduleRangeManager initWithDateFormatter:self.dateFormatter];
+    self.selectDate = [self.dateFormatter stringFromDate:[NSDate new]];
+    self.scheduleListTB.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshScheduleWhenEmpty:)];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-    self.selectDate = [self.dateFormatter stringFromDate:[NSDate new]];
-    [self requestStudentScheduleInfo:[NSDate new]];
+    [self.scheduleLUT removeAllObjects];
+    self.manager = [ScheduleRangeManager initWithDateFormatter:self.dateFormatter];
+
+    NSDate *date = [self.dateFormatter dateFromString:self.selectDate];
+    [self requestStaffScheduleInfo:date];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -94,11 +107,22 @@
 }
 
 #pragma mark Private Methods
+- (IBAction)refreshScheduleWhenEmpty:(UIButton *)sender {
+    [self.scheduleLUT removeAllObjects];
+    self.manager = nil;
+    self.manager = [ScheduleRangeManager initWithDateFormatter:self.dateFormatter];
+    [self requestStaffScheduleInfo:[self.dateFormatter dateFromString:self.selectDate]];
+    if (self.scheduleListTB.hidden == NO) {
+        [self.scheduleListTB.mj_header endRefreshing];
+    }
+}
+
+
 /**
  根据传入的时间，判断这个时间是否在已显示的范围内，若超过，则开始申请数据
  @param date 日期
  */
--(void)requestStudentScheduleInfo:(NSDate*)date {
+-(void)requestStaffScheduleInfo:(NSDate*)date {
     [self.manager judgeDateBeyondRange:date callback:^(BOOL isBeyondRange, NSArray *newRange) {
         if (isBeyondRange == YES) {
             [SysTool showLoadingHUDWithMsg:@"员工日程加载中..." duration:0];
@@ -218,14 +242,14 @@
 #pragma mark FSCalendar delegate
 -(void)calendarCurrentPageDidChange:(FSCalendar *)calendar {
     self.selectDate = [self.dateFormatter stringFromDate:calendar.currentPage];
-    [self requestStudentScheduleInfo:calendar.currentPage];
+    [self requestStaffScheduleInfo:calendar.currentPage];
 }
 
 #pragma mark - <FSCalendarDataSource>
 - (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date {
     NSString *dateString = [self.dateFormatter stringFromDate:date];
     NSInteger totalEventNum = [self calcTotalEventTypeWithDate:dateString];
-    XLog(@"%@事件总数 %d",dateString,(int)totalEventNum);
+//    XLog(@"%@事件总数 %d",dateString,(int)totalEventNum);
     return totalEventNum;
 }
 
@@ -260,4 +284,20 @@
     return eventColors;
 }
 
+#pragma mark - Navigation
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    id destVC = segue.destinationViewController;
+    if ([destVC isKindOfClass:[MeetingDetailsViewCtrl class]]) {
+        MeetingDetailsViewCtrl *vc = destVC;
+        NSIndexPath *path = [self.scheduleListTB indexPathForCell:sender];
+        XLog(@"会议对应点击的行数 = %@",path);
+        vc.meetingModel = self.dayMeetingArray[path.row];
+    } else if([destVC isKindOfClass:[CheckInRecordDetailsViewCtrl class]]){
+        CheckInRecordDetailsViewCtrl *vc = destVC;
+        NSIndexPath *path = [self.scheduleListTB indexPathForCell:sender];
+        XLog(@"约谈对应点击的行数 = %@",path);
+        vc.recordModel = self.dayCheckInRecordsArray[path.row];
+    }
+}
 @end

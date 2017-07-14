@@ -17,6 +17,9 @@ PODS:
   - FSCalendar (2.7.8)
   - FSLineChart (0.1.7)
   - IQKeyboardManager (4.0.10)
+  - JCore (1.1.3)
+  - JPush (3.0.5):
+    - JCore (~> 1.1.1)
   - JYRadarChart (0.4.0)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
@@ -28,6 +31,7 @@ DEPENDENCIES:
   - FSCalendar
   - FSLineChart
   - IQKeyboardManager
+  - JPush
   - JYRadarChart
   - MJExtension
   - MJRefresh
@@ -39,12 +43,14 @@ SPEC CHECKSUMS:
   FSCalendar: 09369a2bf554ba71cd8e8cfb627e2df22a2c2af4
   FSLineChart: 1b8d3727e8feb323144126d381184bf1b15e6efc
   IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
+  JCore: dff3c50e9a7522a508cd9096ca79165968e1aed3
+  JPush: dd0b776998aa705a6242b947bf72e5a640387cfe
   JYRadarChart: 3e96b2696a0f3ba6a419f162edcfb5e97317cc8c
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 27d614cdc7f37ddda878ef5bf90fb8df6fcf83ec
+PODFILE CHECKSUM: c3f60634a19872c3e0408abce8838594ec83d75b
 
 COCOAPODS: 1.2.0

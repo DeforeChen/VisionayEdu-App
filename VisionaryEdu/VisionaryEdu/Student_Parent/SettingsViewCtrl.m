@@ -30,22 +30,10 @@
 
 #pragma mark UserInteraction
 - (IBAction)logout:(UIButton *)sender {
-    [SysTool showLoadingHUDWithMsg:@"登出中..." duration:0];
-    [[SYHttpTool sharedInstance] logoutRequest:LOGOUT token:[LoginInfoModel fetchTokenFromSandbox] completionHandler:^(BOOL success, NSString *msg, id responseObject) {
-        [SysTool dismissHUD];
-        if (success) {
-            NSString *retDetails = [responseObject objectForKey:@"detail"];
-            if ([retDetails isEqualToString:LOGOUT_SUC]) {
-                [LoginInfoModel clearLoginInfoInSandbox];
-                [self.navigationController popToRootViewControllerAnimated:NO];
-            } else
-                [SysTool showErrorWithMsg:@"登出错误，请重试!" duration:1.5];
-        } else {
-            NSString *errMsg = [NSString stringWithFormat:@"登出失败\n%@",msg];
-            [SysTool showErrorWithMsg:errMsg duration:1.5];
-        }
-    }];
+    [SysTool showAlertWithMsg:@"登出成功" handler:^(UIAlertAction *action) {
+        [LoginInfoModel clearLoginInfoInSandbox];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    } viewCtrl:self];
 }
-
 
 @end

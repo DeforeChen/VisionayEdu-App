@@ -50,18 +50,34 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
         return nil;
 }
 
-#pragma mark 方法
--(void)logoutRequest:(NSString*)url
-               token:(NSString*)token
-   completionHandler:(HTTPCompletion)completionBlock {
+#pragma mark 上送数据 —— 增
+-(void)addEventWithURL:(NSString*)url
+                 token:(NSString*)token
+                params:(NSDictionary*)paramDict
+     completionHandler:(HTTPCompletion)completionBlock {
     NSString *requestURL = [NSString stringWithFormat:@"%@%@",VISIONARY_HOST,url];
     [self loadWithURL:requestURL
                method:POST
-               params:nil
+               params:paramDict
     completionHandler:completionBlock
                 token:token];
 }
 
+#pragma mark 上送数据 —— 改
+-(void)patchEventWithURL:(NSString *)url
+              primaryKey:(NSInteger )pk
+                   token:(NSString *)token
+                  params:(NSDictionary *)paramDict
+       completionHandler:(HTTPCompletion)completionBlock {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@%d/",VISIONARY_HOST,url,(int)pk];
+    [self loadWithURL:requestURL
+               method:PATCH
+               params:paramDict
+    completionHandler:completionBlock
+                token:token];
+}
+
+#pragma mark 方法
 -(void)getReqWithURL:(NSString *)url
                token:(NSString *)token
               params:(NSDictionary *)paramDict
@@ -74,10 +90,20 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
                 token:token];
 }
 
--(void)fetchTokenWithUserName:(NSString *)name password:(NSString *)pwd completionHandler:(HTTPCompletion)completionBlock {
+-(void)getNextPageWithEntireURL:(NSString*)url
+                          token:(NSString*)token
+              completionHandler:(HTTPCompletion)completionBlock {
+    [self loadWithURL:url
+               method:GET
+               params:nil
+    completionHandler:completionBlock
+                token:token];
+}
+
+-(void)fetchTokenWithUserName:(NSString *)name password:(NSString *)pwd registration_id:(NSString*)jpushID completionHandler:(HTTPCompletion)completionBlock {
     NSDictionary *paramsDict = @{@"username":name,
-                                 @"password":pwd
-                                 };
+                                 @"password":pwd,
+                                 @"registration_id":jpushID};
     NSString *loginURL = [NSString stringWithFormat:@"%@%@",VISIONARY_HOST,LOGIN];
     NSLog(@"登录的URL = %@",loginURL);
     [self loadWithURL:loginURL
@@ -122,7 +148,7 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
                      completionBlock(NO, [NSHTTPURLResponse localizedStringForStatusCode:((NSHTTPURLResponse *) task.response).statusCode], error);
                  }
              }];
-    } else {
+    } else if(methodType == POST) {
         [manager POST:url parameters:params
              progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
                  [weekSelf handleResponseObject:responseObject completionHandler:completionBlock url:url];
@@ -131,7 +157,22 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
                   if (completionBlock)
                       completionBlock(NO, [NSHTTPURLResponse localizedStringForStatusCode:((NSHTTPURLResponse *) task.response).statusCode], error);
               }];
+    } else if(methodType == PATCH) {
+        [manager PATCH:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [weekSelf handleResponseObject:responseObject completionHandler:completionBlock url:url];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if (completionBlock)
+                completionBlock(NO, [NSHTTPURLResponse localizedStringForStatusCode:((NSHTTPURLResponse *) task.response).statusCode], error);
+        }];
+    } else {
+        [manager DELETE:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [weekSelf handleResponseObject:responseObject completionHandler:completionBlock url:url];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            if (completionBlock)
+                completionBlock(NO, [NSHTTPURLResponse localizedStringForStatusCode:((NSHTTPURLResponse *) task.response).statusCode], error);
+        }];
     }
+        
 }
 
 - (void)handleResponseObject:(id)responseObject completionHandler:(HTTPCompletion)completionBlock url:(NSString *)url {

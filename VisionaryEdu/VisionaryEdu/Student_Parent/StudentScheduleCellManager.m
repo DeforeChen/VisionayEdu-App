@@ -14,15 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *testPlaceLB;
 @end
 
-typedef enum : NSUInteger {
-    Toefl = 0,
-    ielts = 1,
-    SAT,
-    ACT,
-    SAT2,
-    AP,
-    IB
-} testType;
 @implementation FutureTestCell
 +(FutureTestCell *)initMyCellWithTableview:(UITableView *)tableview testModel:(FutureTests*)test {
     FutureTestCell *cell = (FutureTestCell*)[tableview dequeueReusableCellWithIdentifier:@"futureTest"];

@@ -18,7 +18,7 @@
 
 @implementation SysTool
 #pragma mark 警告框提示
-+ (void)showAlertWithMsg:(NSString *)msg handler:(void (^)(UIAlertAction *))blk viewCtrl:(UIViewController *)vc {
++ (void)showAlertWithMsg:(NSString *)msg handler:(void (^)(UIAlertAction *action))blk viewCtrl:(UIViewController *)vc {
     UIAlertController *altertCtrl = [UIAlertController alertControllerWithTitle:@"提示"
                                                                         message:msg
                                                                  preferredStyle:UIAlertControllerStyleAlert
@@ -27,6 +27,20 @@
                                                        style:UIAlertActionStyleDefault
                                                      handler:blk];
     [altertCtrl addAction:okAction];
+    [vc presentViewController:altertCtrl animated:YES completion:nil];
+}
+
++ (void)showTipWithMsg:(NSString *)msg handler:(void (^)(UIAlertAction *action))blk viewCtrl:(UIViewController *)vc {
+    UIAlertController *altertCtrl = [UIAlertController alertControllerWithTitle:@"提示"
+                                                                        message:msg
+                                                                 preferredStyle:UIAlertControllerStyleAlert
+                                     ];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"再看看" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:blk];
+    [altertCtrl addAction:okAction];
+    [altertCtrl addAction:cancelAction];
     [vc presentViewController:altertCtrl animated:YES completion:nil];
 }
 

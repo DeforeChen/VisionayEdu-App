@@ -15,6 +15,11 @@
 #import "StudentInstance.h"
 #import "config.h"
 
+//#define MY_DEBUG
+#ifdef MY_DEBUG
+#import <JPush/JPUSHService.h>
+#endif
+
 @interface StaffHomePageViewCtrl ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *studentListTB;
 @property (weak, nonatomic) IBOutlet UILabel *studentTotalNumLB;
@@ -50,6 +55,11 @@
             [self refresh];
         }
     }
+    
+#ifdef MY_DEBUG
+    NSString *ID = [JPUSHService registrationID];
+    [SysTool showAlertWithMsg:ID handler:nil viewCtrl:self];
+#endif
 }
 
 -(void)viewWillDisappear:(BOOL)animated {

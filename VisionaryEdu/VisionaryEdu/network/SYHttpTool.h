@@ -11,7 +11,9 @@
 
 typedef NS_ENUM(NSInteger, HTTP_TYPE) {
     POST,
-    GET
+    GET,
+    PATCH,
+    DELETE
 };
 
 typedef void(^HTTPCompletion)(BOOL success,NSString *msg,id responseObject);
@@ -39,23 +41,41 @@ typedef void(^HTTPCompletion)(BOOL success,NSString *msg,id responseObject);
    completionHandler:(HTTPCompletion)completionBlock;
 
 
+
 /**
- 登出操作(POST请求)
+ 带有“下一页”的请求，主要为上拉刷新使用
 
- @param url 登出URL
+ @param url URL
  @param token 令牌
- @param completionBlock 回调函数
+ @param completionBlock 回调
  */
--(void)logoutRequest:(NSString*)url
-               token:(NSString*)token
-   completionHandler:(HTTPCompletion)completionBlock;
-
+-(void)getNextPageWithEntireURL:(NSString*)url
+                          token:(NSString*)token
+              completionHandler:(HTTPCompletion)completionBlock;
 /**
  获取登录令牌
 
  @param name 用户名
  @param pwd 密码
+ @param jpushID 极光推送 ID
  @param completionBlock 回调函数
  */
--(void)fetchTokenWithUserName:(NSString*)name password:(NSString*)pwd completionHandler:(HTTPCompletion)completionBlock;
+-(void)fetchTokenWithUserName:(NSString*)name
+                     password:(NSString*)pwd
+              registration_id:(NSString*)jpushID
+            completionHandler:(HTTPCompletion)completionBlock;
+
+#pragma mark 上送数据 —— 增
+-(void)addEventWithURL:(NSString*)url
+                 token:(NSString*)token
+                params:(NSDictionary*)paramDict
+     completionHandler:(HTTPCompletion)completionBlock;
+
+#pragma mark 上送数据 —— 改
+-(void)patchEventWithURL:(NSString*)url
+              primaryKey:(NSInteger )pk
+                   token:(NSString*)token
+                  params:(NSDictionary*)paramDict
+       completionHandler:(HTTPCompletion)completionBlock;
+
 @end
