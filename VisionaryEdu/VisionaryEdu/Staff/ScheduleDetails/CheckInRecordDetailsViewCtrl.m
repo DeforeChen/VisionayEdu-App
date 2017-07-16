@@ -92,8 +92,7 @@
 }
 
 - (IBAction)jumpToSelectGuysViewCtrl:(UIButton *)sender {
-    StaffScheduleInventionsViewCtrl *vc = [StaffScheduleInventionsViewCtrl initMyViewCtrlWithUseMode:ModifyMode scheduleTypeUnderModifyMode:StaffCheckInRecordsType createCallback:nil modifyCallback:^(NSArray *selectGuys) {
-//        self.stafflistLB.text = [selectGuys componentsJoinedByString:@" "];
+    StaffScheduleInventionsViewCtrl *vc = [StaffScheduleInventionsViewCtrl initMyViewCtrlWithUseMode:ModifyMode scheduleTypeUnderModifyMode:StaffCheckInRecordsType guysHaveBeenIncluded:@[self.recordModel.student_real_name] createCallback:nil modifyCallback:^(NSArray *selectGuys) {
         self.studentListTextView.text = [selectGuys componentsJoinedByString:@" "];
     }];
     [self.navigationController pushViewController:vc animated:YES];

@@ -71,6 +71,13 @@ typedef void(^HTTPCompletion)(BOOL success,NSString *msg,id responseObject);
                 params:(NSDictionary*)paramDict
      completionHandler:(HTTPCompletion)completionBlock;
 
+#pragma mark 上送数据 —— 删
+-(void)deleteEventWithURL:(NSString*)url
+               primaryKey:(NSInteger )pk
+                    token:(NSString*)token
+                   params:(NSDictionary*)paramDict
+        completionHandler:(HTTPCompletion)completionBlock;
+
 #pragma mark 上送数据 —— 改
 -(void)patchEventWithURL:(NSString*)url
               primaryKey:(NSInteger )pk

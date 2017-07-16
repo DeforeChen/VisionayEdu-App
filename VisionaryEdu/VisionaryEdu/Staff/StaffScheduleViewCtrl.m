@@ -263,7 +263,7 @@
 - (NSArray *)calendar:(FSCalendar *)calendar appearance:(FSCalendarAppearance *)appearance eventDefaultColorsForDate:(NSDate *)date {
     NSString *dateString = [self.dateFormatter stringFromDate:date];
     NSMutableArray *eventColors = [NSMutableArray new];
-    
+
     if ([self.scheduleLUT[dateString][MeetingType] count] > 0)
         [eventColors addObject:MeetingColor];
     if ([self.scheduleLUT[dateString][StaffCheckInRecordsType] count] > 0)

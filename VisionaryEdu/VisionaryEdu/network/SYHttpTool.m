@@ -63,6 +63,21 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
                 token:token];
 }
 
+#pragma mark 上送数据 —— 删
+-(void)deleteEventWithURL:(NSString*)url
+               primaryKey:(NSInteger )pk
+                    token:(NSString*)token
+                   params:(NSDictionary*)paramDict
+        completionHandler:(HTTPCompletion)completionBlock {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@%d/",VISIONARY_HOST,url,(int)pk];
+    [self loadWithURL:requestURL
+               method:DELETE
+               params:paramDict
+    completionHandler:completionBlock
+                token:token];
+    
+}
+
 #pragma mark 上送数据 —— 改
 -(void)patchEventWithURL:(NSString *)url
               primaryKey:(NSInteger )pk
@@ -171,8 +186,7 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
             if (completionBlock)
                 completionBlock(NO, [NSHTTPURLResponse localizedStringForStatusCode:((NSHTTPURLResponse *) task.response).statusCode], error);
         }];
-    }
-        
+    }  
 }
 
 - (void)handleResponseObject:(id)responseObject completionHandler:(HTTPCompletion)completionBlock url:(NSString *)url {

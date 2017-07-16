@@ -23,9 +23,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *editInventedGuysBtn;
 @property (weak, nonatomic) IBOutlet UIButton *guySelectBtn;
 
-@property (weak, nonatomic) IBOutlet UITextField *topicTF;
-@property (weak, nonatomic) IBOutlet UITextField *placeTF;
-@property (weak, nonatomic) IBOutlet UITextView *detailsTextField;
+@property (weak, nonatomic) IBOutlet UITextView *topicTextView;
+@property (weak, nonatomic) IBOutlet UITextView *placeTextView;
+@property (weak, nonatomic) IBOutlet UITextView *detailsTextView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLB;
 @property (weak, nonatomic) IBOutlet UITextView *staffListTextView;
 @property (weak, nonatomic) IBOutlet UIButton *comittBtn;
@@ -46,9 +46,9 @@
     
     [self switchEditModeUI];
     
-    self.topicTF.text = self.meetingModel.topic;
-    self.placeTF.text = self.meetingModel.place;
-    self.detailsTextField.text = self.meetingModel.details;
+    self.topicTextView.text = self.meetingModel.topic;
+    self.placeTextView.text = self.meetingModel.place;
+    self.detailsTextView.text = self.meetingModel.details;
     self.dateLB.text = [NSString stringWithFormat:@"%@ %@",self.meetingModel.date,[self.meetingModel.time substringToIndex:5]];
     self.staffListTextView.text = [self.meetingModel.staff_all componentsJoinedByString:@" "];
     // Do any additional setup after loading the view.
@@ -69,10 +69,10 @@
     self.comittBtn.hidden      = (edit == YES)?NO:YES;
     self.editInventedGuysBtn.hidden = (edit == YES)?NO:YES;
     self.deleteScheduleBtn.hidden = (edit == YES)?NO:YES;
-
-    self.detailsTextField.editable = (edit)?YES:NO;
-    self.topicTF.userInteractionEnabled = (edit)?YES:NO;
-    self.placeTF.userInteractionEnabled = (edit)?YES:NO;
+    
+    self.detailsTextView.editable = (edit)?YES:NO;
+    self.topicTextView.userInteractionEnabled = (edit)?YES:NO;
+    self.placeTextView.userInteractionEnabled = (edit)?YES:NO;
     self.dateSelectBtn.userInteractionEnabled = (edit)?YES:NO;
     self.guySelectBtn.userInteractionEnabled = (edit)?YES:NO;
 }
@@ -84,17 +84,17 @@
     if (self.whether_editMode == YES) { //进入编辑模式
         [sender setTitle:@"完成" forState:UIControlStateNormal];
     } else
-      [sender setTitle:@"编辑" forState:UIControlStateNormal];
+        [sender setTitle:@"编辑" forState:UIControlStateNormal];
 }
 
 - (IBAction)commitAndUpload:(UIButton *)sender {
-    [SysTool showTipWithMsg:@"确认上送吗?" handler:^(UIAlertAction *action) {
-        if ([self juedgeInputLegal]) {
-            self.meetingModel.topic = self.topicTF.text;
+    if ([self juedgeInputLegal]) {
+        [SysTool showTipWithMsg:@"确认上送吗?" handler:^(UIAlertAction *action) {
+            self.meetingModel.topic = self.topicTextView.text;
             self.meetingModel.date = [self.dateLB.text substringToIndex:10];
             self.meetingModel.time = [self.dateLB.text substringFromIndex:11];
-            self.meetingModel.place = self.placeTF.text;
-            self.meetingModel.details = self.detailsTextField.text;
+            self.meetingModel.place = self.placeTextView.text;
+            self.meetingModel.details = self.detailsTextView.text;
             [SysTool showLoadingHUDWithMsg:@"正在上送新的会议日程信息..." duration:0];
             NSMutableDictionary *reqDict = self.meetingModel.mj_keyValues;
             [reqDict setObject:[LoginInfoModel fetchAccountUsername] forKey:@"username"];
@@ -107,8 +107,8 @@
                     [SysTool showAlertWithMsg:msg handler:nil viewCtrl:self];
                 }
             }];
-        }
-    } viewCtrl:self];
+        } viewCtrl:self];
+    }
 }
 
 - (IBAction)jumpToDatePickerViewCtrl:(UIButton *)sender {
@@ -122,29 +122,55 @@
 }
 
 - (IBAction)jumpToSelectGuysViewCtrl:(UIButton *)sender {
-    StaffScheduleInventionsViewCtrl *vc = [StaffScheduleInventionsViewCtrl initMyViewCtrlWithUseMode:ModifyMode scheduleTypeUnderModifyMode:MeetingType createCallback:nil modifyCallback:^(NSArray *selectGuys) {
+    StaffScheduleInventionsViewCtrl *vc = [StaffScheduleInventionsViewCtrl initMyViewCtrlWithUseMode:ModifyMode scheduleTypeUnderModifyMode:MeetingType guysHaveBeenIncluded:self.meetingModel.staff_all createCallback:nil modifyCallback:^(NSArray *selectGuys) {
         self.meetingModel.staff_all = selectGuys;
         self.staffListTextView.text = [selectGuys componentsJoinedByString:@" "];
     }];
-
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)deleteSchedule:(UIButton *)sender {
     [SysTool showTipWithMsg:@"确认要删除当前事件吗?" handler:^(UIAlertAction *action) {
-        
+        [SysTool showLoadingHUDWithMsg:@"上送删除信息中..." duration:0];
+        NSMutableDictionary *reqDict = self.meetingModel.mj_keyValues;
+        [reqDict setObject:[LoginInfoModel fetchAccountUsername] forKey:@"username"];
+        [[SYHttpTool sharedInstance] deleteEventWithURL:UPLOAD_MEETING primaryKey:self.meetingModel.pk token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
+            [SysTool dismissHUD];
+            if (success) {
+                [SysTool showErrorWithMsg:@"删除成功!" duration:2];
+                [self.navigationController popViewControllerAnimated:YES];
+            } else {
+                [SysTool showAlertWithMsg:msg handler:nil viewCtrl:self];
+            }
+        }];
     } viewCtrl:self];
 }
 
 
 -(BOOL)juedgeInputLegal {
-    if (self.topicTF.text.length == 0) {
+    self.topicTextView.text = [SysTool TrimSpaceString:self.topicTextView.text];
+    self.placeTextView.text = [SysTool TrimSpaceString:self.placeTextView.text];
+    self.detailsTextView.text = [SysTool TrimSpaceString:self.detailsTextView.text];
+    
+    if (self.topicTextView.text.length == 0) {
         [SysTool showErrorWithMsg:@"主题不能为空!" duration:1];
         return NO;
     }
     
-    if (self.detailsTextField.text.length == 0) {
+    if (self.detailsTextView.text.length == 0) {
         [SysTool showErrorWithMsg:@"详情不能为空!" duration:1];
+        return NO;
+    }
+    
+    // 判断长度
+    if (self.topicTextView.text.length > 15) {
+        [SysTool showErrorWithMsg:@"主题长度不能超过15!" duration:1];
+        return NO;
+    }
+    
+    if (self.placeTextView.text.length > 25) {
+        [SysTool showErrorWithMsg:@"地点长度不能超过25!" duration:1];
         return NO;
     }
     

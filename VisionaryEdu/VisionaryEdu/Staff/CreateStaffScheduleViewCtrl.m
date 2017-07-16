@@ -15,13 +15,19 @@
 #import "StudentListModel.h"
 #import <MJExtension/MJExtension.h>
 
-@interface CreateStaffScheduleViewCtrl ()
-@property (weak, nonatomic) IBOutlet UITextField *titleInput;
-@property (weak, nonatomic) IBOutlet UITextField *locationInput;
+#define TITILE_HOLDER @"请输入标题"
+#define PLACE_HOLDER @"请输入地点"
+#define DETAILS_HOLDER @"请输入描述"
+#define TIME_HOLDER @"点击后选择时间"
+#define TAG_HOLDER @"点击后选择标签"
+
+@interface CreateStaffScheduleViewCtrl ()<UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextView *titleInput;
+@property (weak, nonatomic) IBOutlet UITextView *locationInput;
 @property (weak, nonatomic) IBOutlet UIButton *addEventBtn;
 @property (weak, nonatomic) IBOutlet UIDatePicker *dateTimePicker;
 @property (weak, nonatomic) IBOutlet UILabel *scheduleTypeLB;
-@property (weak, nonatomic) IBOutlet UIButton *selectTimeLB;
+@property (weak, nonatomic) IBOutlet UIButton *selectTimeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 @property (weak, nonatomic) IBOutlet UITextView *detailTextView;
 
@@ -61,6 +67,8 @@
 
 #pragma mark Userinteraction
 - (IBAction)selectDate:(UIButton *)sender {
+    //    [sender resignFirstResponder];
+    [self.view endEditing:YES];
     if (self.dateTimePicker.alpha == 0) {
         [UIView animateWithDuration:0.5 animations:^{
             self.dateTimePicker.alpha = 1.0f;
@@ -75,7 +83,7 @@
     NSString *dateTime = [formatter stringFromDate:self.dateTimePicker.date];
     self.date = [dateTime substringToIndex:10];
     self.time = [dateTime substringFromIndex:11];
-    [self.selectTimeLB setTitle:dateTime forState:UIControlStateNormal];
+    [self.selectTimeBtn setTitle:dateTime forState:UIControlStateNormal];
     
     [UIView animateWithDuration:0.5 animations:^{
         self.dateTimePicker.alpha = 0.0f;
@@ -84,46 +92,73 @@
 }
 
 - (IBAction)appendNewSchedule:(UIButton *)sender {
+    if ([self judgeInputLegal]) {
+        // 上送数据！
+        [SysTool showLoadingHUDWithMsg:@"日程上送中" duration:0];
+        NSString *url = (self.type == MeetingType)?UPLOAD_MEETING:UPLOAD_RECORD;
+        NSDictionary *reqDict = (self.type == MeetingType)?[self fetchMeetingParams]:[self fetchRecordsParams];
+        
+        [[SYHttpTool sharedInstance] addEventWithURL:url token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
+            [SysTool dismissHUD];
+            if (success) {
+                [SysTool showAlertWithMsg:@"上送日程成功" handler:^(UIAlertAction *action) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                } viewCtrl:self];
+            } else
+                [SysTool showAlertWithMsg:msg handler:nil viewCtrl:self];
+        }];
+    }
+}
+
+-(BOOL)judgeInputLegal {
     //判断输入不为空
-    BOOL whetherTitleEmpty = (self.titleInput.text.length == 0)?YES:NO;
-    BOOL whetherTimeEmpty  = (self.selectTimeLB.titleLabel.text.length == 0)?YES:NO;
-    BOOL whetherTagEmpty   = [self.scheduleTypeLB.text isEqualToString:@"点击后选择标签"]?YES:NO;
+    self.titleInput.text = [SysTool TrimSpaceString:self.titleInput.text];
+    self.locationInput.text = [SysTool TrimSpaceString:self.locationInput.text];
+    self.detailTextView.text = [SysTool TrimSpaceString:self.detailTextView.text];
+//    self.locationInput.text = [self.locationInput.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//    self.detailTextView.text = [self.detailTextView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+    BOOL whetherTitleEmpty = (self.titleInput.text.length == 0 || [self.titleInput.text isEqualToString:TITILE_HOLDER])?YES:NO;
+    BOOL whetherTimeEmpty  = ([self.selectTimeBtn.titleLabel.text isEqualToString:TIME_HOLDER])?YES:NO;
+    BOOL whetherTagEmpty   = [self.scheduleTypeLB.text isEqualToString:TAG_HOLDER]?YES:NO;
+    BOOL whetherDetailEmpty = [self.detailTextView.text isEqualToString:DETAILS_HOLDER]?YES:NO;
     if (whetherTitleEmpty) {
-        [SysTool showErrorWithMsg:@"日程主题不能为空!" duration:1];
-        return;
+        [SysTool showErrorWithMsg:@"日程标题不能为空!" duration:1];
+        return NO;
     }
     if (whetherTimeEmpty) {
         [SysTool showErrorWithMsg:@"日程时间不能为空!" duration:1];
-        return;
+        return NO;
     }
     if (whetherTagEmpty) {
         [SysTool showErrorWithMsg:@"请选择日程类别!" duration:1];
-        return;
+        return NO;
+    }
+    if (whetherDetailEmpty) {
+        [SysTool showErrorWithMsg:@"日程详情不能为空!" duration:1];
+        return NO;
     }
     
-    // 上送数据！
-    [SysTool showLoadingHUDWithMsg:@"日程上送中" duration:0];
-    NSString *url = (self.type == MeetingType)?UPLOAD_MEETING:UPLOAD_RECORD;
-    NSDictionary *reqDict = (self.type == MeetingType)?[self fetchMeetingParams]:[self fetchRecordsParams];
-
-    [[SYHttpTool sharedInstance] addEventWithURL:url token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
-        [SysTool dismissHUD];
-        if (success) {
-            [SysTool showAlertWithMsg:@"上送日程成功" handler:^(UIAlertAction *action) {
-                [self.navigationController popViewControllerAnimated:YES];
-            } viewCtrl:self];
-        } else
-            [SysTool showAlertWithMsg:msg handler:nil viewCtrl:self];
-    }];
+    // 判断输入是否超长
+    if (![self.titleInput.text isEqualToString:TITILE_HOLDER] && self.titleInput.text.length > 15) {
+        [SysTool showErrorWithMsg:@"标题长度不能超过15个字!" duration:1];
+        return NO;
+    }
+    
+    if (self.locationInput.text.length > 25) {
+        [SysTool showErrorWithMsg:@"地址长度不能超过25个字！" duration:1];
+        return NO;
+    }
+    return YES;
 }
 
 -(NSDictionary*)fetchMeetingParams {
     Meetings *meetingModel = [Meetings new];
-    meetingModel.details = ([self.detailTextView.text isEqualToString:@"请输入描述"])?@"":self.detailTextView.text;
+    meetingModel.details = self.detailTextView.text;
     meetingModel.time = self.time;
     meetingModel.date = self.date;
     meetingModel.topic = self.titleInput.text;
-    meetingModel.place = self.locationInput.text;
+    meetingModel.place = [self.locationInput.text isEqualToString:PLACE_HOLDER]?@"":self.locationInput.text;
     meetingModel.staff_all = self.selectGuysArray;
     NSMutableDictionary *dict = meetingModel.mj_keyValues;
     [dict setObject:[LoginInfoModel fetchAccountUsername] forKey:@"username"];
@@ -146,7 +181,7 @@
 
 #pragma mark - Navigation
 - (IBAction)jump:(UIButton *)sender {
-    StaffScheduleInventionsViewCtrl *vc = [StaffScheduleInventionsViewCtrl initMyViewCtrlWithUseMode:CreateMode scheduleTypeUnderModifyMode:NoneType createCallback:^(StaffScheduleType type, NSArray *selectGuys) {
+    StaffScheduleInventionsViewCtrl *vc = [StaffScheduleInventionsViewCtrl initMyViewCtrlWithUseMode:CreateMode scheduleTypeUnderModifyMode:NoneType guysHaveBeenIncluded:@[[LoginInfoModel fetchRealNameFromSandbox]] createCallback:^(StaffScheduleType type, NSArray *selectGuys) {
         if (type == MeetingType) {
             self.scheduleTypeLB.text = @"会议及茶话会";
         } else
@@ -158,4 +193,25 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+
+#pragma mark TextView Delegate
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    if (textView == self.titleInput && [self.titleInput.text isEqualToString:TITILE_HOLDER]) {
+        self.titleInput.text = @"";
+    } else if(textView == self.locationInput && [self.locationInput.text isEqualToString:PLACE_HOLDER]) {
+        self.locationInput.text = @"";
+    } else if(textView == self.detailTextView && [self.detailTextView.text isEqualToString:DETAILS_HOLDER])
+        self.detailTextView.text = @"";
+    return YES;
+}
+
+-(BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    if (textView == self.titleInput && [self.titleInput.text isEqualToString:@""]) {
+        self.titleInput.text = TITILE_HOLDER;
+    } else if(textView == self.locationInput && [self.locationInput.text isEqualToString:@""]) {
+        self.locationInput.text = PLACE_HOLDER;
+    } else if(textView == self.detailTextView && [self.detailTextView.text isEqualToString:@""])
+        self.detailTextView.text = DETAILS_HOLDER;
+    return YES;
+}
 @end

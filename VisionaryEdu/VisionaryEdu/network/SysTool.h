@@ -96,4 +96,7 @@ typedef enum : NSUInteger {
  @return 是/否
  */
 +(BOOL)judgeRegExWithType:(JudgeType)type String:(NSString*)str;
+
+#pragma mark 去掉前后空格
++(NSString*)TrimSpaceString:(NSString*)string;
 @end

@@ -11,7 +11,7 @@
 #import "SYHttpTool.h"
 #import "LoginInfoModel.h"
 #import <MJExtension/MJExtension.h>
-#import <JPush/JPUSHService.h>
+#import <JPUSHService.h>
 
 @interface LoginViewCtrl ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;

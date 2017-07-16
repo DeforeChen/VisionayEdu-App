@@ -194,4 +194,9 @@
         return NO;
 }
 
+#pragma mark 去掉前后空格
++(NSString*)TrimSpaceString:(NSString*)string {
+    string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    return string;
+}
 @end

@@ -27,16 +27,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *checkInRecordsLB;
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 
-@property (strong, nonatomic) NSMutableArray *inventedStaffArray;
-@property (strong, nonatomic) NSMutableArray *inventedStudentArray;
-
 @property (nonatomic,copy) NSString *StaffNextURL;
 @property (nonatomic,copy) NSString *StudentNextURL;
 
-@property (strong ,nonatomic) NSMutableArray<StaffList_Results*> *selectedStaffArray;
-@property (strong ,nonatomic) NSMutableArray<StudentList_Results*> *selectedStudentArray;
+@property (strong, nonatomic) NSMutableArray *staffCanBeAppointedListArray;
+@property (strong, nonatomic) NSMutableArray *studentListArray;
+@property (copy, nonatomic) NSArray *guysListArray;//最后回传的选好的人员名单
 
-@property (copy, nonatomic) NSArray *inventedGuysArray;
+@property (strong ,nonatomic) NSMutableArray *selectedStaffArray;
+@property (strong ,nonatomic) NSMutableArray *selectedStudentArray;
 
 @property (copy, nonatomic) SelectionInfoUnderCreateMode createBlk;
 @property (copy, nonatomic) SelectionInfoUnderModifyMode modifyBlk;
@@ -47,11 +46,17 @@
 @implementation StaffScheduleInventionsViewCtrl
 +(instancetype)initMyViewCtrlWithUseMode:(UseMode)mode
              scheduleTypeUnderModifyMode:(StaffScheduleType)type
+                    guysHaveBeenIncluded:(NSArray*)hasBeenIncludedGuys
                           createCallback:(SelectionInfoUnderCreateMode)createBlk
                           modifyCallback:(SelectionInfoUnderModifyMode)modifyBlk {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     StaffScheduleInventionsViewCtrl *vc = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([self class])];
+
     vc.createBlk    = createBlk;
+    if (type == MeetingType) {
+        vc.selectedStaffArray = [hasBeenIncludedGuys mutableCopy];
+    } else if(type == StaffCheckInRecordsType)
+        vc.selectedStudentArray = [hasBeenIncludedGuys mutableCopy];
     vc.modifyBlk    = modifyBlk;
     vc.scheduleType = type;
     vc.mode         = mode;
@@ -62,7 +67,7 @@
     [super viewDidLoad];
     self.confirmBtn.layer.cornerRadius = 6.0f;
     self.confirmBtn.clipsToBounds = YES;
-
+    
     if (self.mode == ModifyMode) { // 修改模式
         self.TagContainerView.hidden = YES;
         // 根据日程类型去获取对应的guys列表
@@ -73,7 +78,7 @@
     } else { // 新增模式下，默认选择茶话会
         [self selectMeeting:nil];
     }
-
+    
     self.inventGuysList.mj_footer =  [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 }
 
@@ -83,31 +88,31 @@
 }
 
 #pragma mark Getter
--(NSMutableArray *)inventedStaffArray {
-    if (_inventedStaffArray == nil)
-        _inventedStaffArray = [NSMutableArray new];
-    return _inventedStaffArray;
+-(NSMutableArray *)staffCanBeAppointedListArray {
+    if (_staffCanBeAppointedListArray == nil)
+        _staffCanBeAppointedListArray = [NSMutableArray new];
+    return _staffCanBeAppointedListArray;
 }
 
--(NSMutableArray *)inventedStudentArray {
-    if (_inventedStudentArray == nil)
-        _inventedStudentArray = [NSMutableArray new];
-    return _inventedStudentArray;
+-(NSMutableArray *)studentListArray {
+    if (_studentListArray == nil)
+        _studentListArray = [NSMutableArray new];
+    return _studentListArray;
 }
 
--(NSArray *)inventedGuysArray {
-    if (_inventedGuysArray == nil)
-        _inventedGuysArray = [NSArray new];
-    return _inventedGuysArray;
+-(NSArray *)guysListArray {
+    if (_guysListArray == nil)
+        _guysListArray = [NSArray new];
+    return _guysListArray;
 }
 
--(NSMutableArray<StaffList_Results *> *)selectedStaffArray {
+-(NSMutableArray *)selectedStaffArray {
     if (_selectedStaffArray == nil)
         _selectedStaffArray = [NSMutableArray new];
     return _selectedStaffArray;
 }
 
--(NSMutableArray<StudentList_Results *> *)selectedStudentArray {
+-(NSMutableArray *)selectedStudentArray {
     if (_selectedStudentArray == nil)
         _selectedStudentArray = [NSMutableArray new];
     return _selectedStudentArray;
@@ -121,7 +126,7 @@
     self.selectTitleLB.text = @"请选择与会员工";
     self.scheduleType = MeetingType;
     
-    if (self.inventedStaffArray.count == 0) {
+    if (self.staffCanBeAppointedListArray.count == 0) {
         [SysTool showLoadingHUDWithMsg:@"获取员工列表" duration:0];
         NSDictionary *reqDict = @{@"staff_username":[LoginInfoModel fetchAccountUsername],
                                   @"for_appointment":@YES};
@@ -129,9 +134,12 @@
             [SysTool dismissHUD];
             if (success) {
                 StaffListModel *model = [StaffListModel mj_objectWithKeyValues:responseObject];
-                self.inventedStaffArray = [model.results mutableCopy];
+                for (StaffList_Results *info in model.results) {
+                    [self.staffCanBeAppointedListArray addObject:info.full_name];
+                }
+
                 self.StaffNextURL = model.next;
-                self.inventedGuysArray = self.inventedStaffArray;
+                self.guysListArray = self.staffCanBeAppointedListArray;
                 [self.inventGuysList reloadData];
             } else {
                 [SysTool showErrorWithMsg:msg duration:1];
@@ -139,7 +147,7 @@
             }
         }];
     } else {
-        self.inventedGuysArray = self.inventedStaffArray;
+        self.guysListArray = self.staffCanBeAppointedListArray;
         [self.inventGuysList reloadData];
     }
 }
@@ -151,16 +159,19 @@
     self.selectTitleLB.text = @"请选择约谈学生";
     self.scheduleType = StaffCheckInRecordsType;
     
-    if (self.inventedStudentArray.count == 0) {
+    if (self.studentListArray.count == 0) {
         [SysTool showLoadingHUDWithMsg:@"获取学生列表" duration:0];
         NSDictionary *reqDict = @{@"staff_username":[LoginInfoModel fetchAccountUsername]};
         [[SYHttpTool sharedInstance] getReqWithURL:STUDENT_LIST token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
             [SysTool dismissHUD];
             if (success) {
                 StudentListModel *model = [StudentListModel mj_objectWithKeyValues:responseObject];
-                self.inventedStudentArray = [model.results mutableCopy];
+                for (StudentList_Results *info in model.results) {
+                    [self.studentListArray addObject:info.full_name];
+                }
+                
                 self.StudentNextURL = model.next;
-                self.inventedGuysArray = self.inventedStudentArray;
+                self.guysListArray = self.studentListArray;
                 [self.inventGuysList reloadData];
             } else {
                 [SysTool showErrorWithMsg:msg duration:1];
@@ -168,44 +179,45 @@
             }
         }];
     } else {
-        self.inventedGuysArray = self.inventedStudentArray;
+        self.guysListArray = self.studentListArray;
         [self.inventGuysList reloadData];
     }
 }
 
 - (IBAction)finishSelection:(UIButton *)sender {
     NSMutableArray *fullNameArray = [NSMutableArray new];
-    if (self.mode == ModifyMode) {
-        if (self.scheduleType == MeetingType) {
-            for (StaffList_Results *info in self.selectedStaffArray) {
-                [fullNameArray addObject:info.full_name];
-            }
-        } else {
-            for (StudentList_Results *info in self.selectedStudentArray) {
-                [fullNameArray addObject:info.full_name];
-            }
+    fullNameArray = (self.scheduleType == MeetingType)?self.selectedStaffArray:self.selectedStudentArray;
+    if (fullNameArray.count == 0) {
+        [SysTool showErrorWithMsg:@"亲，您一个人都没有选可不能添加日程呀" duration:2];
+        return;
+    }
+    
+    if (self.scheduleType == MeetingType) {
+        NSString *myName = [LoginInfoModel fetchRealNameFromSandbox];
+        if (![fullNameArray containsObject:myName]) {
+            [SysTool showErrorWithMsg:@"添加的日程必须包括您自己!" duration:2];
+            return;
         }
+        
+        if (fullNameArray.count == 1 && [fullNameArray[0] isEqualToString:myName]) {
+            [SysTool showErrorWithMsg:@"就你自己一个人开什么会?!" duration:2];
+            return;
+        }
+    }
+    
+    if (self.mode == ModifyMode) {
         if (self.modifyBlk != nil) self.modifyBlk(fullNameArray);
     } else { // 新增模式
-        if (self.scheduleType == MeetingType) {
-            for (StaffList_Results *info in self.selectedStaffArray) {
-                [fullNameArray addObject:info.full_name];
-            }
-        } else {
-            for (StudentList_Results *info in self.selectedStudentArray) {
-                [fullNameArray addObject:info.full_name];
-            }
-        }
         if(self.createBlk != nil) self.createBlk(self.scheduleType, fullNameArray);
     }
-
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)loadMoreData {
     NSString *url = (self.scheduleType == MeetingType)?STAFF_LIST:STUDENT_LIST;
     NSString *nextURL = (self.scheduleType == MeetingType)?self.StaffNextURL:self.StudentNextURL;
-
+    
     if (nextURL.length > 0) {
         [[SYHttpTool sharedInstance] getReqWithURL:url token:[LoginInfoModel fetchTokenFromSandbox] params:[self fetchLoadMoreDictFromURL:nextURL] completionHandler:^(BOOL success, NSString *msg, id responseObject) {
             if (success) {
@@ -214,13 +226,19 @@
                 if (self.scheduleType == MeetingType) {
                     StaffListModel *model = [StaffListModel mj_objectWithKeyValues:responseObject];
                     self.StaffNextURL = model.next;
-                    [self.inventedStaffArray addObjectsFromArray:model.results];
-                    self.inventedGuysArray = self.inventedStaffArray;
+                    for (StaffList_Results *info in model.results) {
+                        [self.staffCanBeAppointedListArray addObject:info.full_name];
+                    }
+
+                    self.guysListArray = self.staffCanBeAppointedListArray;
                 } else {
                     StudentListModel *model = [StudentListModel mj_objectWithKeyValues:responseObject];
+                    for (StudentList_Results *info in model.results) {
+                        [self.studentListArray addObject:info.full_name];
+                    }
+                    
                     self.StudentNextURL = model.next;
-                    [self.inventedStudentArray addObjectsFromArray:model.results];
-                    self.inventedGuysArray = self.inventedStudentArray;
+                    self.guysListArray = self.studentListArray;
                 }
                 [self.inventGuysList reloadData];
             }  else {
@@ -249,7 +267,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.inventedGuysArray.count;
+    return self.guysListArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -259,15 +277,14 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.scheduleType == MeetingType) { // 会议，对应 Meeting Cell
         Schedule_MeetingCell *cell = (Schedule_MeetingCell*)[tableView dequeueReusableCellWithIdentifier:@"staffMeeting"];
-        NSArray<StaffList_Results*> *array = self.inventedGuysArray;
-        cell.nameLb.text = array[indexPath.row].full_name;
-        cell.tipImg.hidden = [self.selectedStaffArray containsObject:self.inventedStaffArray[indexPath.row]]?NO:YES;
+        
+        cell.nameLb.text = self.staffCanBeAppointedListArray[indexPath.row];
+        cell.tipImg.hidden = [self.selectedStaffArray containsObject:self.staffCanBeAppointedListArray[indexPath.row]]?NO:YES;
         return cell;
     } else {
         Schedule_RecordCell *cell = (Schedule_RecordCell*)[tableView dequeueReusableCellWithIdentifier:@"studentRecord"];
-        NSArray<StudentList_Results*> *array = self.inventedGuysArray;
-        cell.nameLB.text = array[indexPath.row].full_name;
-        cell.tipImg.hidden = [self.selectedStudentArray containsObject:self.inventedStudentArray[indexPath.row]]?NO:YES;
+        cell.nameLB.text = self.studentListArray[indexPath.row];
+        cell.tipImg.hidden = [self.selectedStudentArray containsObject:self.studentListArray[indexPath.row]]?NO:YES;
         return cell;
     }
 }
@@ -275,18 +292,18 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.scheduleType == MeetingType) { // 会议，对应 Meeting Cell
         Schedule_MeetingCell *cell = [self.inventGuysList cellForRowAtIndexPath:indexPath];
-        cell.tipImg.hidden = [self.selectedStaffArray containsObject:self.inventedStaffArray[indexPath.row]]?YES:NO;
-        if ([self.selectedStaffArray containsObject:self.inventedStaffArray[indexPath.row]]) {
-            [self.selectedStaffArray removeObject:self.inventedStaffArray[indexPath.row]];
+        cell.tipImg.hidden = [self.selectedStaffArray containsObject:self.staffCanBeAppointedListArray[indexPath.row]]?YES:NO;
+        if ([self.selectedStaffArray containsObject:self.staffCanBeAppointedListArray[indexPath.row]]) {
+            [self.selectedStaffArray removeObject:self.staffCanBeAppointedListArray[indexPath.row]];
         } else
-            [self.selectedStaffArray addObject:self.inventedStaffArray[indexPath.row]];
+            [self.selectedStaffArray addObject:self.staffCanBeAppointedListArray[indexPath.row]];
     } else {
         Schedule_RecordCell *cell = [self.inventGuysList cellForRowAtIndexPath:indexPath];
-        cell.tipImg.hidden = [self.selectedStudentArray containsObject:self.inventedStudentArray[indexPath.row]]?YES:NO;
-        if ([self.selectedStudentArray containsObject:self.inventedStudentArray[indexPath.row]]) {
-            [self.selectedStudentArray removeObject:self.inventedStudentArray[indexPath.row]];
+        cell.tipImg.hidden = [self.selectedStudentArray containsObject:self.studentListArray[indexPath.row]]?YES:NO;
+        if ([self.selectedStudentArray containsObject:self.studentListArray[indexPath.row]]) {
+            [self.selectedStudentArray removeObject:self.studentListArray[indexPath.row]];
         } else
-            [self.selectedStudentArray addObject:self.inventedStudentArray[indexPath.row]];
+            [self.selectedStudentArray addObject:self.studentListArray[indexPath.row]];
     }
 }
 @end
