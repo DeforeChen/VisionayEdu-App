@@ -133,13 +133,14 @@
 - (IBAction)deleteSchedule:(UIButton *)sender {
     [SysTool showTipWithMsg:@"确认要删除当前事件吗?" handler:^(UIAlertAction *action) {
         [SysTool showLoadingHUDWithMsg:@"上送删除信息中..." duration:0];
-        NSMutableDictionary *reqDict = self.meetingModel.mj_keyValues;
+        NSMutableDictionary *reqDict = [NSMutableDictionary new];
         [reqDict setObject:[LoginInfoModel fetchAccountUsername] forKey:@"username"];
         [[SYHttpTool sharedInstance] deleteEventWithURL:UPLOAD_MEETING primaryKey:self.meetingModel.pk token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
             [SysTool dismissHUD];
             if (success) {
-                [SysTool showErrorWithMsg:@"删除成功!" duration:2];
-                [self.navigationController popViewControllerAnimated:YES];
+                [SysTool showAlertWithMsg:@"删除成功!" handler:^(UIAlertAction *action) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                } viewCtrl:self];
             } else {
                 [SysTool showAlertWithMsg:msg handler:nil viewCtrl:self];
             }

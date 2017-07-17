@@ -15,6 +15,7 @@
 #import "ObjDetailsUViewCtrl.h"
 
 @interface RecentObjectivesViewCtrl ()
+@property (weak, nonatomic) IBOutlet UIButton *addNewObjBtn;
 @property (copy,nonatomic) NSArray<Obj_Results*> *objArray;
 @end
 
@@ -23,29 +24,32 @@
     [super viewWillAppear:animated];
     TabBarManagerViewCtrl *vc = (TabBarManagerViewCtrl*)self.tabBarController;
     vc.customTabbar.hidden = YES;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithHexString:@"#F7F7F9"];
+    
     [SysTool showLoadingHUDWithMsg:@"获取近期目标信息中..." duration:0];
     NSDictionary *reqDict = @{@"username":[StudentInstance shareInstance].student_username};
     [[SYHttpTool sharedInstance] getReqWithURL:QUERY_OBJ token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
         [SysTool dismissHUD];
         if (success) {
             RecentObjectivesModel *model = [RecentObjectivesModel mj_objectWithKeyValues:responseObject];
-            if (model.results.count == 0) {
-                [SysTool showErrorWithMsg:@"当前无近期目标" duration:1];
-                [self.navigationController popViewControllerAnimated:YES];
-            } else {
-                self.objArray = model.results;
-                [self.tableView reloadData];
-            }
+            //            if (model.results.count == 0) {
+            //                [SysTool showErrorWithMsg:@"当前无近期目标" duration:1];
+            //                [self.navigationController popViewControllerAnimated:YES];
+            //            } else {
+            self.objArray = model.results;
+            [self.tableView reloadData];
+            //            }
         } else {
             [SysTool showErrorWithMsg:msg duration:1];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    if ([[LoginInfoModel fetchUserTypeFromSandbox] isEqualToString:Student_UserType])
+        self.addNewObjBtn.hidden = YES;
+    self.view.backgroundColor = [UIColor colorWithHexString:@"#F7F7F9"];
 }
 
 - (void)didReceiveMemoryWarning {

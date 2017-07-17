@@ -61,6 +61,7 @@
 		89CFBD061EFE164600439496 /* YQNumberSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBCFF1EFE164600439496 /* YQNumberSlideView.m */; };
 		89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBD091EFE164C00439496 /* UIColor+expanded.m */; };
 		89E15C571F01F2BB00452B08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89E15C561F01F2BB00452B08 /* Images.xcassets */; };
+		89E22D971F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22D961F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.m */; };
 		89F58FBE1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F58FBD1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m */; };
 		89F58FC21F0F765A00AC6B1B /* FamilyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F58FC11F0F765A00AC6B1B /* FamilyInfoModel.m */; };
 		89FDE5861F0DD13C001158F1 /* EducationInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5851F0DD13C001158F1 /* EducationInfoViewCtrl.m */; };
@@ -182,6 +183,8 @@
 		89CFBD081EFE164C00439496 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
 		89CFBD091EFE164C00439496 /* UIColor+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+expanded.m"; sourceTree = "<group>"; };
 		89E15C561F01F2BB00452B08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		89E22D951F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateObjectivesViewCtrl.h; sourceTree = "<group>"; };
+		89E22D961F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateObjectivesViewCtrl.m; sourceTree = "<group>"; };
 		89F58FBC1F0F703A00AC6B1B /* FamilyInfoViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FamilyInfoViewCtrl.h; path = VisionaryEdu/Student_Parent/DocumentsViewCtrl/FamilyInfoViewCtrl.h; sourceTree = SOURCE_ROOT; };
 		89F58FBD1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FamilyInfoViewCtrl.m; path = VisionaryEdu/Student_Parent/DocumentsViewCtrl/FamilyInfoViewCtrl.m; sourceTree = SOURCE_ROOT; };
 		89F58FC01F0F765A00AC6B1B /* FamilyInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FamilyInfoModel.h; path = documents/FamilyInfoModel.h; sourceTree = "<group>"; };
@@ -309,6 +312,8 @@
 			children = (
 				8946E3931F109BFF002F7B06 /* RecentObjectivesViewCtrl.h */,
 				8946E3941F109BFF002F7B06 /* RecentObjectivesViewCtrl.m */,
+				89E22D951F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.h */,
+				89E22D961F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.m */,
 				8946E3991F10AD74002F7B06 /* ObjDetailsUViewCtrl.h */,
 				8946E39A1F10AD74002F7B06 /* ObjDetailsUViewCtrl.m */,
 			);
@@ -866,6 +871,7 @@
 				8946E3951F109BFF002F7B06 /* RecentObjectivesViewCtrl.m in Sources */,
 				89FDE5971F0E72A3001158F1 /* CourseInfoViewCtrl.m in Sources */,
 				8946E3AC1F132348002F7B06 /* StaffListModel.m in Sources */,
+				89E22D971F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.m in Sources */,
 				8946E39E1F10C1F6002F7B06 /* GradeDetailsViewCtrl.m in Sources */,
 				89CFBCC01EFE15BD00439496 /* main.m in Sources */,
 				8946E39B1F10AD74002F7B06 /* ObjDetailsUViewCtrl.m in Sources */,

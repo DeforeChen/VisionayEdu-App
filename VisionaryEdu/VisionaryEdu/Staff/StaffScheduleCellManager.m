@@ -22,7 +22,7 @@
     StaffCheckInRecordsCell *cell = (StaffCheckInRecordsCell*)[tableview dequeueReusableCellWithIdentifier:@"StaffCheckinRecord"];
     cell.topicLB.text = [NSString stringWithFormat:@"约谈 - %@",records.topic];
     cell.recordTimeLB.text = [records.time substringToIndex:5];
-    cell.studentRealNameLB.text = records.student_real_name;
+    cell.studentRealNameLB.text = records.student_username;
     return cell;
 }
 @end

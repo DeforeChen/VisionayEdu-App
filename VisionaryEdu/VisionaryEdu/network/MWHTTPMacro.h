@@ -33,6 +33,7 @@
 
 #define UPLOAD_MEETING @"/---Meetings/"
 #define UPLOAD_RECORD  @"/---CheckInRecord/"
+#define UPLOAD_OBJ  @"/---Objectives/"
 
 
 #define STUDENT_SCORE @"/Grades/"

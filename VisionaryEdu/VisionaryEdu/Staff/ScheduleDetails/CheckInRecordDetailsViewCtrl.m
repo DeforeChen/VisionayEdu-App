@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *editInventedStudentBtn;
 @property (weak, nonatomic) IBOutlet UIButton *studentSelectBtn;
 
-@property (weak, nonatomic) IBOutlet UITextField *topicTF;
+@property (weak, nonatomic) IBOutlet UITextView *topicTextView;
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLB;
 @property (weak, nonatomic) IBOutlet UITextView *studentListTextView;
@@ -41,10 +41,10 @@
     
     [self switchEditModeUI];
     
-    self.topicTF.text = self.recordModel.topic;
+    self.topicTextView.text = self.recordModel.topic;
     self.commentTextView.text = self.recordModel.staff_comment;
     self.dateLB.text = [NSString stringWithFormat:@"%@ %@",self.recordModel.date,[self.recordModel.time substringToIndex:5]];
-    self.studentListTextView.text = self.recordModel.student_real_name;//[self.recordModel.student_real_name componentsJoinedByString:@" "];
+    self.studentListTextView.text = self.recordModel.student_username;//[self.recordModel.student_real_name componentsJoinedByString:@" "];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,7 +63,7 @@
     self.editInventedStudentBtn.hidden = (edit == YES)?NO:YES;
     self.deleteScheduleBtn.hidden = (edit == YES)?NO:YES;
     
-    self.topicTF.userInteractionEnabled = (edit)?YES:NO;
+    self.topicTextView.editable = (edit)?YES:NO;
     self.dateSelectBtn.userInteractionEnabled = (edit)?YES:NO;
     self.commentTextView.editable = (edit)?YES:NO;
     self.studentSelectBtn.userInteractionEnabled = (edit)?YES:NO;
@@ -92,7 +92,7 @@
 }
 
 - (IBAction)jumpToSelectGuysViewCtrl:(UIButton *)sender {
-    StaffScheduleInventionsViewCtrl *vc = [StaffScheduleInventionsViewCtrl initMyViewCtrlWithUseMode:ModifyMode scheduleTypeUnderModifyMode:StaffCheckInRecordsType guysHaveBeenIncluded:@[self.recordModel.student_real_name] createCallback:nil modifyCallback:^(NSArray *selectGuys) {
+    StaffScheduleInventionsViewCtrl *vc = [StaffScheduleInventionsViewCtrl initMyViewCtrlWithUseMode:ModifyMode scheduleTypeUnderModifyMode:StaffCheckInRecordsType guysHaveBeenIncluded:@[self.recordModel.student_username] createCallback:nil modifyCallback:^(NSArray *selectGuys) {
         self.studentListTextView.text = [selectGuys componentsJoinedByString:@" "];
     }];
     [self.navigationController pushViewController:vc animated:YES];

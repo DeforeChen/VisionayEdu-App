@@ -58,7 +58,7 @@ typedef enum : NSUInteger {
 @property (nonatomic , copy) NSString              * staff_comment;
 @property (nonatomic , copy) NSString              * date;
 @property (nonatomic , copy) NSString              * topic;
-@property (nonatomic , copy) NSString              * student_real_name;
+//@property (nonatomic , copy) NSString              * student_real_name;
 @property (nonatomic , assign) NSInteger              pk;
 @property (nonatomic , copy) NSString              * student_username;
 
