@@ -117,7 +117,7 @@
     NSDate *date = [formatter dateFromString:self.dateLB.text];
     DatePickerViewController *vc = [DatePickerViewController initMyViewCtrlWithDate:date callback:^(NSString *selectDateStr) {
         self.dateLB.text = selectDateStr;
-    }];
+    } pickerDateMode:UIDatePickerModeDateAndTime];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

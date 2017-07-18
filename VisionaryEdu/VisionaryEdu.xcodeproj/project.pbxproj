@@ -62,6 +62,8 @@
 		89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CFBD091EFE164C00439496 /* UIColor+expanded.m */; };
 		89E15C571F01F2BB00452B08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89E15C561F01F2BB00452B08 /* Images.xcassets */; };
 		89E22D971F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22D961F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.m */; };
+		89E22D9A1F1CB46900FC4F6D /* TasksDetailsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22D991F1CB46900FC4F6D /* TasksDetailsViewCtrl.m */; };
+		89E22D9E1F1DACB100FC4F6D /* CreateTaskViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22D9D1F1DACB100FC4F6D /* CreateTaskViewCtrl.m */; };
 		89F58FBE1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F58FBD1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m */; };
 		89F58FC21F0F765A00AC6B1B /* FamilyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F58FC11F0F765A00AC6B1B /* FamilyInfoModel.m */; };
 		89FDE5861F0DD13C001158F1 /* EducationInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5851F0DD13C001158F1 /* EducationInfoViewCtrl.m */; };
@@ -185,6 +187,10 @@
 		89E15C561F01F2BB00452B08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		89E22D951F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateObjectivesViewCtrl.h; sourceTree = "<group>"; };
 		89E22D961F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateObjectivesViewCtrl.m; sourceTree = "<group>"; };
+		89E22D981F1CB46900FC4F6D /* TasksDetailsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksDetailsViewCtrl.h; sourceTree = "<group>"; };
+		89E22D991F1CB46900FC4F6D /* TasksDetailsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksDetailsViewCtrl.m; sourceTree = "<group>"; };
+		89E22D9C1F1DACB100FC4F6D /* CreateTaskViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTaskViewCtrl.h; sourceTree = "<group>"; };
+		89E22D9D1F1DACB100FC4F6D /* CreateTaskViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTaskViewCtrl.m; sourceTree = "<group>"; };
 		89F58FBC1F0F703A00AC6B1B /* FamilyInfoViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FamilyInfoViewCtrl.h; path = VisionaryEdu/Student_Parent/DocumentsViewCtrl/FamilyInfoViewCtrl.h; sourceTree = SOURCE_ROOT; };
 		89F58FBD1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FamilyInfoViewCtrl.m; path = VisionaryEdu/Student_Parent/DocumentsViewCtrl/FamilyInfoViewCtrl.m; sourceTree = SOURCE_ROOT; };
 		89F58FC01F0F765A00AC6B1B /* FamilyInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FamilyInfoModel.h; path = documents/FamilyInfoModel.h; sourceTree = "<group>"; };
@@ -260,6 +266,7 @@
 		891BB7C41F00979E00F4DD60 /* 学生日程 */ = {
 			isa = PBXGroup;
 			children = (
+				89E22D9B1F1CB47500FC4F6D /* 任务日程 */,
 				8946E3A01F10C20F002F7B06 /* 近期目标 */,
 				8946E39F1F10C206002F7B06 /* 考试日程 */,
 				891BB7C11F00979000F4DD60 /* ScheduleViewCtrl.h */,
@@ -630,6 +637,17 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		89E22D9B1F1CB47500FC4F6D /* 任务日程 */ = {
+			isa = PBXGroup;
+			children = (
+				89E22D9C1F1DACB100FC4F6D /* CreateTaskViewCtrl.h */,
+				89E22D9D1F1DACB100FC4F6D /* CreateTaskViewCtrl.m */,
+				89E22D981F1CB46900FC4F6D /* TasksDetailsViewCtrl.h */,
+				89E22D991F1CB46900FC4F6D /* TasksDetailsViewCtrl.m */,
+			);
+			name = "任务日程";
+			sourceTree = "<group>";
+		};
 		89F58FBF1F0F704800AC6B1B /* 家庭信息 */ = {
 			isa = PBXGroup;
 			children = (
@@ -848,6 +866,8 @@
 				8946E3981F109DA2002F7B06 /* RecentObjectivesModel.m in Sources */,
 				8950F0C81F14BFBA00BFE1E7 /* CheckInRecordDetailsViewCtrl.m in Sources */,
 				89CFBD0A1EFE164C00439496 /* UIColor+expanded.m in Sources */,
+				89E22D9A1F1CB46900FC4F6D /* TasksDetailsViewCtrl.m in Sources */,
+				89E22D9E1F1DACB100FC4F6D /* CreateTaskViewCtrl.m in Sources */,
 				89CFBCE91EFE163C00439496 /* SYHttpTool.m in Sources */,
 				89CFBCE21EFE160E00439496 /* StudentScoreInDetailsModel.m in Sources */,
 				89FDE58F1F0E0607001158F1 /* ProfileDocumentModel.m in Sources */,

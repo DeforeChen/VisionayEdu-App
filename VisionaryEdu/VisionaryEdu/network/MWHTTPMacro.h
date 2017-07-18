@@ -27,6 +27,7 @@
 
 //#define VISIONARY_HOST @"http://192.168.31.128:5000"
 #define VISIONARY_HOST @"https://www.visionaryedu.net/vision-api"
+#define FILE_PREFIX @"https://www.visionaryedu.net"
 
 #define STUDENT_LIST @"/StudentType/"
 #define STAFF_LIST @"/StaffType/"
@@ -34,7 +35,7 @@
 #define UPLOAD_MEETING @"/---Meetings/"
 #define UPLOAD_RECORD  @"/---CheckInRecord/"
 #define UPLOAD_OBJ  @"/---Objectives/"
-
+#define UPLOAD_TASK  @"/---Tasks/"
 
 #define STUDENT_SCORE @"/Grades/"
 #define QUERY_STUDENT_BY_YEAR @"/StudentByYear/"

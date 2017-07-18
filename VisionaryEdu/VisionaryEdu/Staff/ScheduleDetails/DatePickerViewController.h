@@ -10,5 +10,7 @@
 
 typedef void(^dateCallBack)(NSString *selectDateStr);
 @interface DatePickerViewController : UIViewController
-+(instancetype)initMyViewCtrlWithDate:(NSDate*)date callback:(dateCallBack)block;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+
++(instancetype)initMyViewCtrlWithDate:(NSDate*)date callback:(dateCallBack)block pickerDateMode:(UIDatePickerMode)dateMode;
 @end

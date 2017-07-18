@@ -9,24 +9,26 @@
 #import "DatePickerViewController.h"
 
 @interface DatePickerViewController ()
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 @property (strong,nonatomic) NSDate *date;
 @property (copy, nonatomic) dateCallBack block;
+@property (assign,nonatomic) UIDatePickerMode dateMode;
 @end
 
 @implementation DatePickerViewController
-+(instancetype)initMyViewCtrlWithDate:(NSDate*)date callback:(dateCallBack)block {
++(instancetype)initMyViewCtrlWithDate:(NSDate*)date callback:(dateCallBack)block pickerDateMode:(UIDatePickerMode)dateMode{
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DatePickerViewController *vc = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([self class])];
     vc.date = date;
     vc.block = block;
+    vc.dateMode = dateMode;
     return vc;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.datePicker.date = self.date;
+    self.datePicker.datePickerMode = self.dateMode;
     self.confirmBtn.layer.cornerRadius = 6.0f;
     self.confirmBtn.clipsToBounds = YES;
     // Do any additional setup after loading the view.

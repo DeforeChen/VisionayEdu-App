@@ -17,10 +17,12 @@
 #import "StudentScheduleCellManager.h"
 #import "TabBarManagerViewCtrl.h"
 #import "GradeDetailsViewCtrl.h"
+#import "TasksDetailsViewCtrl.h"
+#import "CreateTaskViewCtrl.h"
 
 #define TestColor           [UIColor colorWithHexString:@"#E67291"]
 #define CheckInRecordsColor [UIColor colorWithHexString:@"#4ED6BB"]
-#define TaskColor           [UIColor colorWithHexString:@"#1ABFDF"]
+#define TaskColor           [UIColor colorWithHexString:@"#1A81DF"]
 
 @interface ScheduleViewCtrl ()<FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance,UITableViewDataSource,UITableViewDelegate>
 @property (copy, nonatomic) NSString *userType;
@@ -53,16 +55,21 @@
     self.dateFormatter.dateFormat = @"yyyy-MM-dd";
     self.manager = [ScheduleRangeManager initWithDateFormatter:self.dateFormatter];
     [self configScheduleListHolderUI];
+    self.selectDate = [self.dateFormatter stringFromDate:[NSDate new]];
     self.schedulelistTB.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshScheduleWhenEmpty:)];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    [self.scheduleLUT removeAllObjects];
+    
+    self.manager = [ScheduleRangeManager initWithDateFormatter:self.dateFormatter];
+    NSDate *date = [self.dateFormatter dateFromString:self.selectDate];
+    [self requestStudentScheduleInfo:date];
+    
     TabBarManagerViewCtrl *vc = (TabBarManagerViewCtrl*)self.tabBarController;
     vc.customTabbar.hidden = NO;
-    self.selectDate = [self.dateFormatter stringFromDate:[NSDate new]];
-    [self requestStudentScheduleInfo:[NSDate new]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -194,6 +201,12 @@
 }
 
 - (IBAction)appendNewEvent:(UIButton *)sender {
+    if ([self.userType isEqualToString:Staff_UserType]) {
+        CreateTaskViewCtrl *vc = [CreateTaskViewCtrl initMyViewCtrl];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+    
+    }
 }
 
 - (IBAction)refreshScheduleWhenEmpty:(UIButton *)sender {
@@ -269,8 +282,13 @@
     if ([destVC isKindOfClass:[GradeDetailsViewCtrl class]]) {
         GradeDetailsViewCtrl *vc = destVC;
         NSIndexPath *path = [self.schedulelistTB indexPathForCell:sender];
-        XLog(@"点击的行数 = %@",path);
+        XLog(@"点击的成绩对应行数 = %@",path);
         vc.gradeModel = self.dayFutureTestArray[path.row];
+    } else if([destVC isKindOfClass:[TasksDetailsViewCtrl class]]) {
+        TasksDetailsViewCtrl *vc = destVC;
+        NSIndexPath *path = [self.schedulelistTB indexPathForCell:sender];
+        XLog(@"点击的任务对应行数 = %@",path);
+        vc.taskModel = self.dayTasksArray[path.row];
     }
 }
 

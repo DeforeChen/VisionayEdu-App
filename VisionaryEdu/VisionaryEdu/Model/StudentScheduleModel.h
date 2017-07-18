@@ -27,8 +27,7 @@
 @property (nonatomic , copy) NSString              * staff_comment;
 @property (nonatomic , copy) NSString              * title;
 @property (nonatomic , copy) NSString              * due_date;
-@property (nonatomic , assign) BOOL              whether_submit;
-
+@property (nonatomic , assign) NSInteger              pk;
 @end
 
 typedef enum : NSUInteger {

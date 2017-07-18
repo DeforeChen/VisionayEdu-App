@@ -148,7 +148,7 @@
    [SysTool showTipWithMsg:@"确认要删除当前目标吗" handler:^(UIAlertAction *action) {
        [SysTool showLoadingHUDWithMsg:@"删除中..." duration:0];
        NSMutableDictionary *reqDict = [NSMutableDictionary new];//self.meetingModel.mj_keyValues;
-       [reqDict setObject:[StudentInstance shareInstance].student_realname forKey:@"student_username"];
+       [reqDict setObject:[StudentInstance shareInstance].student_username forKey:@"student_username"];
        [[SYHttpTool sharedInstance] deleteEventWithURL:UPLOAD_OBJ primaryKey:self.objInfo.pk token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
            [SysTool dismissHUD];
            if (success) {
@@ -159,7 +159,6 @@
                [SysTool showErrorWithMsg:msg duration:1];
            }
        }];
-       
    } viewCtrl:self];
 }
 

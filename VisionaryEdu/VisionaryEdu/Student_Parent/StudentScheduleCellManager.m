@@ -66,8 +66,9 @@
 
 @implementation TasksCell
 +(TasksCell *)initMyCellWithTableview:(UITableView *)tableview taskModel:(Tasks*)task {
-    TasksCell *cell = (TasksCell*)[tableview dequeueReusableCellWithIdentifier:@"tasks"];
-    cell.titleLB.text = task.title;
+    TasksCell *cell      = (TasksCell*)[tableview dequeueReusableCellWithIdentifier:@"tasks"];
+    cell.titleLB.text    = task.title;
+    cell.taskTimeLB.text = [task.due_date substringFromIndex:5];
     return cell;
 }
 @end
