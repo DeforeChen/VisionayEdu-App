@@ -9,6 +9,7 @@
 #import "CreateTaskViewCtrl.h"
 #import "config.h"
 #import "DatePickerViewController.h"
+#import "TabBarManagerViewCtrl.h"
 
 #define DATE_HOLDER @"点击选择日期"
 #define STAFFCMMT_HOLDER @"请输入师评"
@@ -36,6 +37,12 @@
     self.addTaskBtn.layer.cornerRadius = 6.0;
     self.addTaskBtn.clipsToBounds = YES;
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    TabBarManagerViewCtrl *vc = (TabBarManagerViewCtrl*)self.tabBarController;
+    vc.customTabbar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {

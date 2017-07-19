@@ -123,7 +123,7 @@
 
 #pragma mark Private Methods
 -(void)refresh {
-    NSDictionary *paramDict = @{@"username":@"student_2"};//[StudentInstance shareInstance].student_username
+    NSDictionary *paramDict = @{@"username":[StudentInstance shareInstance].student_username};//
     [SysTool showLoadingHUDWithMsg:@"成绩加载中..." duration:0];
     [[SYHttpTool sharedInstance] getReqWithURL:STUDENT_SCORE token:[LoginInfoModel fetchTokenFromSandbox] params:paramDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
         [SysTool dismissHUD];

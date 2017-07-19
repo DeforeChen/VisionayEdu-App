@@ -18,11 +18,11 @@
 @end
 
 @implementation StaffCheckInRecordsCell
-+(instancetype)initMyCellWithStaffRecordModel:(CheckInRecords*)records tableview:(UITableView*)tableview {
++(instancetype)initMyCellWithStaffRecordModel:(StaffCheckInRecords*)records tableview:(UITableView*)tableview {
     StaffCheckInRecordsCell *cell = (StaffCheckInRecordsCell*)[tableview dequeueReusableCellWithIdentifier:@"StaffCheckinRecord"];
     cell.topicLB.text = [NSString stringWithFormat:@"约谈 - %@",records.topic];
     cell.recordTimeLB.text = [records.time substringToIndex:5];
-    cell.studentRealNameLB.text = records.student_username;
+    cell.studentRealNameLB.text = [records.student_all componentsJoinedByString:@","];
     return cell;
 }
 @end

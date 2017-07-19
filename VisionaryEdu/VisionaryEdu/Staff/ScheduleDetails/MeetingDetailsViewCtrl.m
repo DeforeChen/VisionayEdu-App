@@ -39,9 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.whether_editMode = NO;
-    self.comittBtn.layer.cornerRadius = 10.0f;
-    self.comittBtn.layer.borderColor  = [UIColor colorWithHexString:@"#43434D"].CGColor;
-    self.comittBtn.layer.borderWidth  = 1.0f;
+    self.comittBtn.layer.cornerRadius = 6.0f;
     self.comittBtn.clipsToBounds      = YES;
     
     [self switchEditModeUI];
@@ -101,8 +99,9 @@
             [[SYHttpTool sharedInstance] patchEventWithURL:UPLOAD_MEETING primaryKey:self.meetingModel.pk token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
                 [SysTool dismissHUD];
                 if (success) {
-                    [SysTool showErrorWithMsg:@"上送成功!" duration:1];
-                    [self.navigationController popViewControllerAnimated:YES];
+                    [SysTool showAlertWithMsg:@"修改成功!" handler:^(UIAlertAction *action) {
+                        [self.navigationController popViewControllerAnimated:YES];
+                    } viewCtrl:self];
                 } else {
                     [SysTool showAlertWithMsg:msg handler:nil viewCtrl:self];
                 }

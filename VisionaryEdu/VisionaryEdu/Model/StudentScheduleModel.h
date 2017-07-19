@@ -52,15 +52,20 @@ typedef enum : NSUInteger {
 
 @end
 
-@interface CheckInRecords :NSObject
-@property (nonatomic , copy) NSString              * time;
+@interface StudentCheckInRecords :NSObject
+@property (nonatomic , copy) NSString              * staff_real_name;
+@property (nonatomic , copy) NSString              * extra_duration;
 @property (nonatomic , copy) NSString              * staff_comment;
-@property (nonatomic , copy) NSString              * date;
+@property (nonatomic , copy) NSString              * time;
+@property (nonatomic , copy) NSString              * details;
+@property (nonatomic , assign) NSInteger              student_schedule_pk;
 @property (nonatomic , copy) NSString              * topic;
-//@property (nonatomic , copy) NSString              * student_real_name;
+@property (nonatomic , copy) NSString              * date;
 @property (nonatomic , assign) NSInteger              pk;
-@property (nonatomic , copy) NSString              * student_username;
-
+@property (nonatomic , copy) NSString              * individual_comment;
+@property (nonatomic , copy) NSString              * duration;
+@property (nonatomic , copy) NSString              * staff_username;
+@property (nonatomic , copy) NSString              * place;
 @end
 
 typedef enum : NSUInteger {
@@ -69,9 +74,9 @@ typedef enum : NSUInteger {
     CheckInRecordsType,
 } ScheduleType;
 @interface StudentScheduleResponse :NSObject
-@property (nonatomic , strong) NSArray<Tasks *>           * Tasks;
-@property (nonatomic , strong) NSArray<FutureTests *>     * FutureTests;
-@property (nonatomic , strong) NSArray<CheckInRecords *>  * CheckInRecords;
+@property (nonatomic , strong) NSArray<Tasks *>                 * Tasks;
+@property (nonatomic , strong) NSArray<FutureTests *>           * FutureTests;
+@property (nonatomic , strong) NSArray<StudentCheckInRecords *> * CheckInRecords;
 
 
 /**

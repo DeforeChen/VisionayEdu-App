@@ -46,13 +46,16 @@
 
 @interface CheckInRecordsCell()
 @property (weak, nonatomic) IBOutlet UILabel *topicLB;
+
+@property (weak, nonatomic) IBOutlet UILabel *consultantLB;
 @property (weak, nonatomic) IBOutlet UILabel *recordTimeLB;
 @end
 
 @implementation CheckInRecordsCell
-+(CheckInRecordsCell *)initMyCellWithTableview:(UITableView *)tableview recordModel:(CheckInRecords*)record {
++(CheckInRecordsCell *)initMyCellWithTableview:(UITableView *)tableview recordModel:(StudentCheckInRecords*)record {
     CheckInRecordsCell *cell = (CheckInRecordsCell*)[tableview dequeueReusableCellWithIdentifier:@"checkInRecord"];
     cell.topicLB.text      = record.topic;
+    cell.consultantLB.text = [NSString stringWithFormat:@"顾问: %@",record.staff_real_name];
     cell.recordTimeLB.text = record.time;
     return cell;
 }

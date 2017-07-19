@@ -27,10 +27,14 @@
 
 @end
 
+@implementation StaffCheckInRecords
+
+@end
+
 @implementation StaffScheduleResponse
 +(NSDictionary *)objectClassInArray{ //这种方式用插件已经可以直接生成
     return @{@"Meetings"      : [Meetings class],
-             @"CheckInRecords": [CheckInRecords class]
+             @"CheckInRecords": [StaffCheckInRecords class]
              };
 }
 
@@ -48,7 +52,7 @@
         }
     }
     
-    for (CheckInRecords *record in self.CheckInRecords) {
+    for (StaffCheckInRecords *record in self.CheckInRecords) {
         if (record.date.length > 0) {
             if ([[dict allKeys] containsObject:record.date] == NO)
                 [dict setObject:[self CreatDayScheduleArray] forKey:record.date];

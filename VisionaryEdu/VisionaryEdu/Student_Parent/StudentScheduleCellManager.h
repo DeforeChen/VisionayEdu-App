@@ -11,14 +11,14 @@
 
 @class Tasks;
 @class FutureTests;
-@class CheckInRecords;
+@class StudentCheckInRecords;
 
 @interface FutureTestCell:UITableViewCell
 +(FutureTestCell *)initMyCellWithTableview:(UITableView *)tableview testModel:(FutureTests*)test;
 @end
 
 @interface CheckInRecordsCell:UITableViewCell
-+(CheckInRecordsCell *)initMyCellWithTableview:(UITableView *)tableview recordModel:(CheckInRecords*)record;
++(CheckInRecordsCell *)initMyCellWithTableview:(UITableView *)tableview recordModel:(StudentCheckInRecords*)record ;
 @end
 
 @interface TasksCell:UITableViewCell

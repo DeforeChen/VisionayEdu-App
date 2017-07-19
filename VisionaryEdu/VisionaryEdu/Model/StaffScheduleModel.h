@@ -32,6 +32,18 @@
 
 @end
 
+@interface StaffCheckInRecords :NSObject
+@property (nonatomic , copy) NSString              * time;
+@property (nonatomic , copy) NSString              * staff_comment;
+@property (nonatomic , strong) NSArray<NSString *> * student_all;
+@property (nonatomic , copy) NSString              * date;
+@property (nonatomic , copy) NSString              * topic;
+@property (nonatomic , copy) NSString              * duration;
+@property (nonatomic , copy) NSString              * staff_username;
+@property (nonatomic , assign) NSInteger              pk;
+
+@end
+
 typedef enum : NSUInteger {
     MeetingType = 0,
     StaffCheckInRecordsType,
@@ -39,7 +51,7 @@ typedef enum : NSUInteger {
 } StaffScheduleType;
 @interface StaffScheduleResponse :NSObject
 @property (nonatomic , strong) NSArray<Meetings *>              * Meetings;
-@property (nonatomic , strong) NSArray<CheckInRecords *>        * CheckInRecords;
+@property (nonatomic , strong) NSArray<StaffCheckInRecords *>        * CheckInRecords;
 
 /**
  让model根据日期重组一个查询的字典，键值对为 日期 - 二维数组

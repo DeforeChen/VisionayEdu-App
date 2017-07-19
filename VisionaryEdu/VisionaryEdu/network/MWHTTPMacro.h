@@ -36,6 +36,7 @@
 #define UPLOAD_RECORD  @"/---CheckInRecord/"
 #define UPLOAD_OBJ  @"/---Objectives/"
 #define UPLOAD_TASK  @"/---Tasks/"
+#define UPLOAD_INDIVIDUAL_CMMT @"/---AppointmentComment/"
 
 #define STUDENT_SCORE @"/Grades/"
 #define QUERY_STUDENT_BY_YEAR @"/StudentByYear/"

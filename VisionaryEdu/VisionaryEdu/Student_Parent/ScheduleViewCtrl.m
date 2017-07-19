@@ -19,6 +19,7 @@
 #import "GradeDetailsViewCtrl.h"
 #import "TasksDetailsViewCtrl.h"
 #import "CreateTaskViewCtrl.h"
+#import "StudentCheckInRecordDetailsViewCtrl.h"
 
 #define TestColor           [UIColor colorWithHexString:@"#E67291"]
 #define CheckInRecordsColor [UIColor colorWithHexString:@"#4ED6BB"]
@@ -197,9 +198,6 @@
 }
 
 #pragma mark User Interaction
-- (IBAction)studentRecentObjectives:(UIButton *)sender {
-}
-
 - (IBAction)appendNewEvent:(UIButton *)sender {
     if ([self.userType isEqualToString:Staff_UserType]) {
         CreateTaskViewCtrl *vc = [CreateTaskViewCtrl initMyViewCtrl];
@@ -289,6 +287,11 @@
         NSIndexPath *path = [self.schedulelistTB indexPathForCell:sender];
         XLog(@"点击的任务对应行数 = %@",path);
         vc.taskModel = self.dayTasksArray[path.row];
+    } else if([destVC isKindOfClass:[StudentCheckInRecordDetailsViewCtrl class]]) {
+        StudentCheckInRecordDetailsViewCtrl *vc = destVC;
+        NSIndexPath *path = [self.schedulelistTB indexPathForCell:sender];
+        XLog(@"点击的学生约谈对应行数 = %@",path);
+        vc.recordModel = self.dayCheckInRecordsArray[path.row];
     }
 }
 

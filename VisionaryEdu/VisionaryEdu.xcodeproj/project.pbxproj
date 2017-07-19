@@ -64,6 +64,7 @@
 		89E22D971F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22D961F1C48CB00FC4F6D /* CreateObjectivesViewCtrl.m */; };
 		89E22D9A1F1CB46900FC4F6D /* TasksDetailsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22D991F1CB46900FC4F6D /* TasksDetailsViewCtrl.m */; };
 		89E22D9E1F1DACB100FC4F6D /* CreateTaskViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22D9D1F1DACB100FC4F6D /* CreateTaskViewCtrl.m */; };
+		89E22DA11F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22DA01F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.m */; };
 		89F58FBE1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F58FBD1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m */; };
 		89F58FC21F0F765A00AC6B1B /* FamilyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F58FC11F0F765A00AC6B1B /* FamilyInfoModel.m */; };
 		89FDE5861F0DD13C001158F1 /* EducationInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5851F0DD13C001158F1 /* EducationInfoViewCtrl.m */; };
@@ -191,6 +192,8 @@
 		89E22D991F1CB46900FC4F6D /* TasksDetailsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksDetailsViewCtrl.m; sourceTree = "<group>"; };
 		89E22D9C1F1DACB100FC4F6D /* CreateTaskViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTaskViewCtrl.h; sourceTree = "<group>"; };
 		89E22D9D1F1DACB100FC4F6D /* CreateTaskViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTaskViewCtrl.m; sourceTree = "<group>"; };
+		89E22D9F1F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentCheckInRecordDetailsViewCtrl.h; sourceTree = "<group>"; };
+		89E22DA01F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentCheckInRecordDetailsViewCtrl.m; sourceTree = "<group>"; };
 		89F58FBC1F0F703A00AC6B1B /* FamilyInfoViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FamilyInfoViewCtrl.h; path = VisionaryEdu/Student_Parent/DocumentsViewCtrl/FamilyInfoViewCtrl.h; sourceTree = SOURCE_ROOT; };
 		89F58FBD1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FamilyInfoViewCtrl.m; path = VisionaryEdu/Student_Parent/DocumentsViewCtrl/FamilyInfoViewCtrl.m; sourceTree = SOURCE_ROOT; };
 		89F58FC01F0F765A00AC6B1B /* FamilyInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FamilyInfoModel.h; path = documents/FamilyInfoModel.h; sourceTree = "<group>"; };
@@ -266,6 +269,7 @@
 		891BB7C41F00979E00F4DD60 /* 学生日程 */ = {
 			isa = PBXGroup;
 			children = (
+				89E22DA21F1E4D7000FC4F6D /* 学生约谈详情 */,
 				89E22D9B1F1CB47500FC4F6D /* 任务日程 */,
 				8946E3A01F10C20F002F7B06 /* 近期目标 */,
 				8946E39F1F10C206002F7B06 /* 考试日程 */,
@@ -648,6 +652,15 @@
 			name = "任务日程";
 			sourceTree = "<group>";
 		};
+		89E22DA21F1E4D7000FC4F6D /* 学生约谈详情 */ = {
+			isa = PBXGroup;
+			children = (
+				89E22D9F1F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.h */,
+				89E22DA01F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.m */,
+			);
+			name = "学生约谈详情";
+			sourceTree = "<group>";
+		};
 		89F58FBF1F0F704800AC6B1B /* 家庭信息 */ = {
 			isa = PBXGroup;
 			children = (
@@ -904,6 +917,7 @@
 				89652E6B1F05DF5300CDDECB /* StaffScheduleCellManager.m in Sources */,
 				893AC69C1F0254D000990A48 /* CustomTabbarView.m in Sources */,
 				89CFBCE01EFE160E00439496 /* LoginInfoModel.m in Sources */,
+				89E22DA11F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.m in Sources */,
 				899303361EFFB78F00B066AD /* StudentInstance.m in Sources */,
 				89652E6E1F092D3C00CDDECB /* StudentGradeViewCtrl.m in Sources */,
 				89FDE58C1F0DE0DF001158F1 /* DocumentViewCtrl.m in Sources */,

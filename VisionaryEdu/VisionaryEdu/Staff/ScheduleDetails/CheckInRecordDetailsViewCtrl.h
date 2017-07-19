@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class CheckInRecords;
+@class StaffCheckInRecords;
 @interface CheckInRecordDetailsViewCtrl : UIViewController
-@property (strong,nonatomic) CheckInRecords *recordModel;
+@property (strong,nonatomic) StaffCheckInRecords *recordModel;
 @end

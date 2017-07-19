@@ -28,8 +28,11 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *dateTimePicker;
 @property (weak, nonatomic) IBOutlet UILabel *scheduleTypeLB;
 @property (weak, nonatomic) IBOutlet UIButton *selectTimeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *selectLastTimeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 @property (weak, nonatomic) IBOutlet UITextView *detailTextView;
+
+
 
 @property (copy, nonatomic) NSString *date;
 @property (copy, nonatomic) NSString *time;
@@ -68,6 +71,20 @@
 #pragma mark Userinteraction
 - (IBAction)selectDate:(UIButton *)sender {
     [self.view endEditing:YES];
+    self.dateTimePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    self.dateTimePicker.minuteInterval = 15;
+    if (self.dateTimePicker.alpha == 0) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.dateTimePicker.alpha = 1.0f;
+            self.confirmBtn.alpha = 1.0f;
+        }];
+    }
+}
+
+- (IBAction)selectLastTime:(UIButton *)sender {
+    [self.view endEditing:YES];
+    self.dateTimePicker.datePickerMode = UIDatePickerModeCountDownTimer;
+    self.dateTimePicker.minuteInterval = 30;
     if (self.dateTimePicker.alpha == 0) {
         [UIView animateWithDuration:0.5 animations:^{
             self.dateTimePicker.alpha = 1.0f;
@@ -77,18 +94,24 @@
 }
 
 - (IBAction)confirmDateAndTime:(UIButton *)sender {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    NSString *dateTime = [formatter stringFromDate:self.dateTimePicker.date];
-    self.date = [dateTime substringToIndex:10];
-    self.time = [dateTime substringFromIndex:11];
-    [self.selectTimeBtn setTitle:dateTime forState:UIControlStateNormal];
-    
+    NSDateFormatter *Dateformatter = [[NSDateFormatter alloc] init];
+    [Dateformatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    if (self.dateTimePicker.datePickerMode == UIDatePickerModeDateAndTime) {
+        NSString *dateTime = [Dateformatter stringFromDate:self.dateTimePicker.date];
+        self.date = [dateTime substringToIndex:10];
+        self.time = [dateTime substringFromIndex:11];
+        [self.selectTimeBtn setTitle:dateTime forState:UIControlStateNormal];
+    } else if(self.dateTimePicker.datePickerMode == UIDatePickerModeCountDownTimer) {
+        NSString *countTime = [NSString stringWithFormat:@"%.1f",self.dateTimePicker.countDownDuration/60/60];
+        [self.selectLastTimeBtn setTitle:countTime forState:UIControlStateNormal];
+    }
+
     [UIView animateWithDuration:0.5 animations:^{
         self.dateTimePicker.alpha = 0.0f;
         self.confirmBtn.alpha = 0.0f;
     }];
 }
+
 
 - (IBAction)appendNewSchedule:(UIButton *)sender {
     if ([self judgeInputLegal]) {
@@ -119,12 +142,20 @@
     BOOL whetherTimeEmpty  = ([self.selectTimeBtn.titleLabel.text isEqualToString:TIME_HOLDER])?YES:NO;
     BOOL whetherTagEmpty   = [self.scheduleTypeLB.text isEqualToString:TAG_HOLDER]?YES:NO;
     BOOL whetherDetailEmpty = ([self.detailTextView.text isEqualToString:DETAILS_HOLDER] || self.detailTextView.text.length == 0)?YES:NO;
+    BOOL whetherLastTimeEmpty = YES;
+    if ([self.scheduleTypeLB.text isEqualToString:@"约谈"] && ![self.selectLastTimeBtn.titleLabel.text isEqualToString:TIME_HOLDER])
+        whetherLastTimeEmpty = NO;
+    
     if (whetherTitleEmpty) {
         [SysTool showErrorWithMsg:@"日程标题不能为空!" duration:1];
         return NO;
     }
     if (whetherTimeEmpty) {
         [SysTool showErrorWithMsg:@"日程时间不能为空!" duration:1];
+        return NO;
+    }
+    if (whetherLastTimeEmpty) {
+        [SysTool showErrorWithMsg:@"学生约谈预估时间不能为空!" duration:2];
         return NO;
     }
     if (whetherTagEmpty) {
@@ -163,32 +194,16 @@
 }
 
 -(NSDictionary*)fetchRecordsParams {
-    NSMutableArray *studentResult = [NSMutableArray new];
-    for (NSString *studentName in self.selectGuysArray) {
-        CheckInRecords *recordModel = [CheckInRecords new];
-    }
-//    Meetings *meetingModel = [Meetings new];
-//    meetingModel.details = self.detailTextView.text;
-//    meetingModel.time = self.time;
-//    meetingModel.date = self.date;
-//    meetingModel.topic = self.titleInput.text;
-//    meetingModel.place = [self.locationInput.text isEqualToString:PLACE_HOLDER]?@"":self.locationInput.text;
-//    meetingModel.staff_all = self.selectGuysArray;
-//    NSMutableDictionary *dict = meetingModel.mj_keyValues;
-//    [dict setObject:[LoginInfoModel fetchAccountUsername] forKey:@"username"];
-//    return dict;
-    
-    // TEST
-//    CheckInRecords *meetingModel = [CheckInRecords new];
-//    meetingModel.details = self.detailTextView.text;
-//    meetingModel.time = self.time;
-//    meetingModel.date = self.date;
-//    meetingModel.topic = self.titleInput.text;
-//    meetingModel.place = [self.locationInput.text isEqualToString:PLACE_HOLDER]?@"":self.locationInput.text;
-//    meetingModel.staff_all = self.selectGuysArray;
-//    NSMutableDictionary *dict = meetingModel.mj_keyValues;
-//    [dict setObject:[LoginInfoModel fetchAccountUsername] forKey:@"username"];
-    return nil;
+    StaffCheckInRecords *recordModel = [StaffCheckInRecords new];
+    recordModel.time = self.time;
+    recordModel.student_all = self.selectGuysArray;
+    recordModel.date = self.date;
+    recordModel.topic = self.titleInput.text;
+    recordModel.duration = self.selectLastTimeBtn.titleLabel.text;
+    recordModel.staff_username = [LoginInfoModel fetchRealNameFromSandbox];
+    NSMutableDictionary *dict = recordModel.mj_keyValues;
+    [dict setObject:[LoginInfoModel fetchAccountUsername] forKey:@"username"];
+    return dict;
 }
 
 #pragma mark - Navigation

@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class CheckInRecords;
+@class StaffCheckInRecords;
 @class Meetings;
 
 @interface StaffCheckInRecordsCell : UITableViewCell
-+(instancetype)initMyCellWithStaffRecordModel:(CheckInRecords*)records tableview:(UITableView*)tableview;
++(instancetype)initMyCellWithStaffRecordModel:(StaffCheckInRecords*)records tableview:(UITableView*)tableview;
 @end
 
 @interface StaffMeetingCell : UITableViewCell

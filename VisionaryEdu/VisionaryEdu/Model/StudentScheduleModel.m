@@ -31,7 +31,7 @@
 
 @end
 
-@implementation CheckInRecords
+@implementation StudentCheckInRecords
 
 @end
 
@@ -43,7 +43,7 @@
 +(NSDictionary *)objectClassInArray{ //这种方式用插件已经可以直接生成
     return @{@"Tasks"         : [Tasks class],
              @"FutureTests"   : [FutureTests class],
-             @"CheckInRecords": [CheckInRecords class]
+             @"CheckInRecords": [StudentCheckInRecords class]
              };
 }
 
@@ -79,7 +79,7 @@
         }
     }
 
-    for (CheckInRecords *record in self.CheckInRecords) {
+    for (StudentCheckInRecords *record in self.CheckInRecords) {
         if (record.date.length > 0) {
             if ([[dict allKeys] containsObject:record.date] == NO)
                 [dict setObject:[self CreatDayScheduleArray] forKey:record.date];
@@ -94,9 +94,9 @@
 
 -(NSArray<NSArray*>*)CreatDayScheduleArray {
     //1. 创建三个可变数组，各自存放某一天的三种日程
-    NSMutableArray<Tasks*> *dayTaskScheduleArray            = [NSMutableArray new];
-    NSMutableArray<FutureTests*> *dayTestScheduleArray      = [NSMutableArray new];
-    NSMutableArray<CheckInRecords*> *dayRecordScheduleArray = [NSMutableArray new];
+    NSMutableArray<Tasks*> *dayTaskScheduleArray                   = [NSMutableArray new];
+    NSMutableArray<FutureTests*> *dayTestScheduleArray             = [NSMutableArray new];
+    NSMutableArray<StudentCheckInRecords*> *dayRecordScheduleArray = [NSMutableArray new];
     //2. 创建一个可变的二维数组，存放这一天总的三种日程
     NSMutableArray *dayScheduleArray = [NSMutableArray new];
     dayScheduleArray[TaskType]           = dayTaskScheduleArray;
