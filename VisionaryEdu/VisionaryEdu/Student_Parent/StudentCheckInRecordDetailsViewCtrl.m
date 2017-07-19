@@ -72,12 +72,13 @@
     NSMutableDictionary *reqDict = [@{@"appointment":[NSNumber numberWithInteger:self.recordModel.pk],
                               @"student_username":[StudentInstance shareInstance].student_realname,
                               @"individual_comment":cell.individualComment.text,
-                              @"extra_duration": cell.overTimeLB.text,
+                              @"extra_duration": (cell.overTimeLB.text.length == 0)?@"0":cell.overTimeLB.text,
                               @"pk":[NSNumber numberWithInteger:self.recordModel.student_schedule_pk],
                               @"username": [LoginInfoModel fetchAccountUsername]
                               } mutableCopy];
     if (self.recordModel.student_schedule_pk == -1) {
         [reqDict removeObjectForKey:@"pk"];
+        XLog(@"从新添加");
         [SysTool showTipWithMsg:@"确认提交吗?" handler:^(UIAlertAction *action) {
             [SysTool showLoadingHUDWithMsg:@"正在上送单独评价..." duration:0];
             [[SYHttpTool sharedInstance] addEventWithURL:UPLOAD_INDIVIDUAL_CMMT token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
@@ -92,6 +93,7 @@
             }];
         } viewCtrl:self];
     } else {
+        XLog(@"修改添加");
         [SysTool showTipWithMsg:@"确认提交吗?" handler:^(UIAlertAction *action) {
             [[SYHttpTool sharedInstance] patchEventWithURL:UPLOAD_INDIVIDUAL_CMMT primaryKey:self.recordModel.student_schedule_pk token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
                 [SysTool dismissHUD];
@@ -153,7 +155,7 @@
     cell.editIndiCmmtImg.hidden  = YES;
     cell.editOverTimeImg.hidden  = YES;
     cell.staff_realNameLB.text   = recordModel.staff_real_name;
-    cell.overTimeLB.text         = (recordModel.extra_duration.length == 0)?@"":recordModel.extra_duration;
+    cell.overTimeLB.text         = (recordModel.extra_duration.length == 0)?@"0":recordModel.extra_duration;
     
     cell.commitBtn.alpha = 0.0f;
     cell.commitBtn.layer.cornerRadius = 6.0f;

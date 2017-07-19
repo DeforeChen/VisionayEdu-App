@@ -137,7 +137,6 @@
             XLog(@"当前的成绩项目 = %@,成绩明细 = %@",self.gradeNameArray[self.selectGradeIndex],self.gradeInfoArray[self.selectGradeIndex]);
             [self updateGradeViewScrollContainerWithGradeInfos:self.gradeInfoArray[self.selectGradeIndex]];
             NSLog(@"score keys = %@",self.gradeNameArray);
-            
         } else {
             [SysTool showErrorWithMsg:msg duration:1];
         }
