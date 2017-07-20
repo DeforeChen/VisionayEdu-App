@@ -12,7 +12,8 @@
 typedef enum : NSUInteger {
     Judge_PhoneNum,
     Judge_IntNumber,//判断整数
-    Judge_EnglishOrNum, //英文或数字
+    Judge_EnglishOrNumOrPunctuation, //英文或数字,标点
+    Judge_ChineseOrPunctuation,//中文或中文标点
     Judge_CertID,
     Judge_BankCardNo,
     Judge_Amount,

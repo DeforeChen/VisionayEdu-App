@@ -44,6 +44,7 @@
 #define QUERY_STAFF_SCHEDULE @"/StaffSchedule/"
 #define LOGIN  @"/login/"
 #define LOGOUT @"/auth/logout/"
+#define PWD_MODIFY @"/auth/password/change/"
 
 #define QUERY_TESTACCOUNT @"/---TestInfoForm/"
 #define QUERY_PERSONINFO @"/---PersonalInfoForm/"

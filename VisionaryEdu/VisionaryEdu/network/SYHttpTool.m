@@ -124,8 +124,26 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
     [self loadWithURL:loginURL
                method:POST
                params:paramsDict
-    completionHandler:completionBlock token:nil];
+    completionHandler:completionBlock
+                token:nil];
 }
+
+-(void)modifyPasswordWithNewPwd:(NSString*)newPwd
+                confirmedNewPwd:(NSString*)confirmNewPwd
+                         oldPwd:(NSString*)oldPwd
+              completionHandler:(HTTPCompletion)completionBlock
+                          token:(NSString*)token {
+    NSString *loginURL = [NSString stringWithFormat:@"%@%@",VISIONARY_HOST,PWD_MODIFY];
+    NSLog(@"修改密钥的URL = %@",loginURL);
+    NSDictionary *reqDict = @{@"new_password1":newPwd,
+                              @"new_password2":confirmNewPwd,
+                              @"old_password" :oldPwd};
+    [self loadWithURL:loginURL
+               method:POST
+               params:reqDict
+    completionHandler:completionBlock token:token];
+}
+
 #pragma mark 私有方法
 - (void)loadWithURL:(NSString *)url
              method:(HTTP_TYPE)methodType

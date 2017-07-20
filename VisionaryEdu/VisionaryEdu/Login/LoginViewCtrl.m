@@ -13,7 +13,7 @@
 #import <MJExtension/MJExtension.h>
 #import <JPUSHService.h>
 
-@interface LoginViewCtrl ()
+@interface LoginViewCtrl ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTF;
 
@@ -47,7 +47,21 @@
 
 #pragma mark Private Methods
 -(BOOL)judgeInputLegal {
-    return [SysTool judgeRegExWithType:Judge_EnglishOrNum String:self.usernameTF.text];
+    self.usernameTF.text = [SysTool TrimSpaceString:self.usernameTF.text];
+    if (self.pwdTF.text.length == 0) {
+        [SysTool showErrorWithMsg:@"密码不能为空!" duration:1];
+        return NO;
+    }
+    
+    if (self.pwdTF.text.length == 16) {
+        [SysTool showErrorWithMsg:@"密码太长!不能超过16个字" duration:1];
+        return NO;
+    }
+    
+    if (![SysTool judgeRegExWithType:Judge_EnglishOrNumOrPunctuation String:self.usernameTF.text]) {
+         [SysTool showErrorWithMsg:@"用户名仅包含数字、英文、下划线" duration:1];
+    }
+    return YES;
 }
 
 #pragma mark UserInteraction
@@ -71,10 +85,23 @@
                 [SysTool showErrorWithMsg:msg duration:1];
             }
         }];
-        
-    } else {
-        [SysTool showErrorWithMsg:@"用户名仅包含数字、英文、下划线" duration:1];
     }
 }
 
+#pragma mark TextField Delegate
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if (textField == self.usernameTF)
+        self.usernameTF.text = [SysTool TrimSpaceString:self.usernameTF.text];
+    return YES;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if ([string isEqualToString:@""]) {
+        return YES;
+    } else if (![SysTool judgeRegExWithType:Judge_EnglishOrNumOrPunctuation String:string]) {
+        [SysTool showErrorWithMsg:@"请勿输入中文或非法字符!" duration:1];
+        return NO;
+    }
+    return YES;
+}
 @end

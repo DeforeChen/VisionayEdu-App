@@ -7,16 +7,25 @@
 //
 
 #import "PwdModifyViewCtrl.h"
+#import "config.h"
 
-@interface PwdModifyViewCtrl ()
+@interface PwdModifyViewCtrl ()<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *oldPassWordTF;
+@property (weak, nonatomic) IBOutlet UITextField *NewPassWordTF;
+@property (weak, nonatomic) IBOutlet UITextField *NewPassWordConfirmTF;
+
+@property (weak, nonatomic) IBOutlet UIImageView *visibleImg;
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
+@property (assign,nonatomic) BOOL whetherNewPwdVisible;
 @end
 
 @implementation PwdModifyViewCtrl
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.confirmBtn.layer.cornerRadius = 100.f;
+    self.whetherNewPwdVisible = NO;
+    self.confirmBtn.layer.cornerRadius = 6.0f;
+    self.confirmBtn.clipsToBounds = YES;
     // Do any additional setup after loading the view.
 }
 
@@ -24,15 +33,60 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)switchNewPwdVisible:(UIButton *)sender {
+    self.whetherNewPwdVisible = !self.whetherNewPwdVisible;
+    
+    self.visibleImg.image = [UIImage imageNamed:self.whetherNewPwdVisible == YES?@"view_selected":@"view_default"];
+    self.NewPassWordTF.secureTextEntry        = self.whetherNewPwdVisible == YES?NO:YES;
+    self.NewPassWordConfirmTF.secureTextEntry = self.whetherNewPwdVisible == YES?NO:YES;
 }
-*/
+
+- (IBAction)commitNewPwd:(UIButton *)sender {
+    if ([self judegeInputLegal]) {
+        [SysTool showTipWithMsg:@"确认修改密码吗?" handler:^(UIAlertAction *action) {
+            [SysTool showLoadingHUDWithMsg:@"信息上送中..." duration:0];
+            [[SYHttpTool sharedInstance] modifyPasswordWithNewPwd:self.NewPassWordTF.text confirmedNewPwd:self.NewPassWordConfirmTF.text oldPwd:self.oldPassWordTF.text completionHandler:^(BOOL success, NSString *msg, id responseObject) {
+                [SysTool dismissHUD];
+                if (success) {
+                    [SysTool showAlertWithMsg:@"密钥修改成功，请重新登录!" handler:^(UIAlertAction *action) {
+                        [LoginInfoModel clearLoginInfoInSandbox];
+                        [self.navigationController popToRootViewControllerAnimated:NO];
+                    } viewCtrl:self];
+                } else
+                    [SysTool showErrorWithMsg:msg duration:1];
+            } token:[LoginInfoModel fetchTokenFromSandbox]];
+        } viewCtrl:self];
+    }
+}
+
+-(BOOL) judegeInputLegal {
+    BOOL whether_Same = [self.NewPassWordTF.text isEqualToString:self.NewPassWordConfirmTF.text] ?YES:NO;
+    if (whether_Same == NO) {
+        [SysTool showErrorWithMsg:@"两次输入的密码不一致!" duration:1];
+        return NO;
+    }
+    BOOL whether_longEnough = (self.NewPassWordTF.text.length > 8 && self.NewPassWordConfirmTF.text.length > 8)?YES:NO;
+    if (whether_longEnough == NO) {
+        [SysTool showErrorWithMsg:@"密码长度必须大于8!" duration:1];
+        return NO;
+    }
+    return YES;
+}
+
+#pragma mark TextField Delegate
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if ([string isEqualToString:@""]) {//允许删除
+        return YES;
+    } else if (textField.text.length >= 16) {
+        [textField.text substringToIndex:16];
+        [SysTool showErrorWithMsg:@"密码不能超过16个字" duration:1.5];
+        return NO;
+    } else if (![SysTool judgeRegExWithType:Judge_EnglishOrNumOrPunctuation String:string]) {
+        [SysTool showErrorWithMsg:@"请不要使用中文或非法字符作为密码!" duration:1];
+        return NO;
+    }
+    return YES;
+}
+
 
 @end

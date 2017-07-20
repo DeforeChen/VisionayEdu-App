@@ -65,6 +65,22 @@ typedef void(^HTTPCompletion)(BOOL success,NSString *msg,id responseObject);
               registration_id:(NSString*)jpushID
             completionHandler:(HTTPCompletion)completionBlock;
 
+
+/**
+ 修改密码
+
+ @param newPwd 新密码
+ @param confirmNewPwd 确认新密码
+ @param oldPwd 旧密码
+ @param completionBlock 回调函数
+ @param token 令牌
+ */
+-(void)modifyPasswordWithNewPwd:(NSString*)newPwd
+                confirmedNewPwd:(NSString*)confirmNewPwd
+                         oldPwd:(NSString*)oldPwd
+              completionHandler:(HTTPCompletion)completionBlock
+                          token:(NSString*)token;
+
 #pragma mark 上送数据 —— 增
 -(void)addEventWithURL:(NSString*)url
                  token:(NSString*)token

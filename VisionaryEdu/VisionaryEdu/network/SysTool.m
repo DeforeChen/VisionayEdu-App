@@ -129,6 +129,7 @@
 
 #pragma mark 正则表达式
 +(BOOL)judgeRegExWithType:(JudgeType)type String:(NSString*)str {
+    NSLog(@"待正则判断的字符串 = %@",str);
     switch (type) {
         case Judge_PhoneNum:
             return [str isMatch:RX(@"^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\\d{8}$")];
@@ -148,9 +149,16 @@
         case Judge_BankCardNo:
             return [SysTool checkCardNo:str];
             break;
-        case Judge_EnglishOrNum:
-            return [str isMatch:RX(@"^[a-zA-Z][a-zA-Z0-9_ ]+$")];//RX(@"^[A-Za-z0-9]+$")];
+        case Judge_ChineseOrPunctuation:
+            return [str isMatch:RX(@"^[\u4e00-\u9fa5]*$")] || [str isMatch:RX(@"[\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]")];
             break;
+        case Judge_EnglishOrNumOrPunctuation:{
+            BOOL whether_EnglishRelated = [str isMatch:RX(@"^[a-zA-Z0-9_ -/:;()$&@\".,?!'{}#%^*+=\\|~<>€£¥•]+$")];//[\u4E00-\u9FA5a-zA-Z0-9_]*
+            NSLog(@"字符是否为数字，标点或英文 = %d ",whether_EnglishRelated);
+//            NSLog(@"test = %d",[@"uj" isMatch:RX(@"^[a-zA-Z0-9_ ]+$")]);
+            return whether_EnglishRelated;
+            break;
+        }
     }
 }
 
