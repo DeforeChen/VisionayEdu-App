@@ -100,4 +100,9 @@ typedef enum : NSUInteger {
 
 #pragma mark 去掉前后空格
 +(NSString*)TrimSpaceString:(NSString*)string;
+
+
+#pragma mark 首次启动引导页
++(void)markLauchAsNotFirstLaunch;
++(BOOL)checkWhetherFirstLaunch;
 @end

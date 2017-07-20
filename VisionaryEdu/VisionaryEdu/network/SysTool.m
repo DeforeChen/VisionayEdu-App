@@ -119,9 +119,9 @@
 
 +(NSString *)fetchCurrentDateTimeWithFormat:(NSString*)dateFormat {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateFormat:@"yyyy-MM-dd HHmmss"];
+    //    [formatter setDateFormat:@"yyyy-MM-dd HHmmss"];
     [formatter setDateFormat:dateFormat]; //非法的格式如何判断
-
+    
     NSString *dateTime = [formatter stringFromDate:[NSDate date]];
     NSLog(@"当前时间  =%@",dateTime);
     return dateTime;
@@ -155,7 +155,7 @@
         case Judge_EnglishOrNumOrPunctuation:{
             BOOL whether_EnglishRelated = [str isMatch:RX(@"^[a-zA-Z0-9_ -/:;()$&@\".,?!'{}#%^*+=\\|~<>€£¥•]+$")];//[\u4E00-\u9FA5a-zA-Z0-9_]*
             NSLog(@"字符是否为数字，标点或英文 = %d ",whether_EnglishRelated);
-//            NSLog(@"test = %d",[@"uj" isMatch:RX(@"^[a-zA-Z0-9_ ]+$")]);
+            //            NSLog(@"test = %d",[@"uj" isMatch:RX(@"^[a-zA-Z0-9_ ]+$")]);
             return whether_EnglishRelated;
             break;
         }
@@ -207,4 +207,17 @@
     string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     return string;
 }
+
+
+#pragma mark 首次启动
++(void)markLauchAsNotFirstLaunch {
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"notFirstLaunch"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(BOOL)checkWhetherFirstLaunch{
+    id whetherFirstLaunch = [[NSUserDefaults standardUserDefaults] objectForKey:@"notFirstLaunch"];
+    return (whetherFirstLaunch == nil)?YES:NO;
+}
+
 @end

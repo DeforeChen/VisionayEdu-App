@@ -65,6 +65,8 @@
 		89E22D9A1F1CB46900FC4F6D /* TasksDetailsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22D991F1CB46900FC4F6D /* TasksDetailsViewCtrl.m */; };
 		89E22D9E1F1DACB100FC4F6D /* CreateTaskViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22D9D1F1DACB100FC4F6D /* CreateTaskViewCtrl.m */; };
 		89E22DA11F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22DA01F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.m */; };
+		89E22DA51F208FDD00FC4F6D /* GuideViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22DA41F208FDD00FC4F6D /* GuideViewCtrl.m */; };
+		89E22DA81F20901300FC4F6D /* HomeNavViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E22DA71F20901300FC4F6D /* HomeNavViewCtrl.m */; };
 		89F58FBE1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F58FBD1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m */; };
 		89F58FC21F0F765A00AC6B1B /* FamilyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F58FC11F0F765A00AC6B1B /* FamilyInfoModel.m */; };
 		89FDE5861F0DD13C001158F1 /* EducationInfoViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FDE5851F0DD13C001158F1 /* EducationInfoViewCtrl.m */; };
@@ -194,6 +196,10 @@
 		89E22D9D1F1DACB100FC4F6D /* CreateTaskViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTaskViewCtrl.m; sourceTree = "<group>"; };
 		89E22D9F1F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentCheckInRecordDetailsViewCtrl.h; sourceTree = "<group>"; };
 		89E22DA01F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentCheckInRecordDetailsViewCtrl.m; sourceTree = "<group>"; };
+		89E22DA31F208FDD00FC4F6D /* GuideViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewCtrl.h; sourceTree = "<group>"; };
+		89E22DA41F208FDD00FC4F6D /* GuideViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewCtrl.m; sourceTree = "<group>"; };
+		89E22DA61F20901300FC4F6D /* HomeNavViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavViewCtrl.h; sourceTree = "<group>"; };
+		89E22DA71F20901300FC4F6D /* HomeNavViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavViewCtrl.m; sourceTree = "<group>"; };
 		89F58FBC1F0F703A00AC6B1B /* FamilyInfoViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FamilyInfoViewCtrl.h; path = VisionaryEdu/Student_Parent/DocumentsViewCtrl/FamilyInfoViewCtrl.h; sourceTree = SOURCE_ROOT; };
 		89F58FBD1F0F703A00AC6B1B /* FamilyInfoViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FamilyInfoViewCtrl.m; path = VisionaryEdu/Student_Parent/DocumentsViewCtrl/FamilyInfoViewCtrl.m; sourceTree = SOURCE_ROOT; };
 		89F58FC01F0F765A00AC6B1B /* FamilyInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FamilyInfoModel.h; path = documents/FamilyInfoModel.h; sourceTree = "<group>"; };
@@ -542,6 +548,7 @@
 				89CFBCC11EFE15BD00439496 /* AppDelegate.h */,
 				89CFBCC21EFE15BD00439496 /* AppDelegate.m */,
 				8993032F1EFE17A000B066AD /* config.h */,
+				89E22DA91F20901800FC4F6D /* 首次启动引导页 */,
 				89CFBCE31EFE163C00439496 /* network */,
 				89CFBCD91EFE160E00439496 /* Model */,
 				89CFBD071EFE164C00439496 /* Tools */,
@@ -659,6 +666,17 @@
 				89E22DA01F1E4D6A00FC4F6D /* StudentCheckInRecordDetailsViewCtrl.m */,
 			);
 			name = "学生约谈详情";
+			sourceTree = "<group>";
+		};
+		89E22DA91F20901800FC4F6D /* 首次启动引导页 */ = {
+			isa = PBXGroup;
+			children = (
+				89E22DA61F20901300FC4F6D /* HomeNavViewCtrl.h */,
+				89E22DA71F20901300FC4F6D /* HomeNavViewCtrl.m */,
+				89E22DA31F208FDD00FC4F6D /* GuideViewCtrl.h */,
+				89E22DA41F208FDD00FC4F6D /* GuideViewCtrl.m */,
+			);
+			name = "首次启动引导页";
 			sourceTree = "<group>";
 		};
 		89F58FBF1F0F704800AC6B1B /* 家庭信息 */ = {
@@ -874,6 +892,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89E22DA51F208FDD00FC4F6D /* GuideViewCtrl.m in Sources */,
 				89FDE5891F0DD598001158F1 /* EduInfoModel.m in Sources */,
 				89F58FC21F0F765A00AC6B1B /* FamilyInfoModel.m in Sources */,
 				8946E3981F109DA2002F7B06 /* RecentObjectivesModel.m in Sources */,
@@ -883,6 +902,7 @@
 				89E22D9E1F1DACB100FC4F6D /* CreateTaskViewCtrl.m in Sources */,
 				89CFBCE91EFE163C00439496 /* SYHttpTool.m in Sources */,
 				89CFBCE21EFE160E00439496 /* StudentScoreInDetailsModel.m in Sources */,
+				89E22DA81F20901300FC4F6D /* HomeNavViewCtrl.m in Sources */,
 				89FDE58F1F0E0607001158F1 /* ProfileDocumentModel.m in Sources */,
 				89652E741F0A41D800CDDECB /* SingleGradeView.m in Sources */,
 				89652E601F04D6C200CDDECB /* ScheduleRangeManager.m in Sources */,

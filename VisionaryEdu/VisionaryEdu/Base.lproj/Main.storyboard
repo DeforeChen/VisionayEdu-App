@@ -1886,10 +1886,10 @@
             </objects>
             <point key="canvasLocation" x="403.125" y="117.25352112676056"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Home Nav View Ctrl-->
         <scene sceneID="pFD-9B-5L2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kkC-Fy-ugA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavViewCtrl" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kkC-Fy-ugA" customClass="HomeNavViewCtrl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UwA-rn-w7t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

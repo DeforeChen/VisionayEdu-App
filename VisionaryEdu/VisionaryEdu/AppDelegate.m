@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 #import "IQKeyboardManager.h"
+#import "GuideViewCtrl.h"
 #import <JPUSHService.h>
+#import "SysTool.h"
 // iOS10注册APNs所需头文件
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
@@ -25,6 +27,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self keyboardManager];
     [self JPushInitialWithOption:launchOptions];
+    
+    GuideViewCtrl *guideViewCtrl = [[GuideViewCtrl alloc]init];
+    if ([SysTool checkWhetherFirstLaunch]) {
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window.rootViewController = guideViewCtrl;
+        self.window.backgroundColor = [UIColor whiteColor];
+    }
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
