@@ -50,7 +50,10 @@
                 if (success) {
                     [SysTool showAlertWithMsg:@"密钥修改成功，请重新登录!" handler:^(UIAlertAction *action) {
                         [LoginInfoModel clearLoginInfoInSandbox];
-                        [self.navigationController popToRootViewControllerAnimated:NO];
+                        if ([[LoginInfoModel fetchUserTypeFromSandbox] isEqualToString:Staff_UserType]) {
+                            [self.navigationController popToRootViewControllerAnimated:NO];
+                        } else // 学生端/家长端此时的根视图，不是staffHomePage，必须要调用类似于员工端"返回学生列表"的控件才行
+                            [self dismissViewControllerAnimated:NO completion:nil];
                     } viewCtrl:self];
                 } else
                     [SysTool showErrorWithMsg:msg duration:1];
@@ -65,9 +68,9 @@
         [SysTool showErrorWithMsg:@"两次输入的密码不一致!" duration:1];
         return NO;
     }
-    BOOL whether_longEnough = (self.NewPassWordTF.text.length > 8 && self.NewPassWordConfirmTF.text.length > 8)?YES:NO;
+    BOOL whether_longEnough = (self.NewPassWordTF.text.length >= 6 && self.NewPassWordConfirmTF.text.length >= 6)?YES:NO;
     if (whether_longEnough == NO) {
-        [SysTool showErrorWithMsg:@"密码长度必须大于8!" duration:1];
+        [SysTool showErrorWithMsg:@"密码长度必须不小于6!" duration:1];
         return NO;
     }
     return YES;

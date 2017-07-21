@@ -38,7 +38,7 @@ typedef enum : NSUInteger {
     SAT2,
     AP,
     IB
-} testType;
+} TestType;
 @interface FutureTests :NSObject
 @property (nonatomic , copy) NSString              * student_comment;
 @property (nonatomic , copy) NSString              * time;
@@ -58,7 +58,7 @@ typedef enum : NSUInteger {
 @property (nonatomic , copy) NSString              * staff_comment;
 @property (nonatomic , copy) NSString              * time;
 @property (nonatomic , copy) NSString              * details;
-@property (nonatomic , assign) NSInteger              student_schedule_pk;
+@property (nonatomic , assign) NSInteger              individual_cmmt_pk;
 @property (nonatomic , copy) NSString              * topic;
 @property (nonatomic , copy) NSString              * date;
 @property (nonatomic , assign) NSInteger              pk;

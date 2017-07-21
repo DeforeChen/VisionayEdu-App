@@ -73,10 +73,10 @@
                               @"student_username":[StudentInstance shareInstance].student_realname,
                               @"individual_comment":cell.individualComment.text,
                               @"extra_duration": (cell.overTimeLB.text.length == 0)?@"0":cell.overTimeLB.text,
-                              @"pk":[NSNumber numberWithInteger:self.recordModel.student_schedule_pk],
+                              @"pk":[NSNumber numberWithInteger:self.recordModel.individual_cmmt_pk],
                               @"username": [LoginInfoModel fetchAccountUsername]
                               } mutableCopy];
-    if (self.recordModel.student_schedule_pk == -1) {
+    if (self.recordModel.individual_cmmt_pk == -1) {
         [reqDict removeObjectForKey:@"pk"];
         XLog(@"从新添加");
         [SysTool showTipWithMsg:@"确认提交吗?" handler:^(UIAlertAction *action) {
@@ -95,7 +95,8 @@
     } else {
         XLog(@"修改添加");
         [SysTool showTipWithMsg:@"确认提交吗?" handler:^(UIAlertAction *action) {
-            [[SYHttpTool sharedInstance] patchEventWithURL:UPLOAD_INDIVIDUAL_CMMT primaryKey:self.recordModel.student_schedule_pk token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
+            [SysTool showLoadingHUDWithMsg:@"正在上送单独评价..." duration:0];
+            [[SYHttpTool sharedInstance] patchEventWithURL:UPLOAD_INDIVIDUAL_CMMT primaryKey:self.recordModel.individual_cmmt_pk token:[LoginInfoModel fetchTokenFromSandbox] params:reqDict completionHandler:^(BOOL success, NSString *msg, id responseObject) {
                 [SysTool dismissHUD];
                 if (success) {
                     [SysTool showAlertWithMsg:@"添加个人评论成功!" handler:^(UIAlertAction *action) {
@@ -146,7 +147,7 @@
     StudentCheckInRecordDetailsCell *cell = [tableview dequeueReusableCellWithIdentifier:NSStringFromClass([self class])];
     
     cell.topicTextView.text  = recordModel.topic;
-    cell.lastTimeLB.text     = recordModel.duration;
+    cell.lastTimeLB.text     = (recordModel.duration.length == 0)?@"0":recordModel.duration;
     cell.dateLB.text         = [NSString stringWithFormat:@"%@ %@",recordModel.date,recordModel.time];
     cell.totalComment.text       = recordModel.staff_comment;
     cell.individualComment.text  = recordModel.individual_comment;

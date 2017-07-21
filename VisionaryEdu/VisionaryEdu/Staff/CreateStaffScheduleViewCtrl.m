@@ -143,7 +143,10 @@
     BOOL whetherTagEmpty   = [self.scheduleTypeLB.text isEqualToString:TAG_HOLDER]?YES:NO;
     BOOL whetherDetailEmpty = ([self.detailTextView.text isEqualToString:DETAILS_HOLDER] || self.detailTextView.text.length == 0)?YES:NO;
     BOOL whetherLastTimeEmpty = YES;
-    if ([self.scheduleTypeLB.text isEqualToString:@"约谈"] && ![self.selectLastTimeBtn.titleLabel.text isEqualToString:TIME_HOLDER])
+    if ([self.scheduleTypeLB.text isEqualToString:@"约谈"] && ![self.selectLastTimeBtn.titleLabel.text isEqualToString:TIME_HOLDER]) {
+        whetherLastTimeEmpty = NO;
+    } else if
+        ([self.scheduleTypeLB.text isEqualToString:@"会议及茶话会"])
         whetherLastTimeEmpty = NO;
     
     if (whetherTitleEmpty) {

@@ -47,15 +47,23 @@
         LoginViewCtrl *vc = [LoginViewCtrl initMyView];
         [self.navigationController pushViewController:vc animated:NO];
     } else {
-        // 下拉刷新
-        self.studentListTB.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
-        if (self.isFirstRefresh) {
-            self.isFirstRefresh = NO;
-            [SysTool showLoadingHUDWithMsg:@"信息加载中..." duration:0];
-            [self refresh];
+        if ([[LoginInfoModel fetchUserTypeFromSandbox] isEqualToString:Staff_UserType]) {
+            // 下拉刷新
+            self.studentListTB.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
+            if (self.isFirstRefresh) {
+                self.isFirstRefresh = NO;
+                [SysTool showLoadingHUDWithMsg:@"信息加载中..." duration:0];
+                [self refresh];
+            }
+        } else { // 学生端
+            [StudentInstance shareInstance].student_realname = [LoginInfoModel fetchRealNameFromSandbox];
+            [StudentInstance shareInstance].student_username = [LoginInfoModel fetchAccountUsername];
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UITabBarController *tabbarVC = [storyboard instantiateViewControllerWithIdentifier:@"tabBarID"];
+            [self presentViewController: tabbarVC animated:NO completion:nil];
         }
     }
-    
 #ifdef MY_DEBUG
     NSString *ID = [JPUSHService registrationID];
     [SysTool showAlertWithMsg:ID handler:nil viewCtrl:self];
