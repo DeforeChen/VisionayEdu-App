@@ -17,6 +17,7 @@ typedef enum : NSUInteger {
     Judge_CertID,
     Judge_BankCardNo,
     Judge_Amount,
+    Judge_Score, //判断成绩，是否为只带0.5或没有小数点这样的
     Judge_MailBox //判断邮箱
 } JudgeType;
 @interface SysTool : NSObject

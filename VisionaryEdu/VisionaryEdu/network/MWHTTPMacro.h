@@ -25,16 +25,20 @@
 
 #pragma mark - 端口
 
-//#define VISIONARY_HOST @"http://192.168.31.128:5000"
-#define VISIONARY_HOST @"https://www.visionaryedu.net/vision-api"
-#define FILE_PREFIX @"https://www.visionaryedu.net"
+#define VISIONARY_HOST @"http://119.23.205.198/vision-api"
+#define FILE_PREFIX @"http://119.23.205.198"
 
+//#define VISIONARY_HOST @"https://www.visionaryedu.net/vision-api"
+//#define FILE_PREFIX @"https://www.visionaryedu.net"
+
+#define USER_PROTOCOL_HTML @"http://119.23.205.198/user-agreement/"
 #define STUDENT_LIST @"/StudentType/"
 #define STAFF_LIST @"/StaffType/"
 
 #define UPLOAD_MEETING @"/---Meetings/"
 #define UPLOAD_RECORD  @"/---CheckInRecord/"
 #define UPLOAD_OBJ  @"/---Objectives/"
+#define UPLOAD_FUTURETEST  @"/---FutureTestSchedule/"
 #define UPLOAD_TASK  @"/---Tasks/"
 #define UPLOAD_INDIVIDUAL_CMMT @"/---AppointmentComment/"
 

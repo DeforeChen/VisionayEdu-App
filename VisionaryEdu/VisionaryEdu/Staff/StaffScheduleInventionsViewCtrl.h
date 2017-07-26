@@ -15,6 +15,7 @@ typedef void(^SelectionInfoUnderModifyMode)(NSArray *selectGuys);
 typedef enum : NSUInteger {
     CreateMode,
     ModifyMode,
+    ModifyConsultantMode,
 } UseMode;
 @interface StaffScheduleInventionsViewCtrl : UIViewController
 

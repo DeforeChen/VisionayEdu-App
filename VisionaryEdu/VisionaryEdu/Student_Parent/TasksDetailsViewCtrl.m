@@ -160,10 +160,14 @@
     cell.detailsTextView.text        = taskModel.details;
     
     cell.editTaskBtn.alpha = 0.0f;
+    cell.deleteTaskBtn.alpha = 0.0f;
     cell.editTaskBtn.layer.borderColor = [UIColor colorWithHexString:@"#43434D"].CGColor;
     cell.editTaskBtn.layer.borderWidth = 1.0;
     cell.editTaskBtn.layer.cornerRadius = 10.0;
     cell.editTaskBtn.clipsToBounds = YES;
+
+    if (![[LoginInfoModel fetchUserTypeFromSandbox] isEqualToString:Staff_UserType])
+        [cell.editTaskBtn setTitle:@"提交自评" forState:UIControlStateNormal];
     return cell;
 }
 
@@ -196,7 +200,8 @@
     
     [UIView animateWithDuration:0.5 animations:^{
         self.editTaskBtn.alpha = (onEditMode == YES)?1.0f:0.0f;
-        self.deleteTaskBtn.alpha = (onEditMode == YES)?1.0f:0.0f;
+        if ([[LoginInfoModel fetchUserTypeFromSandbox] isEqualToString:Staff_UserType])
+            self.deleteTaskBtn.alpha = (onEditMode == YES)?1.0f:0.0f;
     }];
 }
 

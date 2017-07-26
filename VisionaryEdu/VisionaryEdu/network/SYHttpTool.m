@@ -116,9 +116,12 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
 }
 
 -(void)fetchTokenWithUserName:(NSString *)name password:(NSString *)pwd registration_id:(NSString*)jpushID completionHandler:(HTTPCompletion)completionBlock {
-    NSDictionary *paramsDict = @{@"username":name,
-                                 @"password":pwd,
-                                 @"registration_id":jpushID};
+    NSMutableDictionary *paramsDict = [@{@"username":name,
+                                         @"password":pwd,
+                                         @"registration_id":@""
+                                        } mutableCopy];
+    if (jpushID != nil)
+        [paramsDict setObject:jpushID forKey:@"registration_id"];
     NSString *loginURL = [NSString stringWithFormat:@"%@%@",VISIONARY_HOST,LOGIN];
     NSLog(@"登录的URL = %@",loginURL);
     [self loadWithURL:loginURL

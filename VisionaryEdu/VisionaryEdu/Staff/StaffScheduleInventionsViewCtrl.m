@@ -37,6 +37,7 @@
 @property (strong ,nonatomic) NSMutableArray *selectedStaffArray;
 @property (strong ,nonatomic) NSMutableArray *selectedStudentArray;
 
+@property (copy,nonatomic) NSString *selectConsultant;
 @property (copy, nonatomic) SelectionInfoUnderCreateMode createBlk;
 @property (copy, nonatomic) SelectionInfoUnderModifyMode modifyBlk;
 @property (assign,nonatomic) UseMode mode;
@@ -75,6 +76,10 @@
             [self selectMeeting:nil];
         } else
             [self selectCheckInRecord:nil];
+    } else if (self.mode == ModifyConsultantMode) {
+        self.TagContainerView.hidden = YES;
+        [self selectMeeting:nil];
+        self.inventGuysList.allowsMultipleSelection = NO;
     } else { // 新增模式下，默认选择茶话会
         [self selectMeeting:nil];
     }
@@ -192,20 +197,22 @@
         return;
     }
     
-    if (self.scheduleType == MeetingType) {
-        NSString *myName = [LoginInfoModel fetchRealNameFromSandbox];
-        if (![fullNameArray containsObject:myName]) {
-            [SysTool showErrorWithMsg:@"添加的日程必须包括您自己!" duration:2];
-            return;
-        }
-        
-        if (fullNameArray.count == 1 && [fullNameArray[0] isEqualToString:myName]) {
-            [SysTool showErrorWithMsg:@"就你自己一个人开什么会?!" duration:2];
-            return;
+    if (self.mode != ModifyConsultantMode) { // 主要是会议模式下，判断输入选择是否合法
+        if (self.scheduleType == MeetingType) {
+            NSString *myName = [LoginInfoModel fetchRealNameFromSandbox];
+            if (![fullNameArray containsObject:myName]) {
+                [SysTool showErrorWithMsg:@"添加的日程必须包括您自己!" duration:2];
+                return;
+            }
+            
+            if (fullNameArray.count == 1 && [fullNameArray[0] isEqualToString:myName]) {
+                [SysTool showErrorWithMsg:@"就你自己一个人开什么会?!" duration:2];
+                return;
+            }
         }
     }
     
-    if (self.mode == ModifyMode) {
+    if (self.mode == ModifyMode || self.mode == ModifyConsultantMode) {
         if (self.modifyBlk != nil) self.modifyBlk(fullNameArray);
     } else { // 新增模式
         if(self.createBlk != nil) self.createBlk(self.scheduleType, fullNameArray);
@@ -290,20 +297,34 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.scheduleType == MeetingType) { // 会议，对应 Meeting Cell
+    if (self.mode == ModifyConsultantMode) {
         Schedule_MeetingCell *cell = [self.inventGuysList cellForRowAtIndexPath:indexPath];
-        cell.tipImg.hidden = [self.selectedStaffArray containsObject:self.staffCanBeAppointedListArray[indexPath.row]]?YES:NO;
-        if ([self.selectedStaffArray containsObject:self.staffCanBeAppointedListArray[indexPath.row]]) {
-            [self.selectedStaffArray removeObject:self.staffCanBeAppointedListArray[indexPath.row]];
-        } else
-            [self.selectedStaffArray addObject:self.staffCanBeAppointedListArray[indexPath.row]];
+        cell.tipImg.hidden = NO;
+        [self.selectedStaffArray removeAllObjects];
+        [self.selectedStaffArray addObject:self.staffCanBeAppointedListArray[indexPath.row]];
     } else {
-        Schedule_RecordCell *cell = [self.inventGuysList cellForRowAtIndexPath:indexPath];
-        cell.tipImg.hidden = [self.selectedStudentArray containsObject:self.studentListArray[indexPath.row]]?YES:NO;
-        if ([self.selectedStudentArray containsObject:self.studentListArray[indexPath.row]]) {
-            [self.selectedStudentArray removeObject:self.studentListArray[indexPath.row]];
-        } else
-            [self.selectedStudentArray addObject:self.studentListArray[indexPath.row]];
+        if (self.scheduleType == MeetingType) { // 会议，对应 Meeting Cell
+            Schedule_MeetingCell *cell = [self.inventGuysList cellForRowAtIndexPath:indexPath];
+            cell.tipImg.hidden = [self.selectedStaffArray containsObject:self.staffCanBeAppointedListArray[indexPath.row]]?YES:NO;
+            if ([self.selectedStaffArray containsObject:self.staffCanBeAppointedListArray[indexPath.row]]) {
+                [self.selectedStaffArray removeObject:self.staffCanBeAppointedListArray[indexPath.row]];
+            } else
+                [self.selectedStaffArray addObject:self.staffCanBeAppointedListArray[indexPath.row]];
+        } else {
+            Schedule_RecordCell *cell = [self.inventGuysList cellForRowAtIndexPath:indexPath];
+            cell.tipImg.hidden = [self.selectedStudentArray containsObject:self.studentListArray[indexPath.row]]?YES:NO;
+            if ([self.selectedStudentArray containsObject:self.studentListArray[indexPath.row]]) {
+                [self.selectedStudentArray removeObject:self.studentListArray[indexPath.row]];
+            } else
+                [self.selectedStudentArray addObject:self.studentListArray[indexPath.row]];
+        }
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.mode == ModifyConsultantMode) {
+        Schedule_MeetingCell *cell = [self.inventGuysList cellForRowAtIndexPath:indexPath];
+        cell.tipImg.hidden = YES;
     }
 }
 @end

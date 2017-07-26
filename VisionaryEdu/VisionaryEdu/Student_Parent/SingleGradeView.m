@@ -28,8 +28,8 @@
 +(instancetype)initMyViewWithGradeModel:(id<scoreModelProtocol>)gradeModel PageIndex:(NSInteger)page Height:(CGFloat)height checkDetailBlk:(checkDetail)checkDetailBlk {
     SingleGradeView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil].lastObject;
     view.frame = CGRectMake(page*WIDTH, 0, WIDTH, height);
-    view.gradeDateLB.text = gradeModel.date;
-    view.gradePlaceLB.text = gradeModel.place;
+    view.gradeDateLB.text = gradeModel.test_schedule_info.date;
+    view.gradePlaceLB.text = gradeModel.test_schedule_info.date;
     view.checkBlk = checkDetailBlk;
     [view configUIWithModel:gradeModel];
     return view;

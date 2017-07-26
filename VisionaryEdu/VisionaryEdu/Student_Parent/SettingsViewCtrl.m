@@ -8,6 +8,7 @@
 
 #import "SettingsViewCtrl.h"
 #import "config.h"
+#import <WebKit/WebKit.h>
 
 #define LOGOUT_SUC @"Successfully logged out."
 @interface SettingsViewCtrl ()
@@ -31,9 +32,20 @@
 #pragma mark UserInteraction
 - (IBAction)logout:(UIButton *)sender {
     [SysTool showAlertWithMsg:@"登出成功" handler:^(UIAlertAction *action) {
+        if ([[LoginInfoModel fetchUserTypeFromSandbox] isEqualToString:Staff_UserType]) {
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        } else
+            [self dismissViewControllerAnimated:NO completion:nil];
         [LoginInfoModel clearLoginInfoInSandbox];
-        [self.navigationController popToRootViewControllerAnimated:NO];
     } viewCtrl:self];
+}
+
+- (IBAction)checkUserProtocol:(UIButton *)sender {
+    UIViewController *vc = [UIViewController new];
+    WKWebView *web = [[WKWebView alloc] initWithFrame:vc.view.frame];
+    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:USER_PROTOCOL_HTML]]];
+    [vc.view addSubview:web];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

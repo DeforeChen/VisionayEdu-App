@@ -17,28 +17,30 @@
 @implementation FutureTestCell
 +(FutureTestCell *)initMyCellWithTableview:(UITableView *)tableview testModel:(FutureTests*)test {
     FutureTestCell *cell = (FutureTestCell*)[tableview dequeueReusableCellWithIdentifier:@"futureTest"];
+    cell.testTimeLB.text = [test.time substringToIndex:5];
+    cell.testPlaceLB.text = test.place;
     switch (test.test_type) {
-        case Toefl:
+        case ToeflType:
             cell.testTypeLB.text = @"托福";
             break;
-        case ielts:
+        case ieltsType:
             cell.testTypeLB.text = @"雅思";
             break;
-        case SAT:
+        case SatType:
             cell.testTypeLB.text = @"SAT";
             break;
-        case ACT:
+        case ActType:
             cell.testTypeLB.text = @"ACT";
             break;
-        case SAT2:
+        case Sat2Type:
             cell.testTypeLB.text = @"SAT2";
             break;
-        case AP:
+        case APType:
             cell.testTypeLB.text = @"AP考试";
             break;
-        case IB:
-            cell.testTypeLB.text = @"IB考试";
-            break;
+//        case IBType:
+//            cell.testTypeLB.text = @"IB考试";
+//            break;
     }
     return cell;
 }

@@ -44,7 +44,10 @@
         self.datePicker.countDownDuration = self.duration;
         self.datePicker.minuteInterval = 30;
     } else {
-        self.datePicker.date = self.date;
+        if (self.date!=nil) {
+            self.datePicker.date = self.date;
+        }
+        
         self.datePicker.minuteInterval = 15;
     }
     

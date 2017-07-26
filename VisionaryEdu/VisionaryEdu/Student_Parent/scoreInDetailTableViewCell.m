@@ -24,10 +24,10 @@
                                      tableIndex:(int)index
 testType:(NSString *)type scoreInfo:(id<scoreModelProtocol>)info {
     scoreInDetailTableViewCell *cell = (scoreInDetailTableViewCell*)[tableview dequeueReusableCellWithIdentifier:@"scoreInDetailCell"];
-
-    NSString *date  = (info.date == nil)?@"":info.date;
-    NSString *time  = (info.time == nil)?@"":info.time;
-    NSString *place = (info.place == nil || [info.place isEqualToString:@""])?@"":[NSString stringWithFormat:@"考试地点:%@",info.place];
+    Test_schedule_info *testInfo = info.test_schedule_info;
+    NSString *date  = (testInfo.date == nil)?@"":testInfo.date;
+    NSString *time  = (testInfo.time == nil)?@"":testInfo.time;
+    NSString *place = (testInfo.place == nil || [testInfo.place isEqualToString:@""])?@"":[NSString stringWithFormat:@"考试地点:%@",testInfo.place];
     
     cell.dateAndTimeLB.text = [NSString stringWithFormat:@"%@\n%@",date,time];
     cell.cellIndexLB.text   = [NSString stringWithFormat:@"%d",index+1];

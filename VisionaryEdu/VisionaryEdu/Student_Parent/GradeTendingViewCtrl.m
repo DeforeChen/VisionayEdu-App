@@ -39,9 +39,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     [self configGradeOptionViewUI];
-    [self updateGradeViewScrollContainerWithGradeInfos:self.gradeInfoArray[self.selectGradeIndex]];
+//    [self updateGradeViewScrollContainerWithGradeInfos:self.gradeInfoArray[self.selectGradeIndex]];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -51,6 +52,11 @@
     }
     TabBarManagerViewCtrl *vc = (TabBarManagerViewCtrl*)self.tabBarController;
     vc.customTabbar.hidden = YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self updateGradeViewScrollContainerWithGradeInfos:self.gradeInfoArray[self.selectGradeIndex]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -96,7 +102,10 @@
     
     self.lineChart.labelForIndex = ^(NSUInteger item) {
         XLog(@"x轴 x = %lu",(unsigned long)item);
-        return [XDateLabel[item] substringFromIndex:5];
+        if ([XDateLabel[item] length] >= 5) {
+            return [XDateLabel[item] substringFromIndex:5];
+        } else
+            return (NSString*)XDateLabel[item];
     };
 
     [self.lineChart setChartData:srcDataArray];
@@ -125,7 +134,7 @@
     NSMutableArray *gradeValue = [NSMutableArray new];
 //    NSArray *array = [[gradeInfoArray reverseObjectEnumerator] allObjects];
     for (id<scoreModelProtocol>gradeInfo in gradeInfoArray) {
-        [xTimeLabel addObject:(gradeInfo.date == nil)?@"":gradeInfo.date];
+        [xTimeLabel addObject:(gradeInfo.test_schedule_info.date == nil)?@"":gradeInfo.test_schedule_info.date];
         [gradeValue addObject:[gradeInfo fetchSingleGradeInfoDict][TotalScore]];
     }
     [self createLineChartWithXLabel:xTimeLabel SrcData:gradeValue];
@@ -156,9 +165,9 @@
     GradeTotalScoreCell *cell = (GradeTotalScoreCell*)[tableView dequeueReusableCellWithIdentifier:@"totalScore"];
     id<scoreModelProtocol> gradeInfo = self.gradeInfoArray[self.selectGradeIndex][indexPath.row];
     cell.cellIndexLB.text = [NSString stringWithFormat:@"%d",(int)indexPath.row + 1];
-    cell.testTimeLB.text  = (gradeInfo.date == nil)?@"":gradeInfo.date;
+    cell.testTimeLB.text  = (gradeInfo.test_schedule_info.date == nil)?@"":gradeInfo.test_schedule_info.date;
     cell.totalScore.text  = [NSString stringWithFormat:@"%@",[gradeInfo fetchSingleGradeInfoDict][TotalScore]];
-    cell.testPlaceLB.text = gradeInfo.place;
+    cell.testPlaceLB.text = gradeInfo.test_schedule_info.place;
     return cell;
 }
 @end

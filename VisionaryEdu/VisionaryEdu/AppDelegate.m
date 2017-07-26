@@ -72,7 +72,7 @@
     //Enabling keyboard manager(Use this line to enable managing distance between keyboard & textField/textView).
     [[IQKeyboardManager sharedManager] setEnable:YES];
     //(Optional)Set Distance between keyboard & textField, Default is 10.
-    [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:200];
+    [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:50];
     //(Optional)Enable autoToolbar behaviour. If It is set to NO. You have to manually create UIToolbar for keyboard.
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
     //(Optional)Setting toolbar behaviour to IQAutoToolbarBySubviews to manage previous/next according to UITextField's hirarchy in it's SuperView. Set it to IQAutoToolbarByTag to manage previous/next according to UITextField's tag property in increasing order.

@@ -35,8 +35,8 @@
              @"ap" : [Ap class],
              @"sat2":[Sat2 class],
              @"sat":[Sat class],
-             @"gpa":[Gpa class],
-             @"custom":[Custom class],
+//             @"gpa":[Gpa class],
+//             @"custom":[Custom class],
              @"ielts":[Ielts class],
              @"toefl":[Toefl class]
              };
@@ -210,36 +210,40 @@
 }
 @end
 
-@implementation Gpa
--(NSDictionary *)fetchSingleGradeInfoDict {
-    NSMutableDictionary *dict = [NSMutableDictionary new];
-    [dict setObject:[NSNumber numberWithInteger:self.gpa_getting] forKey:TotalScore];
-    [dict setObject:self.subject forKey:Subject];
-    [dict setObject:[NSNumber numberWithInteger:self.possible_gpa] forKey:PossibleScore];
-    return dict;
-}
+@implementation Test_schedule_info
 
--(id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property {
-    if (oldValue == nil) {
-        return @"";
-    } else
-        return oldValue;
-}
 @end
 
-@implementation Custom
--(NSDictionary *)fetchSingleGradeInfoDict {
-    NSMutableDictionary *dict = [NSMutableDictionary new];
-    [dict setObject:[NSNumber numberWithInteger:self.score_getting] forKey:TotalScore];
-    [dict setObject:self.subject forKey:Subject];
-    [dict setObject:[NSNumber numberWithInteger:self.possible_points] forKey:PossibleScore];
-    return dict;
-}
+//@implementation Gpa
+//-(NSDictionary *)fetchSingleGradeInfoDict {
+//    NSMutableDictionary *dict = [NSMutableDictionary new];
+//    [dict setObject:[NSNumber numberWithInteger:self.gpa_getting] forKey:TotalScore];
+//    [dict setObject:self.subject forKey:Subject];
+//    [dict setObject:[NSNumber numberWithInteger:self.possible_gpa] forKey:PossibleScore];
+//    return dict;
+//}
+//
+//-(id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property {
+//    if (oldValue == nil) {
+//        return @"";
+//    } else
+//        return oldValue;
+//}
+//@end
 
--(id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property {
-    if (oldValue == nil) {
-        return @"";
-    } else
-        return oldValue;
-}
-@end
+//@implementation Custom
+//-(NSDictionary *)fetchSingleGradeInfoDict {
+//    NSMutableDictionary *dict = [NSMutableDictionary new];
+//    [dict setObject:[NSNumber numberWithInteger:self.score_getting] forKey:TotalScore];
+//    [dict setObject:self.subject forKey:Subject];
+//    [dict setObject:[NSNumber numberWithInteger:self.possible_points] forKey:PossibleScore];
+//    return dict;
+//}
+
+//-(id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property {
+//    if (oldValue == nil) {
+//        return @"";
+//    } else
+//        return oldValue;
+//}
+//@end

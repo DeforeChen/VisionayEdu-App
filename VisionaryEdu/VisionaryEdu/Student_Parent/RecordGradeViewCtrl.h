@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StudentScheduleModel.h"
+@class FutureTests;
+
+typedef void(^FillInRecordBlk)(BOOL whetherFilled, NSDictionary *gradeDetailsDict);
 
 @interface RecordGradeViewCtrl : UIViewController
-
+@property (nonatomic,strong) FutureTests *testModel;
++(instancetype)initMyViewCtrlWithTestType:(TestType)type gradeDict:(NSDictionary*)grade callback:(FillInRecordBlk)block whetherEditMode:(BOOL)whether;
 @end

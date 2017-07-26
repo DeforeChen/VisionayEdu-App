@@ -137,6 +137,9 @@
         case Judge_Amount:
             return [str isMatch:RX(@"^[0-9]+(\\.[0-9]{1,2})?$")];
             break;
+        case Judge_Score:
+            return [str isMatch:RX(@"^[0-9]+(\\.[05]{1})?$")];
+            break;
         case Judge_CertID:
             return [str isMatch:RX(@"^(\\d{14}|\\d{17})(\\d|[xX])$")];
             break;

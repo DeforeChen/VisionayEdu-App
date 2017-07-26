@@ -19,6 +19,7 @@
 #import "GradeDetailsViewCtrl.h"
 #import "TasksDetailsViewCtrl.h"
 #import "CreateTaskViewCtrl.h"
+#import "CreateTestScheduleViewCtrl.h"
 #import "StudentCheckInRecordDetailsViewCtrl.h"
 
 #define TestColor           [UIColor colorWithHexString:@"#E67291"]
@@ -203,7 +204,8 @@
         CreateTaskViewCtrl *vc = [CreateTaskViewCtrl initMyViewCtrl];
         [self.navigationController pushViewController:vc animated:YES];
     } else {
-    
+        CreateTestScheduleViewCtrl *vc = [CreateTestScheduleViewCtrl initMyViewCtrl];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

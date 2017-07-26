@@ -31,18 +31,19 @@
 @end
 
 typedef enum : NSUInteger {
-    Toefl = 0,
-    ielts = 1,
-    SAT,
-    ACT,
-    SAT2,
-    AP,
-    IB
+    ToeflType = 1,
+    ieltsType = 2,
+    SatType,
+    ActType,
+    Sat2Type,
+    APType,
+//    IBType
 } TestType;
 @interface FutureTests :NSObject
 @property (nonatomic , copy) NSString              * student_comment;
 @property (nonatomic , copy) NSString              * time;
 @property (nonatomic , copy) NSString              * staff_comment;
+@property (nonatomic , assign) NSInteger              test_info_pk;
 @property (nonatomic , copy) NSString              * details;
 @property (nonatomic , copy) NSString              * date;
 @property (nonatomic , assign) NSInteger              test_type;

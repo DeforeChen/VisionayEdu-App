@@ -12,6 +12,7 @@
 #import "LoginInfoModel.h"
 #import <MJExtension/MJExtension.h>
 #import <JPUSHService.h>
+#import <WebKit/WebKit.h>
 
 @interface LoginViewCtrl ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;
@@ -87,6 +88,15 @@
         }];
     }
 }
+
+- (IBAction)checkUserProtocol:(UIButton *)sender {
+    UIViewController *vc = [UIViewController new];
+    WKWebView *web = [[WKWebView alloc] initWithFrame:vc.view.frame];
+    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:USER_PROTOCOL_HTML]]];
+    [vc.view addSubview:web];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 #pragma mark TextField Delegate
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField {

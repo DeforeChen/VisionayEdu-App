@@ -13,6 +13,7 @@
 #import "config.h"
 #import "StaffListModel.h"
 #import "StudentListModel.h"
+#import "DatePickerViewController.h"
 #import <MJExtension/MJExtension.h>
 
 #define TITILE_HOLDER @"请输入标题"
@@ -25,14 +26,14 @@
 @property (weak, nonatomic) IBOutlet UITextView *titleInput;
 @property (weak, nonatomic) IBOutlet UITextView *locationInput;
 @property (weak, nonatomic) IBOutlet UIButton *addEventBtn;
-@property (weak, nonatomic) IBOutlet UIDatePicker *dateTimePicker;
 @property (weak, nonatomic) IBOutlet UILabel *scheduleTypeLB;
 @property (weak, nonatomic) IBOutlet UIButton *selectTimeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *selectLastTimeBtn;
-@property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 @property (weak, nonatomic) IBOutlet UITextView *detailTextView;
 
-
+@property (weak, nonatomic) IBOutlet UIView *consultantView;
+@property (copy, nonatomic) NSString *consultantGuy;//顾问名称，只在约谈模式下有用
+@property (weak, nonatomic) IBOutlet UIButton *editConsultantBtn;
 
 @property (copy, nonatomic) NSString *date;
 @property (copy, nonatomic) NSString *time;
@@ -46,14 +47,8 @@
     [super viewDidLoad];
     self.addEventBtn.layer.cornerRadius = 6.0;
     self.addEventBtn.clipsToBounds = YES;
-    
-    self.confirmBtn.alpha = 0.0f;
-    self.confirmBtn.layer.borderColor = [UIColor colorWithHexString:@"#43434D"].CGColor;
-    self.confirmBtn.layer.borderWidth = 1.0;
-    self.confirmBtn.layer.cornerRadius = 10.0;
-    self.confirmBtn.clipsToBounds = YES;
-    
-    self.dateTimePicker.alpha = 0.0f;
+    self.consultantGuy = [LoginInfoModel fetchRealNameFromSandbox];//默认为当前登录的账号
+    [self.editConsultantBtn setTitle:[NSString stringWithFormat:@"%@(点击变更)",self.consultantGuy] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,47 +66,47 @@
 #pragma mark Userinteraction
 - (IBAction)selectDate:(UIButton *)sender {
     [self.view endEditing:YES];
-    self.dateTimePicker.datePickerMode = UIDatePickerModeDateAndTime;
-    self.dateTimePicker.minuteInterval = 15;
-    if (self.dateTimePicker.alpha == 0) {
-        [UIView animateWithDuration:0.5 animations:^{
-            self.dateTimePicker.alpha = 1.0f;
-            self.confirmBtn.alpha = 1.0f;
-        }];
-    }
+    NSDateFormatter *Dateformatter = [[NSDateFormatter alloc] init];
+    [Dateformatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDate *date= [NSDate new];//[NSDate new];
+    if (![self.selectTimeBtn.titleLabel.text isEqualToString:@"点击后选择时间"]) {
+        date = [Dateformatter dateFromString:self.selectTimeBtn.titleLabel.text];
+    } else
+        date = nil;
+    
+    DatePickerViewController *vc = [DatePickerViewController initMyViewCtrlWithDate:date callback:^(NSString *selectDateStr) {
+            NSString *dateTime = selectDateStr;
+            self.date = [dateTime substringToIndex:10];
+            self.time = [dateTime substringFromIndex:11];
+            [self.selectTimeBtn setTitle:dateTime forState:UIControlStateNormal];
+//        } else if(self.dateTimePicker.datePickerMode == UIDatePickerModeCountDownTimer) {
+//            NSString *countTime = [NSString stringWithFormat:@"%.1f",self.dateTimePicker.countDownDuration/60/60];
+//            [self.selectLastTimeBtn setTitle:countTime forState:UIControlStateNormal];
+//        }
+    } pickerDateMode:UIDatePickerModeDateAndTime];
+    [self.navigationController pushViewController:vc animated:YES];
+//    self.dateTimePicker.datePickerMode = UIDatePickerModeDateAndTime;
+//    self.dateTimePicker.minuteInterval = 15;
+//    if (self.dateTimePicker.alpha == 0) {
+//        [UIView animateWithDuration:0.5 animations:^{
+//            self.dateTimePicker.alpha = 1.0f;
+//            self.confirmBtn.alpha = 1.0f;
+//        }];
+//    }
 }
 
 - (IBAction)selectLastTime:(UIButton *)sender {
     [self.view endEditing:YES];
-    self.dateTimePicker.datePickerMode = UIDatePickerModeCountDownTimer;
-    self.dateTimePicker.minuteInterval = 30;
-    if (self.dateTimePicker.alpha == 0) {
-        [UIView animateWithDuration:0.5 animations:^{
-            self.dateTimePicker.alpha = 1.0f;
-            self.confirmBtn.alpha = 1.0f;
-        }];
+    
+    NSTimeInterval duration = 30*60;
+    if (![self.selectLastTimeBtn.titleLabel.text isEqualToString:@"点击后选择时间"]) {
+        duration = [self.selectLastTimeBtn.titleLabel.text floatValue]*60*60;
     }
-}
-
-- (IBAction)confirmDateAndTime:(UIButton *)sender {
-    NSDateFormatter *Dateformatter = [[NSDateFormatter alloc] init];
-    [Dateformatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    if (self.dateTimePicker.datePickerMode == UIDatePickerModeDateAndTime) {
-        NSString *dateTime = [Dateformatter stringFromDate:self.dateTimePicker.date];
-        self.date = [dateTime substringToIndex:10];
-        self.time = [dateTime substringFromIndex:11];
-        [self.selectTimeBtn setTitle:dateTime forState:UIControlStateNormal];
-    } else if(self.dateTimePicker.datePickerMode == UIDatePickerModeCountDownTimer) {
-        NSString *countTime = [NSString stringWithFormat:@"%.1f",self.dateTimePicker.countDownDuration/60/60];
-        [self.selectLastTimeBtn setTitle:countTime forState:UIControlStateNormal];
-    }
-
-    [UIView animateWithDuration:0.5 animations:^{
-        self.dateTimePicker.alpha = 0.0f;
-        self.confirmBtn.alpha = 0.0f;
+    DatePickerViewController *vc = [DatePickerViewController initMyViewCtrlWithDuration:duration callback:^(NSString *lastTime) {
+        [self.selectLastTimeBtn setTitle:lastTime forState:UIControlStateNormal];
     }];
+    [self.navigationController pushViewController:vc animated:YES];
 }
-
 
 - (IBAction)appendNewSchedule:(UIButton *)sender {
     if ([self judgeInputLegal]) {
@@ -203,9 +198,9 @@
     recordModel.date = self.date;
     recordModel.topic = self.titleInput.text;
     recordModel.duration = self.selectLastTimeBtn.titleLabel.text;
-    recordModel.staff_username = [LoginInfoModel fetchRealNameFromSandbox];
+    recordModel.staff_username = self.consultantGuy;
     NSMutableDictionary *dict = recordModel.mj_keyValues;
-    [dict setObject:[LoginInfoModel fetchAccountUsername] forKey:@"username"];
+    [dict setObject:self.consultantGuy forKey:@"username"];
     return dict;
 }
 
@@ -214,8 +209,10 @@
     StaffScheduleInventionsViewCtrl *vc = [StaffScheduleInventionsViewCtrl initMyViewCtrlWithUseMode:CreateMode scheduleTypeUnderModifyMode:NoneType guysHaveBeenIncluded:@[[LoginInfoModel fetchRealNameFromSandbox]] createCallback:^(StaffScheduleType type, NSArray *selectGuys) {
         if (type == MeetingType) {
             self.scheduleTypeLB.text = @"会议及茶话会";
-        } else
+        } else {
             self.scheduleTypeLB.text = @"约谈";
+            self.consultantView.hidden = NO;
+        }
         self.selectGuysArray = selectGuys;
         NSLog(@"赋值的 selectGuysArray = %@",self.selectGuysArray);
         self.type = type;
@@ -223,6 +220,14 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (IBAction)modifyConsultant:(UIButton *)sender {
+    StaffScheduleInventionsViewCtrl *vc = [StaffScheduleInventionsViewCtrl initMyViewCtrlWithUseMode:ModifyConsultantMode scheduleTypeUnderModifyMode:MeetingType guysHaveBeenIncluded:@[] createCallback:nil modifyCallback:^(NSArray *selectGuys) {
+        self.consultantGuy = selectGuys[0];
+        [self.editConsultantBtn setTitle:[NSString stringWithFormat:@"%@(点击变更)",self.consultantGuy] forState:UIControlStateNormal];
+        
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 #pragma mark TextView Delegate
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView {
