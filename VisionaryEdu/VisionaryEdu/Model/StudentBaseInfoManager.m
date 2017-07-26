@@ -8,6 +8,7 @@
 
 #import "StudentBaseInfoManager.h"
 #import <MJExtension/MJExtension.h>
+#import "config.h"
 
 @implementation StudentInfoModel
 
@@ -25,7 +26,7 @@
         return [obj1 compare:obj2 options:NSNumericSearch];
     };
     gradeKeyArray = [gradeKeyArray sortedArrayUsingComparator:cmptr];
-    NSLog(@"排序后的属性列表 = %@",gradeKeyArray);
+    XLog(@"排序后的属性列表 = %@",gradeKeyArray);
     
     // 用JSON中的key（年级字段），判断如果他的value非空，那么就把这个年级的索引组成一个数组
     NSMutableArray<NSString*> *validGradeIndexArray    = [[NSMutableArray alloc] init];
@@ -36,7 +37,7 @@
         id gradeValueArray  = [responseObject objectForKey:grade];
         NSArray *currentGradeStudentsArray = [StudentInfoModel mj_objectArrayWithKeyValuesArray:gradeValueArray];
         if (currentGradeStudentsArray.count > 0) {
-            NSLog(@"%@的学生共%d人",grade,(int)currentGradeStudentsArray.count);
+            XLog(@"%@的学生共%d人",grade,(int)currentGradeStudentsArray.count);
             [validGradeIndexArray addObject:grade];
             [totalInfoArray addObject:currentGradeStudentsArray];
             totalNumber += currentGradeStudentsArray.count;

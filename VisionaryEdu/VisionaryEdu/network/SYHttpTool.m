@@ -8,6 +8,7 @@
 
 #import "SYHttpTool.h"
 #import <AFNetworking/AFNetworking.h>
+#import "config.h"
 
 #define WEEK_SELF __weak typeof(self) weekSelf = self ;
 #define SELFCLASS_NAME SYHttpTool
@@ -123,7 +124,7 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
     if (jpushID != nil)
         [paramsDict setObject:jpushID forKey:@"registration_id"];
     NSString *loginURL = [NSString stringWithFormat:@"%@%@",VISIONARY_HOST,LOGIN];
-    NSLog(@"登录的URL = %@",loginURL);
+    XLog(@"登录的URL = %@",loginURL);
     [self loadWithURL:loginURL
                method:POST
                params:paramsDict
@@ -137,7 +138,7 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
               completionHandler:(HTTPCompletion)completionBlock
                           token:(NSString*)token {
     NSString *loginURL = [NSString stringWithFormat:@"%@%@",VISIONARY_HOST,PWD_MODIFY];
-    NSLog(@"修改密钥的URL = %@",loginURL);
+    XLog(@"修改密钥的URL = %@",loginURL);
     NSDictionary *reqDict = @{@"new_password1":newPwd,
                               @"new_password2":confirmNewPwd,
                               @"old_password" :oldPwd};
@@ -153,7 +154,7 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
              params:(NSDictionary *)params
   completionHandler:(HTTPCompletion)completionBlock
               token:(NSString*)token {
-    NSLog(@"上送的URL = %@",url);
+    XLog(@"上送的URL = %@",url);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     if (token != nil) {
@@ -161,7 +162,7 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
         [manager.requestSerializer setValue:MyToken
                          forHTTPHeaderField:@"Authorization"];
     }
-    NSLog(@"上送的参数 = %@, token = %@",params,token);
+    XLog(@"上送的参数 = %@, token = %@",params,token);
     [manager.requestSerializer setTimeoutInterval:TimeOut];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [manager.requestSerializer setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
@@ -175,7 +176,7 @@ static SYHttpTool *center = nil;//定义一个全局的静态变量，满足静�
     
     WEEK_SELF
     if (methodType == GET) {
-        NSLog(@"上送前的URL = %@",url);
+        XLog(@"上送前的URL = %@",url);
         [manager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             [weekSelf handleResponseObject:responseObject completionHandler:completionBlock url:url];
         }

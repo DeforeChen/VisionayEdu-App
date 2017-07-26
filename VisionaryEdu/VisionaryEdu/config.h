@@ -15,7 +15,7 @@
 #import "StudentInstance.h"
 
 // 日志开关
-#define IsLogShow 1
+#define IsLogShow 0
 
 #if IsLogShow
     #define XLog(format, ...) NSLog((format), ##__VA_ARGS__)

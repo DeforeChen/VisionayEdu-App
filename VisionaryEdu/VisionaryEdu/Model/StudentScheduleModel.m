@@ -8,6 +8,7 @@
 
 #import "StudentScheduleModel.h"
 #import <MJExtension/MJExtension.h>
+#import "config.h"
 #pragma mark Request
 @implementation StudentScheduleReq
 +(instancetype)initStudentScheduleReqWithStartDate:(NSString*)start
@@ -88,7 +89,7 @@
         }
     }
     
-    NSLog(@"重组后的日程LUT = %@",dict);
+    XLog(@"重组后的日程LUT = %@",dict);
     return dict;
 }
 
