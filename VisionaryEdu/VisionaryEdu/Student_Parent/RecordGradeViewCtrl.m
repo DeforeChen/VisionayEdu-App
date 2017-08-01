@@ -201,7 +201,7 @@
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     if ([textField.text isEqualToString:@""])//输入为空
         return YES;
-    if (![SysTool judgeRegExWithType:Judge_Score String:textField.text]) {
+    if (![SysTool judgeRegExWithType:Judge_Score String:textField.text] && textField.keyboardType != UIKeyboardTypeDefault) {
         [SysTool showErrorWithMsg:@"请输入正确的分值,小数点后只能为0或5!" duration:1];
         return NO;
     }

@@ -15,10 +15,12 @@ typedef enum : NSUInteger {
 } ServiceType;
 
 @interface StudentInfoTableViewCell : UITableViewCell
+
 +(instancetype)fetchMyCellWithTableView:(UITableView*)tableview
                             studentName:(NSString*)name
                             serviceType:(ServiceType)type
                               className:(NSInteger)className
+                            checkinTime:(NSString*)totalTime
                            registerTime:(NSString*)time;
 @end
 

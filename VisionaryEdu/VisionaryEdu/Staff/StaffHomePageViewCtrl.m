@@ -158,7 +158,8 @@
     } else
         type = UnderGraduation;
 
-    StudentInfoTableViewCell *cell = [StudentInfoTableViewCell fetchMyCellWithTableView:tableView studentName:info.full_name serviceType:type className:info.user_class registerTime:info.registration_date];
+//    StudentInfoTableViewCell *cell = [StudentInfoTableViewCell fetchMyCellWithTableView:tableView studentName:info.full_name serviceType:type className:info.user_class registerTime:info.registration_date];
+    StudentInfoTableViewCell *cell = [StudentInfoTableViewCell fetchMyCellWithTableView:tableView studentName:info.full_name serviceType:type className:info.user_class checkinTime:info.appointment_statistics registerTime:info.registration_date];
     return cell;
 }
 

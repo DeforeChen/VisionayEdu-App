@@ -82,7 +82,7 @@
         }
     }
     
-    NSLog(@"活动数组个数 = %lu, 荣誉数组个数 = %lu",ActivityArray.count, HonorArray.count);
+    NSLog(@"活动数组个数 = %lu, 荣誉数组个数 = %lu",(unsigned long)ActivityArray.count, (unsigned long)HonorArray.count);
     block(HonorArray,ActivityArray);
 }
 

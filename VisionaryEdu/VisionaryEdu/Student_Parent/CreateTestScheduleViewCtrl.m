@@ -59,7 +59,7 @@
 
 -(void)initOptionView {
         self.testTypeSelectView.placeholder = @"托福";
-        self.testTypeSelectView.listArray   = @[@"托福",@"雅思",@"SAT",@"ACT",@"SAT2",@"AP",@"Custom"];
+        self.testTypeSelectView.listArray   = @[@"托福",@"雅思",@"SAT",@"ACT",@"SAT2",@"AP"];//@"Custom"
         self.testTypeSelectView.delegate    = self;
         [self.testTypeSelectView setTextColor:[UIColor colorWithHexString:@"#B0B1B8"]];
 }

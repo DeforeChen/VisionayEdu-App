@@ -133,6 +133,7 @@
         self.recordModel.time = [self.dateLB.text substringFromIndex:11];
         self.recordModel.duration = self.lastTimeLB.text;
         self.recordModel.student_all = [self.studentListTextView.text componentsSeparatedByString:@","];
+        self.recordModel.staff_comment = self.commentTextView.text;
         [SysTool showLoadingHUDWithMsg:@"正在上送新的员工约谈日程信息..." duration:0];
         NSMutableDictionary *reqDict = self.recordModel.mj_keyValues;
         [reqDict setObject:[LoginInfoModel fetchAccountUsername] forKey:@"username"];

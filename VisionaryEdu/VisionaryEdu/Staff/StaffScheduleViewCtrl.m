@@ -178,6 +178,7 @@
         [self.scheduleListTB reloadData];
     } else {
         self.scheduleListTB.hidden = YES;
+        self.totalEventsLB.text = @"无事件";
     }
 }
 

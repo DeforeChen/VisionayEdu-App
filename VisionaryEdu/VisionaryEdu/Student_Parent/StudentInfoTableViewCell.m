@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *hs_GuardLB;//学护，美高
 @property (weak, nonatomic) IBOutlet UILabel *userClassLB;
 @property (weak, nonatomic) IBOutlet UILabel *registerTimeLB;
+@property (weak, nonatomic) IBOutlet UILabel *checkInRecordTotalTimeLB;
 
 @end
 
@@ -39,12 +40,14 @@
                             studentName:(NSString*)name
                             serviceType:(ServiceType)type
                               className:(NSInteger)className
+                            checkinTime:(NSString*)totalTime
                            registerTime:(NSString*)time {
     StudentInfoTableViewCell *cell = [tableview dequeueReusableCellWithIdentifier:@"StudentIndexID"];
     
-    cell.studentNameLB.text  = name;
-    cell.userClassLB.text    = [NSString stringWithFormat:@"%d",(int)className];
-    cell.registerTimeLB.text = time;
+    cell.studentNameLB.text            = name;
+    cell.userClassLB.text              = [NSString stringWithFormat:@"%d",(int)className];
+    cell.registerTimeLB.text           = time;
+    cell.checkInRecordTotalTimeLB.text = [NSString stringWithFormat:@"约谈总时长:%@",totalTime];
     switch (type) {
         case UnderGraduation: {
             cell.underGradLB.hidden = NO;

@@ -16,6 +16,8 @@
 @property (nonatomic , assign) BOOL              hs_guard;
 @property (nonatomic , copy) NSString              * full_name;
 @property (nonatomic , assign) NSInteger              user_class;
+@property (nonatomic , copy) NSString              *appointment_statistics;
+@property (nonatomic , copy) NSString              *gender;
 @end
 
 @interface StudentBaseInfo : NSObject
