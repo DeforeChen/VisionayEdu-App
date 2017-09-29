@@ -17,7 +17,9 @@
 #endif
 
 #define JPushAppKey @"13f66d1f9146bbe9a8ac28ca"
-@interface AppDelegate ()<JPUSHRegisterDelegate>
+@interface AppDelegate ()<JPUSHRegisterDelegate> {
+    NSUInteger _iBadgeNumber;
+}
 
 @end
 
@@ -34,6 +36,10 @@
         self.window.rootViewController = guideViewCtrl;
         self.window.backgroundColor = [UIColor whiteColor];
     }
+    
+    _iBadgeNumber = 0;
+    [application setApplicationIconBadgeNumber:_iBadgeNumber];
+    
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -133,15 +139,15 @@
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
         NSLog(@"应用内推送 = %@",userInfo);
-//        NSString *transAmt = [userInfo objectForKey:@"transAmt"];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeImg"
-//                                                            object:transAmt];
+        //        NSString *transAmt = [userInfo objectForKey:@"transAmt"];
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeImg"
+        //                                                            object:transAmt];
     }
     completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
 
 // iOS 10 Support
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
     // Required
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "StudentScoreInDetailsModel.h"
 
-typedef void(^checkDetail)();
+typedef void(^checkDetail)(void);
 @interface SingleGradeView : UIView
 
 /**

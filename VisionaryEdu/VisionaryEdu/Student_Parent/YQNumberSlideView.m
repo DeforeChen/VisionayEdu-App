@@ -231,7 +231,9 @@
             lastLab.alpha = self.ThirdLevelAlpha+(self.SecLevelAlpha-self.ThirdLevelAlpha)*offsetRait;
         }
         
-        if(count<self.SlideLabArr.count-2){
+        int labArrCnt = (int)self.SlideLabArr.count - 2;
+//        unsigned int value = (labArrCnt > 0)?labArrCnt:0;
+        if(count< labArrCnt){
             UILabel *next2Lab = self.SlideLabArr[count+2];
             next2Lab.frame = CGRectMake(kViewX(next2Lab),
                                         (self.maxHeight-self.minHeight),
@@ -239,22 +241,22 @@
                                         self.minHeight);
             next2Lab.font = [UIFont systemFontOfSize:kViewHeight(next2Lab)];
             next2Lab.alpha = self.ThirdLevelAlpha+(self.SecLevelAlpha-self.ThirdLevelAlpha)*(1-offsetRait);
-        }
-        for (int i=0;i<self.SlideLabArr.count;i++) {
-            if(i!=count &&
-               i!=count+1&&
-               i!=count-1&&
-               i!=count+2){
-                UILabel *lab = self.SlideLabArr[i];
-                lab.frame = CGRectMake(kViewX(lab),
-                                       (self.maxHeight-self.minHeight),
-                                       kViewWidth(lab),
-                                       self.minHeight);
-                lab.font = [UIFont systemFontOfSize:kViewHeight(lab)];
-                lab.alpha = self.ThirdLevelAlpha;
+            
+            for (int i=0;i<self.SlideLabArr.count;i++) {
+                if(i!=count &&
+                   i!=count+1&&
+                   i!=count-1&&
+                   i!=count+2){
+                    UILabel *lab = self.SlideLabArr[i];
+                    lab.frame = CGRectMake(kViewX(lab),
+                                           (self.maxHeight-self.minHeight),
+                                           kViewWidth(lab),
+                                           self.minHeight);
+                    lab.font = [UIFont systemFontOfSize:kViewHeight(lab)];
+                    lab.alpha = self.ThirdLevelAlpha;
+                }
             }
         }
-        
     }
 }
 
